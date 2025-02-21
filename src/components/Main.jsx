@@ -3,7 +3,7 @@ import grafico from "../assets/grafico-de-barras.png";
 export default function Main() {
   const navigate = useNavigate();
   return (
-    <div className="main-container vh-100 d-flex m-3">
+    <div className="main-container vh-100 d-flex m-3 aparecer">
       <div className="col-12 col-md-6 d-flex flex-column justify-content-center align-items-center text-center">
         <h1 className="mb-4">Bienvenido a Estadisticas de Baloncesto🏀⛹️‍♂️ !</h1>
         <p className="lead mb-4">
@@ -33,7 +33,7 @@ export default function Main() {
         <img
           alt="App Estadisticas de Baloncesto"
           src={grafico}
-          className="imgComponent"
+          className="imgComponent aparecer"
         />
       </div>
     </div>

@@ -11,7 +11,7 @@ export default function Login() {
     console.log("FrontEnd Login", email, password);
   };
   return (
-    <div className="text-dark vh-100 d-flex flex-column justify-content-center align-items-center">
+    <div className="text-dark vh-100 d-flex flex-column justify-content-center align-items-center aparecer">
       <form
         className="bg-light p-4 rounded needs-validation shadow"
         onSubmit={handlerSubmitLogin}
