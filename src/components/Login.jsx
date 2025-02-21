@@ -9,6 +9,21 @@ export default function Login() {
   const handlerSubmitLogin = async (e) => {
     e.preventDefault();
     console.log("FrontEnd Login", email, password);
+    e.preventDefault();
+    console.log("Probando conexión con el backend...");
+
+    try {
+      const response = await fetch("/api/auth/login", {
+        method: "GET",
+      });
+
+      const data = await response.json();
+      console.log("Respuesta del backend:", data);
+      alert("Respuesta del backend: " + JSON.stringify(data));
+    } catch (error) {
+      console.error("Error en la solicitud:", error);
+      alert("No se pudo conectar con el servidor");
+    }
   };
   return (
     <div className="text-dark vh-100 d-flex flex-column justify-content-center align-items-center aparecer">
