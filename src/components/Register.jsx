@@ -7,8 +7,26 @@ export default function Register() {
   const navigate = useNavigate();
   const handlerSubmitRegister = async (e) => {
     e.preventDefault();
+    console.log("FrontEnd Login", email, password);
+    e.preventDefault();
+    console.log("Probando conexión con el backend...");
 
-    console.log("FrontEnd Register", email, username, password);
+    try {
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, username, password }),
+      });
+
+      const data = await response.json();
+      console.log("Respuesta del backend:", data);
+      alert("Respuesta del backend: " + JSON.stringify(data));
+    } catch (error) {
+      console.error("Error en la solicitud:", error);
+      alert("No se pudo conectar con el servidor");
+    }
   };
 
   return (
