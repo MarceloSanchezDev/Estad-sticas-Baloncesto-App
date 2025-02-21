@@ -30,7 +30,11 @@ export default function Main() {
         id="idImagen"
         className="col-12 col-md-6 d-flex justify-content-center align-items-center"
       >
-        <img alt="App Estadisticas de Baloncesto" src={grafico} />
+        <img
+          alt="App Estadisticas de Baloncesto"
+          src={grafico}
+          className="imgComponent"
+        />
       </div>
     </div>
   );
