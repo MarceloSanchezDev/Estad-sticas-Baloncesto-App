@@ -12,7 +12,7 @@ export default function Register() {
     console.log("Probando conexión con el backend...");
 
     try {
-      const response = await fetch("/api/auth/reguster", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
