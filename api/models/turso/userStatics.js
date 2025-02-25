@@ -11,42 +11,6 @@ const db = createClient({
   authToken: DBTOKEN,
   fetchOptions: { timeout: 10000 } // 10 segundos
 })
-const initDB = async () => {
-  try {
-    await db.execute(`
-      CREATE TABLE IF NOT EXISTS USER (
-        id_user VARCHAR(36) PRIMARY KEY,
-        nombre VARCHAR(255),
-        apellido VARCHAR(255),
-        username TEXT UNIQUE,
-        password VARCHAR(255),
-        email VARCHAR(255)
-      )
-    `);
-
-    await db.execute(`
-      CREATE TABLE IF NOT EXISTS user_estadisticas (
-        id_stat VARCHAR(36) PRIMARY KEY,
-        fecha DATE,
-        estadisticasDosPuntos DECIMAL(5,2),
-        estadisticasTresPuntos DECIMAL(5,2),
-        user_username VARCHAR(255),
-        nombreEstadistica VARCHAR(255),
-        cant_dosPuntos INT(11),
-        cant_tresPuntos INT(11),
-        cant_dosPuntosEncestados INT(11),
-        cant_tresPuntosEncestados INT(11),
-        hora TIME,
-        FOREIGN KEY (user_username) REFERENCES USER(username)
-      )
-    `);
-    console.log('Tablas creadas correctamente.');
-  } catch (err) {
-    console.error('Error al crear las tablas:', err);
-  }
-};
-
-initDB();
 export class StatisticsModel {
   static async getAllStatistics ({ username }) {
     try {
