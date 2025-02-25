@@ -8,7 +8,8 @@ const DBTOKEN = process.env.DBTOKEN
 
 const db = createClient({
   url: 'libsql://estadisticas-marcelosanchezdev.turso.io',
-  authToken: DBTOKEN
+  authToken: DBTOKEN,
+  fetchOptions: { timeout: 10000 } // 10 segundos
 })
 const initDB = async () => {
   try {
