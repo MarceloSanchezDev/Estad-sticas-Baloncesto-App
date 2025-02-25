@@ -9,8 +9,6 @@ export default function Login() {
   const handlerSubmitLogin = async (e) => {
     e.preventDefault();
     console.log("FrontEnd Login", email, password);
-    e.preventDefault();
-    console.log("Probando conexión con el backend...");
 
     try {
       const response = await fetch("/api/auth/login", {
@@ -29,6 +27,7 @@ export default function Login() {
       alert("No se pudo conectar con el servidor");
     }
   };
+
   return (
     <div className="text-dark vh-100 d-flex flex-column justify-content-center align-items-center aparecer">
       <form
