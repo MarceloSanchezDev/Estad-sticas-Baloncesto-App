@@ -11,7 +11,7 @@ export default function Login() {
     console.log("FrontEnd Login", email, password);
 
     try {
-      const response = await fetch("/api/auth/login.js", {
+      const response = await fetch("/api/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
