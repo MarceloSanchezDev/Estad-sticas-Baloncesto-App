@@ -10,8 +10,14 @@ export default async function handler(req, res) {
         return res.status(405).json({ error: "Método no permitido" });
     }
     const { email, password } = req.body;
-    if(email & password){
+    try {
+      if(email & password){
         return res.status(200).json({ message: 'Estadísticas de baloncesto', email, password });
+      }
+      
+    } catch (error) {
+      return res.status(500).json({ errorServerless: `Error ${error.name}`, error: error.message });
+      
     }
 /*    try {
         const { email, password } = req.body;
