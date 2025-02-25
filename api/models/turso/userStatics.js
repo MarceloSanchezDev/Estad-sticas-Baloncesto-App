@@ -10,11 +10,42 @@ const db = createClient({
   url: 'libsql://estadisticas-marcelosanchezdev.turso.io',
   authToken: DBTOKEN
 })
-/* CREATE TABLE IF NOT EXISTS  USER(id_user varchar(36) primary key,nombre varchar(255),apellido varchar(255),username TEXT unique,password varchar(255), email varchar(255)) */
-/* CREATE TABLE IF NOT EXISTS  user_estadisticas(id_stat varchar(36) primary key,fecha DATE,estadisticasDosPuntos decimal(5,2),estadisticasTresPuntos decimal(5,2),user_username varchar(255),nombreEstadistica varchar(255), cant_dosPuntos int(11),cant_tresPuntos int(11),cant_dosPuntosEncestados int(11),cant_tresPuntosEncestados int(11),hora time, foreign key(user_username) references user(username)) */
-await db.execute('CREATE TABLE IF NOT EXISTS  USER(id_user varchar(36) primary key,nombre varchar(255),apellido varchar(255),username TEXT unique,password varchar(255), email varchar(255))')
-await db.execute('CREATE TABLE IF NOT EXISTS  user_estadisticas(id_stat varchar(36) primary key,fecha DATE,estadisticasDosPuntos decimal(5,2),estadisticasTresPuntos decimal(5,2),user_username varchar(255),nombreEstadistica varchar(255), cant_dosPuntos int(11),cant_tresPuntos int(11),cant_dosPuntosEncestados int(11),cant_tresPuntosEncestados int(11),hora time, foreign key(user_username) references user(username))')
+const initDB = async () => {
+  try {
+    await db.execute(`
+      CREATE TABLE IF NOT EXISTS USER (
+        id_user VARCHAR(36) PRIMARY KEY,
+        nombre VARCHAR(255),
+        apellido VARCHAR(255),
+        username TEXT UNIQUE,
+        password VARCHAR(255),
+        email VARCHAR(255)
+      )
+    `);
 
+    await db.execute(`
+      CREATE TABLE IF NOT EXISTS user_estadisticas (
+        id_stat VARCHAR(36) PRIMARY KEY,
+        fecha DATE,
+        estadisticasDosPuntos DECIMAL(5,2),
+        estadisticasTresPuntos DECIMAL(5,2),
+        user_username VARCHAR(255),
+        nombreEstadistica VARCHAR(255),
+        cant_dosPuntos INT(11),
+        cant_tresPuntos INT(11),
+        cant_dosPuntosEncestados INT(11),
+        cant_tresPuntosEncestados INT(11),
+        hora TIME,
+        FOREIGN KEY (user_username) REFERENCES USER(username)
+      )
+    `);
+    console.log('Tablas creadas correctamente.');
+  } catch (err) {
+    console.error('Error al crear las tablas:', err);
+  }
+};
+
+initDB();
 export class StatisticsModel {
   static async getAllStatistics ({ username }) {
     try {
