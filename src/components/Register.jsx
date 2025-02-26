@@ -47,7 +47,7 @@ export default function Register() {
             type="email"
             name="emailRegister"
             id="emailRegister"
-            placeholder="@gmail.com"
+            placeholder="youremail@gmail.com"
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
@@ -99,7 +99,7 @@ export default function Register() {
             type="password"
             id="passwordRegister"
             name="passwordRegister"
-            placeholder="Contraseña"
+            placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
