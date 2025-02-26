@@ -23,12 +23,12 @@ export default async function handler(req, res) {
             return res.status(400).json({ error: "Error al registrar el usuario" });
         }
 
-        const { username, name, lastname, id } = userValid[0];
+        const { username, nombre, apellido, id } = userValid[0];
         const token = jwt.sign({ id, username }, SECRET_KEY, {
             expiresIn: 60 * 60
         });
 
-        res.status(200).json({ message: 'Estadísticas de baloncesto', username, name, lastname, token });
+        res.status(200).json({ message: 'Estadísticas de baloncesto', username, nombre, apellido, token });
     } catch (error) {
         console.error("Error en el servidor:", error);
         res.status(500).json({ error: "Error en el servidor", message: error.message });
