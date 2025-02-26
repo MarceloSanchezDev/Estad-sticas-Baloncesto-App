@@ -12,7 +12,7 @@ const UserRegister = z.object({
   name: z.string({
     invalid_type_error: 'name must be a string'
   }).max(20, { message: 'Must be 20 or fewer characters long' }),
-  lastName: z.string({
+  lastname: z.string({
     invalid_type_error: 'lastName must be a string'
   }).max(20, { message: 'Must be 20 or fewer characters long' }),
   email: z.string({
