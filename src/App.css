@@ -5,6 +5,12 @@ html, body {
   .aparecer{
     animation: aparecer 1s forwards;
   }
+.icon:hover{
+  cursor: pointer;
+}
+.imgs:hover{
+  cursor: pointer;
+}
     @keyframes aparecer {
     from{
       opacity: 0;
