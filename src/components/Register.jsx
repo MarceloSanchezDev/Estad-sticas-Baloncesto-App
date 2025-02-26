@@ -3,6 +3,8 @@ import { useNavigate } from "react-router";
 export default function Register() {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
+  const [Lastname, setLastName] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const handlerSubmitRegister = async (e) => {
@@ -17,7 +19,7 @@ export default function Register() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, username, password }),
+        body: JSON.stringify({ email, username, name, Lastname, password }),
       });
 
       const data = await response.json();
@@ -60,6 +62,32 @@ export default function Register() {
             name="usernameRegister"
             placeholder="user1234"
             onChange={(e) => setUsername(e.target.value)}
+          />
+        </div>
+        <div className="mb-3">
+          <label className="form-label" htmlFor="usernameRegister">
+            Name :
+          </label>
+          <input
+            className="form-control"
+            type="text"
+            id="usernameRegister"
+            name="usernameRegister"
+            placeholder="user1234"
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+        <div className="mb-3">
+          <label className="form-label" htmlFor="usernameRegister">
+            Last Name :
+          </label>
+          <input
+            className="form-control"
+            type="text"
+            id="usernameRegister"
+            name="usernameRegister"
+            placeholder="user1234"
+            onChange={(e) => setLastName(e.target.value)}
           />
         </div>
         <div className="mb-3">
