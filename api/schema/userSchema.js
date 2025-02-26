@@ -9,11 +9,11 @@ const UserRegister = z.object({
     required_error: 'password is required',
     invalid_type_error: 'password must be a string'
   }).min(6, { message: 'Must be 6 or more characters long' }),
-  nombre: z.string({
-    invalid_type_error: 'nombre must be a string'
+  name: z.string({
+    invalid_type_error: 'name must be a string'
   }).max(20, { message: 'Must be 20 or fewer characters long' }),
-  apellido: z.string({
-    invalid_type_error: 'apellido must be a string'
+  lastName: z.string({
+    invalid_type_error: 'lastName must be a string'
   }).max(20, { message: 'Must be 20 or fewer characters long' }),
   email: z.string({
     required_error: 'email is required',
