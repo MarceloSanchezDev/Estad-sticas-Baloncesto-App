@@ -1,7 +1,13 @@
 import { useNavigate } from "react-router";
 import grafico from "../assets/grafico-de-barras.png";
-export default function Main() {
+import { useEffect } from "react";
+export default function Main({ token }) {
   const navigate = useNavigate();
+  useEffect(() => {
+    if (token) {
+      navigate("/profile");
+    }
+  }, [token, navigate]);
   return (
     <div className="main-container vh-100 d-flex m-3 aparecer">
       <div className="col-12 col-md-6 d-flex flex-column justify-content-center align-items-center text-center">

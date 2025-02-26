@@ -1,12 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-export default function Register() {
+export default function Register({ token, login }) {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
   const [lastname, setLastName] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  useEffect(() => {
+    if (token) {
+      navigate("/profile");
+    }
+  }, [token, navigate]);
   const handlerSubmitRegister = async (e) => {
     e.preventDefault();
     console.log("FrontEnd Login", email, password);
@@ -24,6 +29,7 @@ export default function Register() {
 
       const data = await response.json();
       console.log("Respuesta del backend:", data);
+      login(data.token);
       alert("Respuesta del backend: " + JSON.stringify(data));
     } catch (error) {
       console.error("Error en la solicitud:", error);

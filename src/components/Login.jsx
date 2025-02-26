@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
-export default function Login() {
+export default function Login({ token ,login}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-
+  useEffect(() => {
+    if (token) {
+      navigate("/profile");
+    }
+  }, [token, navigate]);
   const handlerSubmitLogin = async (e) => {
     e.preventDefault();
     console.log("FrontEnd Login", email, password);
@@ -21,6 +25,7 @@ export default function Login() {
 
       const data = await response.json();
       console.log("Respuesta del backend:", data);
+      login(data.token);
       alert("Respuesta del backend: " + JSON.stringify(data));
     } catch (error) {
       console.error("Error en la solicitud:", error);
