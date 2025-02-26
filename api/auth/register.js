@@ -1,4 +1,4 @@
-import { validRegisterUser } from "../schema/userSchema";
+import { validRegisterUser } from "../schema/userSchema.js";
 
 export default function handler(req, res) {
     if (req.method !== "POST") {
