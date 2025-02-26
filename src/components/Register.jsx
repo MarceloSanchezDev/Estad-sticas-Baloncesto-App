@@ -4,7 +4,7 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
-  const [Lastname, setLastName] = useState("");
+  const [lastname, setLastName] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const handlerSubmitRegister = async (e) => {
@@ -19,7 +19,7 @@ export default function Register() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, username, name, Lastname, password }),
+        body: JSON.stringify({ email, username, name, lastname, password }),
       });
 
       const data = await response.json();
