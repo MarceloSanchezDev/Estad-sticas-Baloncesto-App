@@ -68,13 +68,22 @@ export default function Profile({ token, logout }) {
 
           <div className="col-md-4 mh-100">
             <div className="row h-100 d-flex flex-column justify-content-evenly">
-              <div className="col-12 mh-50 bg-light border rounded shadow-sm p-3" style={{height: "33,3%"}}>
+              <div
+                className="col-12 mh-50 bg-light border rounded shadow-sm p-3"
+                style={{ height: "33%" }}
+              >
                 Fila 1 de Columna 2
               </div>
-              <div className="col-12 mh-50  bg-light border rounded shadow-sm p-3" style={{height: "33,3%"}}>
+              <div
+                className="col-12 mh-50  bg-light border rounded shadow-sm p-3"
+                style={{ height: "33%" }}
+              >
                 Fila 2 de Columna 2
               </div>
-              <div className="col-12 mh-50  bg-light border rounded shadow-sm p-3" style={{height: "33,3%"}}>
+              <div
+                className="col-12 mh-50  bg-light border rounded shadow-sm p-3"
+                style={{ height: "33%" }}
+              >
                 Fila 3 de Columna 2
               </div>
             </div>
