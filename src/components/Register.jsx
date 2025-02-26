@@ -71,9 +71,9 @@ export default function Register() {
           <input
             className="form-control"
             type="text"
-            id="usernameRegister"
+            id="nameRegister"
             name="usernameRegister"
-            placeholder="user1234"
+            placeholder="your name"
             onChange={(e) => setName(e.target.value)}
           />
         </div>
@@ -84,9 +84,9 @@ export default function Register() {
           <input
             className="form-control"
             type="text"
-            id="usernameRegister"
+            id="lastNameRegister"
             name="usernameRegister"
-            placeholder="user1234"
+            placeholder="your last name"
             onChange={(e) => setLastName(e.target.value)}
           />
         </div>
