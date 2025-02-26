@@ -75,8 +75,8 @@ export class UserModel {
     const {
       username,
       password,
-      nombre,
-      apellido,
+      name,
+      lastname,
       email
     } = input
 
@@ -89,7 +89,7 @@ export class UserModel {
     try {
       // inserto en la base de datos el nuevo usuario
       await db.execute(
-        'INSERT INTO user (id_user, username, password, nombre, apellido, email) values(?,?,?,?,?,?)', [uuidResult, username, hashedPassword, nombre, apellido, email])
+        'INSERT INTO user (id_user, username, password, nombre, apellido, email) values(?,?,?,?,?,?)', [uuidResult, username, hashedPassword, name, lastname, email])
     } catch (e) {
       // si hay algun error lo envio al controlador
       console.log(e)
