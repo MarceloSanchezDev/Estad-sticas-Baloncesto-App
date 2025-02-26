@@ -1,6 +1,6 @@
+import { validUser } from '../schema/userSchema.js';
 /*
 import { UserModel } from '../models/turso/userStatics.js';
-import { validUser } from '../schema/userSchema.js';
 import jwt from 'jsonwebtoken'; */
 
 const SECRET_KEY = process.env.SECRET_KEY;
@@ -11,7 +11,8 @@ export default async function handler(req, res) {
     }
     try {
       const { email, password } = req.body;
-     res.status(200).json({ message: 'Estadísticas de baloncesto', email, password });
+      const result = validUser({ email, password });
+     res.status(200).json({ message: 'Estadísticas de baloncesto', result });
     } catch (error) {
       return res.status(500).json({ errorServerless: `Error ${error.name}`, error: error.message });
       
