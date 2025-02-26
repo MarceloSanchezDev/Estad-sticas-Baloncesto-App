@@ -1,6 +1,9 @@
 export default function Nav({ token, logout }) {
   return (
-    <nav className="bg-light p-3 border-end" style={{ width: "300px" }}>
+    <nav
+      className="bg-light p-3 border-end aparecer"
+      style={{ width: "300px" }}
+    >
       <h2 className="mb-4">🏀 Estadísticas</h2>
       <ul className="nav flex-column gap-2">
         <li>

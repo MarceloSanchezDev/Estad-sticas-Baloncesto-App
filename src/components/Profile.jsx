@@ -11,7 +11,7 @@ export default function Profile({ token, logout }) {
     }
   }, [token, navigate]);
   return (
-    <div className="d-flex vh-100">
+    <div className="d-flex vh-100 aparecer">
       <Nav logout={logout} />
       <div className="container-fluid p-4 flex-grow-1">
         <div className="row h-100">
