@@ -21,10 +21,10 @@ const UserRegister = z.object({
   }).email().min(6, { message: 'Must be 6 or more characters long' })
 })
 const UserLogin = z.object({
-  username: z.string({
-    required_error: 'user is required',
-    invalid_type_error: 'user must be a string'
-  }).max(20, { message: 'Must be 20 or fewer characters long' }),
+  email: z.string({
+    required_error: 'email is required',
+    invalid_type_error: 'email must be a string'
+  }).email().min(6, { message: 'Must be 6 or more characters long' }),
   password: z.string({
     required_error: 'password is required',
     invalid_type_error: 'password must be a string'
