@@ -25,7 +25,7 @@ export default function Login({ token, login }) {
 
       const data = await response.json();
       console.log("Respuesta del backend:", data);
-      const user = JSON.stringify(data);
+      const user = data;
       login(data.token, user);
       alert("Respuesta del backend: " + JSON.stringify(data));
     } catch (error) {
