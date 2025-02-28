@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import unknown from "../assets/unknown.jpg";
 
-export default function Profile({ token }) {
+export default function Profile({ token, user }) {
   const navigate = useNavigate();
   useEffect(() => {
     if (!token) {
@@ -32,7 +32,7 @@ export default function Profile({ token }) {
                         <div className="fw-bold text-muted text-start">
                           Nombre
                         </div>
-                        <p className="text-start">Name</p>
+                        <p className="text-start">{`${user.nombre} ${user.apellido}`}</p>
                       </div>
                     </li>
                     <li className="list-group-item d-flex justify-content-between align-items-start">
@@ -40,7 +40,7 @@ export default function Profile({ token }) {
                         <div className="fw-bold text-muted text-start">
                           e-mail
                         </div>
-                        <p className="text-start">Name</p>
+                        <p className="text-start">{user.email}</p>
                       </div>
                     </li>
                     <li className="list-group-item d-flex justify-content-between align-items-start">

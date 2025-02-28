@@ -45,12 +45,21 @@ function App() {
           path="/register"
           element={<Register login={login} token={token} />}
         />
-        <Route path="/profile" element={<Profile token={token} />} />
-        <Route path="/newStatistic" element={<NewStatistic token={token} />} />
-        <Route path="/allStatistic" element={<AllStatistic token={token} />} />
+        <Route
+          path="/profile"
+          element={<Profile token={token} user={user} />}
+        />
+        <Route
+          path="/newStatistic"
+          element={<NewStatistic token={token} user={user} />}
+        />
+        <Route
+          path="/allStatistic"
+          element={<AllStatistic token={token} user={user} />}
+        />
         <Route
           path="/allStatisticPercentage"
-          element={<AllStatisticPercentage token={token} />}
+          element={<AllStatisticPercentage token={token} user={user} />}
         />
       </Routes>
     </Router>
