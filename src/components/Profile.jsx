@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import unknown from "../assets/unknown.jpg";
-import Nav from "./Nav";
 
 export default function Profile({ token, logout }) {
   const navigate = useNavigate();
@@ -12,31 +11,88 @@ export default function Profile({ token, logout }) {
   }, [token, navigate]);
   return (
     <div className="d-flex vh-100 aparecer">
-      <Nav logout={logout} />
-      <div className="container-fluid p-4 flex-grow-1">
-        <div className="row h-100">
-          <div className="col-md-4  h-100">
-            <div className="row h-100 d-flex flex-column justify-content-evenly">
-              <div className="p-3 h-75 bg-light border rounded shadow-sm">
+      <div className="container text-center h-100 p-3 mt-5">
+        <div className="row h-100 ">
+          <div className="col h-100 p-3 m-2">
+            <div className="row h-100 d-flex flex-column justify-content-between">
+              <div
+                className="h-100 bg-light border rounded shadow-sm p-3"
+                style={{ minHeight: "100%" }}
+              >
                 <img
-                  className="img-fluid rounded-circle img-thumbnail mx-auto d-block imgs"
+                  className="img-fluid rounded-circle img-thumbnail mx-auto d-block user-select-none imgs"
                   style={{ width: "250px" }}
                   src={unknown}
                   alt="unknown"
                 />
-                <h4 className="text-muted">nombre</h4>
-                <h1>Name Lastname</h1>
-                <h4 className="text-muted">e-mail</h4>
-                <h3>email@gmial.com</h3>
-                <h4 className="text-muted">posicion</h4>
-                <h3>Unkown</h3>
-                <h4 className="text-muted">Categoria</h4>
-                <h3>00-00</h3>
-                <div className="d-flex justify-content-end mt-4">
+                <div>
+                  <ul className="list-group">
+                    <li className="list-group-item mb-1 text-start">
+                      <h4 className="text-muted">Nombre</h4>
+                    </li>
+                    <li className="list-group-item mb-1 text-start">
+                      <h4 className="text-muted">Nombre</h4>
+                    </li>
+                    <li className="list-group-item mb-1 text-start">
+                      <h4 className="text-muted">Nombre</h4>
+                    </li>
+                    <li className="list-group-item mb-1 text-start">
+                      <h4 className="text-muted">Nombre</h4>
+                    </li>
+                    <li className="list-group-item mb-1 text-start">
+                      <h4 className="text-muted">Nombre</h4>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col p-3 m-2">
+            <div className="bg-light h-100 border rounded shadow-sm p-3">
+              <h1>Columna 1</h1>
+            </div>
+          </div>
+          <div className="col p-3 m-2">
+            <div className="bg-light h-100 border rounded shadow-sm p-3">
+              <h1>Columna 2</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+/*
+<div className="d-flex vh-100 aparecer">
+      <Nav logout={logout} />
+      <div className="container-fluid h-100 p-4 flex-grow-1">
+        <div className="row h-100">
+          <div className="col-md-4 h-100">
+            <div className="row h-100  d-flex flex-column justify-content-evenly">
+              <div className="p-3 h-100  bg-light border rounded shadow-sm mb-3">
+                <img
+                  className="img-fluid rounded-circle img-thumbnail mx-auto d-block user-select-none imgs"
+                  style={{ width: "250px" }}
+                  src={unknown}
+                  alt="unknown"
+                />
+                <div className="row contenedorDeInformacion">
+                  <div className="col-md-12 col-12 mb-3">
+                    <h4 className="text-muted fs-6">nombre</h4>
+                    <h1 className="fs-4">Name Lastname</h1>
+                    <h4 className="text-muted fs-6">e-mail</h4>
+                    <h3 className="fs-5">email@gmial.com</h3>
+                    <h4 className="text-muted fs-6">posicion</h4>
+                    <h3 className="fs-5">Unkown</h3>
+                    <h4 className="text-muted fs-6">Categoria</h4>
+                    <h3 className="fs-5">00-00</h3>
+                  </div>
+                </div>
+                <div className="col-md-12 col-12 d-flex justify-content-md-end justify-content-end align-items-end">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
+                    width="24"
+                    height="24"
                     fill="currentColor"
                     className="bi bi-instagram m-2 icon"
                     viewBox="0 0 16 16"
@@ -45,8 +101,8 @@ export default function Profile({ token, logout }) {
                   </svg>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
+                    width="24"
+                    height="24"
                     fill="currentColor"
                     className="bi bi-twitter-x m-2 icon"
                     viewBox="0 0 16 16"
@@ -55,8 +111,8 @@ export default function Profile({ token, logout }) {
                   </svg>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
+                    width="24"
+                    height="24"
                     fill="currentColor"
                     className="bi bi-facebook m-2 icon"
                     viewBox="0 0 16 16"
@@ -65,11 +121,10 @@ export default function Profile({ token, logout }) {
                   </svg>
                 </div>
               </div>
-              <div className="p-3 h-25 bg-light border rounded shadow-sm"></div>
             </div>
           </div>
 
-          <div className="col-md-4 mh-100">
+          <div className="col-md-4 h-100">
             <div className="row h-100 d-flex flex-column justify-content-evenly">
               <div
                 className="col-12 bg-light border rounded shadow-sm p-3"
@@ -103,5 +158,4 @@ export default function Profile({ token, logout }) {
         </div>
       </div>
     </div>
-  );
-}
+*/

@@ -11,6 +11,9 @@ html, body {
 .imgs:hover{
   cursor: pointer;
 }
+.contenedorDeInformacion{
+  height: 50vh;
+}
     @keyframes aparecer {
     from{
       opacity: 0;
