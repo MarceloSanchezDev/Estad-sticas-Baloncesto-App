@@ -46,6 +46,14 @@ export default function Profile({ token, user }) {
                     <li className="list-group-item d-flex justify-content-between align-items-start">
                       <div className="ms-2 me-auto">
                         <div className="fw-bold text-muted text-start">
+                          usuario
+                        </div>
+                        <p className="text-start">{user.username}</p>
+                      </div>
+                    </li>
+                    <li className="list-group-item d-flex justify-content-between align-items-start">
+                      <div className="ms-2 me-auto">
+                        <div className="fw-bold text-muted text-start">
                           posicion
                         </div>
                         <p className="text-start">Name</p>

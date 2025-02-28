@@ -27,7 +27,6 @@ export default function Login({ token, login }) {
       console.log("Respuesta del backend:", data);
       const user = data;
       login(data.token, user);
-      alert("Respuesta del backend: " + JSON.stringify(data));
     } catch (error) {
       console.error("Error en la solicitud:", error);
       alert("No se pudo conectar con el servidor");
