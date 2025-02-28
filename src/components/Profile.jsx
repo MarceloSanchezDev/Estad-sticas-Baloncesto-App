@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import unknown from "../assets/unknown.jpg";
 
-export default function Profile({ token, logout }) {
+export default function Profile({ token }) {
   const navigate = useNavigate();
   useEffect(() => {
     if (!token) {
@@ -17,7 +17,7 @@ export default function Profile({ token, logout }) {
             <div className="row h-100 d-flex flex-column justify-content-between">
               <div
                 className="h-100 bg-light border rounded shadow-sm p-3"
-                style={{ minHeight: "100%" }}
+                style={{ minHeight: "720px" }}
               >
                 <img
                   className="img-fluid rounded-circle img-thumbnail mx-auto d-block user-select-none imgs"
@@ -25,68 +25,41 @@ export default function Profile({ token, logout }) {
                   src={unknown}
                   alt="unknown"
                 />
-                <div>
+                <div className="mt-3">
                   <ul className="list-group">
-                    <li className="list-group-item mb-1 text-start">
-                      <h4 className="text-muted">Nombre</h4>
+                    <li className="list-group-item d-flex justify-content-between align-items-start">
+                      <div className="ms-2 me-auto">
+                        <div className="fw-bold text-muted text-start">
+                          Nombre
+                        </div>
+                        <p className="text-start">Name</p>
+                      </div>
                     </li>
-                    <li className="list-group-item mb-1 text-start">
-                      <h4 className="text-muted">Nombre</h4>
+                    <li className="list-group-item d-flex justify-content-between align-items-start">
+                      <div className="ms-2 me-auto">
+                        <div className="fw-bold text-muted text-start">
+                          e-mail
+                        </div>
+                        <p className="text-start">Name</p>
+                      </div>
                     </li>
-                    <li className="list-group-item mb-1 text-start">
-                      <h4 className="text-muted">Nombre</h4>
+                    <li className="list-group-item d-flex justify-content-between align-items-start">
+                      <div className="ms-2 me-auto">
+                        <div className="fw-bold text-muted text-start">
+                          posicion
+                        </div>
+                        <p className="text-start">Name</p>
+                      </div>
                     </li>
-                    <li className="list-group-item mb-1 text-start">
-                      <h4 className="text-muted">Nombre</h4>
-                    </li>
-                    <li className="list-group-item mb-1 text-start">
-                      <h4 className="text-muted">Nombre</h4>
+                    <li className="list-group-item d-flex justify-content-between align-items-start">
+                      <div className="ms-2 me-auto">
+                        <div className="fw-bold text-muted text-start">
+                          Categoria
+                        </div>
+                        <p className="text-start">Name</p>
+                      </div>
                     </li>
                   </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col p-3 m-2">
-            <div className="bg-light h-100 border rounded shadow-sm p-3">
-              <h1>Columna 1</h1>
-            </div>
-          </div>
-          <div className="col p-3 m-2">
-            <div className="bg-light h-100 border rounded shadow-sm p-3">
-              <h1>Columna 2</h1>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-/*
-<div className="d-flex vh-100 aparecer">
-      <Nav logout={logout} />
-      <div className="container-fluid h-100 p-4 flex-grow-1">
-        <div className="row h-100">
-          <div className="col-md-4 h-100">
-            <div className="row h-100  d-flex flex-column justify-content-evenly">
-              <div className="p-3 h-100  bg-light border rounded shadow-sm mb-3">
-                <img
-                  className="img-fluid rounded-circle img-thumbnail mx-auto d-block user-select-none imgs"
-                  style={{ width: "250px" }}
-                  src={unknown}
-                  alt="unknown"
-                />
-                <div className="row contenedorDeInformacion">
-                  <div className="col-md-12 col-12 mb-3">
-                    <h4 className="text-muted fs-6">nombre</h4>
-                    <h1 className="fs-4">Name Lastname</h1>
-                    <h4 className="text-muted fs-6">e-mail</h4>
-                    <h3 className="fs-5">email@gmial.com</h3>
-                    <h4 className="text-muted fs-6">posicion</h4>
-                    <h3 className="fs-5">Unkown</h3>
-                    <h4 className="text-muted fs-6">Categoria</h4>
-                    <h3 className="fs-5">00-00</h3>
-                  </div>
                 </div>
                 <div className="col-md-12 col-12 d-flex justify-content-md-end justify-content-end align-items-end">
                   <svg
@@ -123,39 +96,35 @@ export default function Profile({ token, logout }) {
               </div>
             </div>
           </div>
-
-          <div className="col-md-4 h-100">
-            <div className="row h-100 d-flex flex-column justify-content-evenly">
-              <div
-                className="col-12 bg-light border rounded shadow-sm p-3"
-                style={{ height: "33.3%" }}
-              >
-                Fila 1 de Columna 2
-              </div>
-              <div
-                className="col-12 bg-light border rounded shadow-sm p-3"
-                style={{ height: "33.3%" }}
-              >
-                Fila 2 de Columna 2
-              </div>
-              <div
-                className="col-12 bg-light border rounded shadow-sm p-3"
-                style={{ height: "33.3%" }}
-              >
-                Fila 3 de Columna 2
-              </div>
-            </div>
-          </div>
-
-          <div className="col-md-4 h-100 ">
-            <div className="row h-100 d-flex flex-column justify-content-evenly">
-              <div className=" p-3 bg-light h-100 border rounded shadow-sm">
-                <h3>Columna 3</h3>
-                <p>Contenido de la tercera columna.</p>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
-*/
+  );
+}
+/*
+<ul className="list-group">
+                    <li className="list-group-item mb-1 text-start">
+                      <h4 className="text-muted">
+                        Nombre{" "}
+                        <span className="fs-4 text-dark">Name Lastname</span>
+                      </h4>
+                    </li>
+                    <li className="list-group-item mb-1 text-start">
+                      <h4 className="text-muted">
+                        e-mail{" "}
+                        <span className="fs-4 text-dark">Name Lastname</span>
+                      </h4>
+                    </li>
+                    <li className="list-group-item mb-1 text-start">
+                      <h4 className="text-muted">
+                        posicion{" "}
+                        <span className="fs-4 text-dark">Name Lastname</span>
+                      </h4>
+                    </li>
+                    <li className="list-group-item mb-1 text-start">
+                      <h4 className="text-muted">
+                        Categoria{" "}
+                        <span className="fs-4 text-dark">Name Lastname</span>
+                      </h4>
+                    </li>
+                  </ul> */

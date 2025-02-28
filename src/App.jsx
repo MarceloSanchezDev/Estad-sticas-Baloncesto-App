@@ -12,6 +12,7 @@ import AllStatisticPercentage from "./components/AllStatisticPercentage";
 
 function App() {
   const [token, setToken] = useState("");
+  const [user, setUser] = useState({});
 
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
@@ -19,7 +20,6 @@ function App() {
       setToken(storedToken);
     }
   }, []);
-
   const logout = () => {
     localStorage.removeItem("token");
     setToken("");
@@ -43,21 +43,12 @@ function App() {
           path="/register"
           element={<Register login={login} token={token} />}
         />
-        <Route
-          path="/profile"
-          element={<Profile token={token} logout={logout} />}
-        />
-        <Route
-          path="/newStatistic"
-          element={<NewStatistic token={token} logout={logout} />}
-        />
-        <Route
-          path="/allStatistic"
-          element={<AllStatistic token={token} logout={logout} />}
-        />
+        <Route path="/profile" element={<Profile token={token} />} />
+        <Route path="/newStatistic" element={<NewStatistic token={token} />} />
+        <Route path="/allStatistic" element={<AllStatistic token={token} />} />
         <Route
           path="/allStatisticPercentage"
-          element={<AllStatisticPercentage token={token} logout={logout} />}
+          element={<AllStatisticPercentage token={token} />}
         />
       </Routes>
     </Router>
