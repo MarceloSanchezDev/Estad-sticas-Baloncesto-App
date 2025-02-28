@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
-export default function Login({ token ,login}) {
+export default function Login({ token, login }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -25,7 +25,8 @@ export default function Login({ token ,login}) {
 
       const data = await response.json();
       console.log("Respuesta del backend:", data);
-      login(data.token);
+      const user = JSON.stringify(data);
+      login(data.token, user);
       alert("Respuesta del backend: " + JSON.stringify(data));
     } catch (error) {
       console.error("Error en la solicitud:", error);

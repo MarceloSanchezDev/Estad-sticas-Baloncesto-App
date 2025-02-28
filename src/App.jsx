@@ -25,12 +25,14 @@ function App() {
     setToken("");
   };
 
-  const login = (tok) => {
+  const login = (tok, user) => {
     localStorage.setItem("token", tok);
     const storedToken = localStorage.getItem("token");
     if (storedToken) {
       setToken(storedToken);
     }
+    setUser(user);
+    console.log("Usuario", user);
   };
 
   return (
