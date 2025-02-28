@@ -38,7 +38,7 @@ export default function Profile({ token, user }) {
                     <li className="list-group-item d-flex justify-content-between align-items-start">
                       <div className="ms-2 me-auto">
                         <div className="fw-bold text-muted text-start">
-                          e-mail
+                          E-mail
                         </div>
                         <p className="text-start">{user.email}</p>
                       </div>
@@ -46,7 +46,7 @@ export default function Profile({ token, user }) {
                     <li className="list-group-item d-flex justify-content-between align-items-start">
                       <div className="ms-2 me-auto">
                         <div className="fw-bold text-muted text-start">
-                          usuario
+                          Usuario
                         </div>
                         <p className="text-start">{user.username}</p>
                       </div>
@@ -54,9 +54,9 @@ export default function Profile({ token, user }) {
                     <li className="list-group-item d-flex justify-content-between align-items-start">
                       <div className="ms-2 me-auto">
                         <div className="fw-bold text-muted text-start">
-                          posicion
+                          Posicion
                         </div>
-                        <p className="text-start">Name</p>
+                        <p className="text-start">{user.position}</p>
                       </div>
                     </li>
                     <li className="list-group-item d-flex justify-content-between align-items-start">
@@ -64,7 +64,7 @@ export default function Profile({ token, user }) {
                         <div className="fw-bold text-muted text-start">
                           Categoria
                         </div>
-                        <p className="text-start">Name</p>
+                        <p className="text-start">{user.category}</p>
                       </div>
                     </li>
                   </ul>
