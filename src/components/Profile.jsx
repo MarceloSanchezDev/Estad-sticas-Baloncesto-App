@@ -32,6 +32,7 @@ export default function Profile({ token, user }) {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        sessionStorage.setItem("user", JSON.stringify(data.result));
       });
   };
   const handleCategory = (e) => {
@@ -47,6 +48,7 @@ export default function Profile({ token, user }) {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        sessionStorage.setItem("user", JSON.stringify(data.result));
       });
   };
   return (

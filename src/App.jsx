@@ -15,24 +15,25 @@ function App() {
   const [user, setUser] = useState({});
 
   useEffect(() => {
-    const storedToken = localStorage.getItem("token");
+    const storedToken = sessionStorage.getItem("token");
     if (storedToken) {
       setToken(storedToken);
     }
   }, []);
   const logout = () => {
-    localStorage.removeItem("token");
+    sessionStorage.removeItem("token");
     setToken("");
   };
 
   const login = (tok, user) => {
-    localStorage.setItem("token", tok);
-    const storedToken = localStorage.getItem("token");
+    sessionStorage.setItem("token", tok);
+    const storedToken = sessionStorage.getItem("token");
     if (storedToken) {
       setToken(storedToken);
     }
     setUser(user);
     console.log("Usuario", user);
+    sessionStorage.setItem("user", JSON.stringify(user));
   };
 
   return (
