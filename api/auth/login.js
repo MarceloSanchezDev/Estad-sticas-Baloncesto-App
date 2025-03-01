@@ -23,12 +23,12 @@ export default async function handler(req, res) {
             return res.status(401).json({ error: "Credenciales incorrectas" });
         }
 
-        const { email: userEmail, id, apellido ,nombre, username} = userValid;
+        const { email: userEmail, id, apellido ,nombre, username, posicion, categoria} = userValid;
         const token = jwt.sign({ id, email: userEmail }, SECRET_KEY, {
             expiresIn: '2 days'
         });
 
-        return res.json({ email: userEmail, token, id , apellido ,nombre, username});
+        return res.json({ email: userEmail, token, id , apellido ,nombre, username , posicion, categoria});
     } catch (error) {
         console.error("Error en el servidor:", error);
         return res.status(500).json({ errorServerless: `Error ${error.name}`, error: error.message });
