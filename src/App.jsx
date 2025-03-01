@@ -20,55 +20,41 @@ function App() {
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     }
-    console.log("Usuario", user);
     if (storedToken) {
       setToken(storedToken);
     }
-    console.log("Token", token);
-  }, [token, user]);
+  }, []);
+
   const logout = () => {
     sessionStorage.removeItem("token");
+    sessionStorage.removeItem("user");
     setToken("");
+    setUser({});
   };
 
   const login = (tok, user) => {
     sessionStorage.setItem("token", tok);
-    const storedToken = sessionStorage.getItem("token");
-    if (storedToken) {
-      setToken(storedToken);
-    }
-    setUser(user);
-    console.log("Usuario", user);
     sessionStorage.setItem("user", JSON.stringify(user));
+    setToken(tok);
+    setUser(user);
   };
 
   return (
     <Router>
-      {token && <Nav logout={logout} />}
-      <Routes>
-        <Route path="/" element={<Main token={token} />} />
-        <Route path="/login" element={<Login login={login} token={token} />} />
-        <Route
-          path="/register"
-          element={<Register login={login} token={token} />}
-        />
-        <Route
-          path="/profile"
-          element={<Profile token={token} user={user} />}
-        />
-        <Route
-          path="/newStatistic"
-          element={<NewStatistic token={token} user={user} />}
-        />
-        <Route
-          path="/allStatistic"
-          element={<AllStatistic token={token} user={user} />}
-        />
-        <Route
-          path="/allStatisticPercentage"
-          element={<AllStatisticPercentage token={token} user={user} />}
-        />
-      </Routes>
+      <div className="container">
+        {token && <Nav logout={logout} />}
+        <div className="content">
+          <Routes>
+            <Route path="/" element={<Main token={token} />} />
+            <Route path="/login" element={<Login login={login} token={token} />} />
+            <Route path="/register" element={<Register login={login} token={token} />} />
+            <Route path="/profile" element={<Profile token={token} user={user} />} />
+            <Route path="/newStatistic" element={<NewStatistic token={token} user={user} />} />
+            <Route path="/allStatistic" element={<AllStatistic token={token} user={user} />} />
+            <Route path="/allStatisticPercentage" element={<AllStatisticPercentage token={token} user={user} />} />
+          </Routes>
+        </div>
+      </div>
     </Router>
   );
 }
