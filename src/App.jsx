@@ -16,10 +16,16 @@ function App() {
 
   useEffect(() => {
     const storedToken = sessionStorage.getItem("token");
+    const storedUser = sessionStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+    console.log("Usuario", user);
     if (storedToken) {
       setToken(storedToken);
     }
-  }, []);
+    console.log("Token", token);
+  }, [token, user]);
   const logout = () => {
     sessionStorage.removeItem("token");
     setToken("");
