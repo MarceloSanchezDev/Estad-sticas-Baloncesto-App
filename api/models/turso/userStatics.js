@@ -123,7 +123,7 @@ export class UserModel {
     }
   }
   static async newPosition ({ input }) {
-    const {posicion, username} = input.input
+    const {posicion, username} = input
     try{
       await db.execute('UPDATE user SET posicion = ? WHERE username = ?', [posicion, username])
 
