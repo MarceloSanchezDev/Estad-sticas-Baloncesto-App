@@ -5,7 +5,7 @@ export default async function handler(req, res){
     }
     try {
         const {position, username} = req.body;
-        const result = UserModel.newPosition({ position, username });
+        const result = UserModel.newPosition({ input: {position, username} });
         return res.json({ mensaje: "Posición creada correctamente", result });
     } catch (error) {
         console.error("Error en el servidor:", error);
