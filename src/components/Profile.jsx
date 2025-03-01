@@ -27,7 +27,7 @@ export default function Profile({ token, user }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ position: newPosition }),
+      body: JSON.stringify({ position: newPosition, username: user.username }),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -42,7 +42,7 @@ export default function Profile({ token, user }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ categoria: newCategory }),
+      body: JSON.stringify({ categoria: newCategory, username: user.username }),
     })
       .then((res) => res.json())
       .then((data) => {
