@@ -108,7 +108,6 @@ export default function Profile({ token, user }) {
                           {truePosition ? (
                             <form className="d-flex" onSubmit={handlePosition}>
                               <input
-                                value={user.posicion}
                                 type="text"
                                 className="form-control me-2"
                                 onChange={(e) => setNewPosition(e.target.value)}
@@ -165,7 +164,6 @@ export default function Profile({ token, user }) {
                           {trueCategory ? (
                             <form className="d-flex" onSubmit={handleCategory}>
                               <input
-                                value={user.categoria}
                                 type="text"
                                 className="form-control me-2"
                                 onChange={(e) => setNewCategory(e.target.value)}
