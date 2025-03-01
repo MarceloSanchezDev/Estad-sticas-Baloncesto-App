@@ -131,7 +131,7 @@ export class UserModel {
       console.log(e)
     }
     const { rows } = await db.execute('SELECT * FROM user WHERE username = ?', [username])
-    return rows[0]
+    return rows[0]  
 
   }
   static async newCategory ({ input }) {

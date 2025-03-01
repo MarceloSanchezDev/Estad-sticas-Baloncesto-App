@@ -46,12 +46,30 @@ function App() {
         <div className="content">
           <Routes>
             <Route path="/" element={<Main token={token} />} />
-            <Route path="/login" element={<Login login={login} token={token} />} />
-            <Route path="/register" element={<Register login={login} token={token} />} />
-            <Route path="/profile" element={<Profile token={token} user={user} />} />
-            <Route path="/newStatistic" element={<NewStatistic token={token} user={user} />} />
-            <Route path="/allStatistic" element={<AllStatistic token={token} user={user} />} />
-            <Route path="/allStatisticPercentage" element={<AllStatisticPercentage token={token} user={user} />} />
+            <Route
+              path="/login"
+              element={<Login login={login} token={token} />}
+            />
+            <Route
+              path="/register"
+              element={<Register login={login} token={token} />}
+            />
+            <Route
+              path="/profile"
+              element={<Profile token={token} user={user} />}
+            />
+            <Route
+              path="/newStatistic"
+              element={<NewStatistic token={token} user={user} />}
+            />
+            <Route
+              path="/allStatistic"
+              element={<AllStatistic token={token} user={user} />}
+            />
+            <Route
+              path="/allStatisticPercentage"
+              element={<AllStatisticPercentage token={token} user={user} />}
+            />
           </Routes>
         </div>
       </div>
