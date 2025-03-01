@@ -134,4 +134,15 @@ export class UserModel {
     return rows[0]
 
   }
+  static async newCategory ({ input }) {
+    const {categoria, username} = input
+    try{
+      await db.execute('UPDATE user SET categoria = ? WHERE username = ?', [categoria, username])
+
+    }catch(e){
+      console.log(e)
+    }
+    const { rows } = await db.execute('SELECT * FROM user WHERE username = ?', [username])
+    return rows[0]  
+  }
 }
