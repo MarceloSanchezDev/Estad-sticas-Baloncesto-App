@@ -6,7 +6,7 @@ export default async function handler(req, res){
     }
     try {
             const {categoria, username} = req.body;
-            const result = UserModel.newCategory({ input: {categoria, username} });
+            const result = await UserModel.newCategory({ input: {categoria, username} });
             return res.json({ mensaje: "Categoria creada correctamente", result });
         } catch (error) {
             console.error("Error en el servidor:", error);
