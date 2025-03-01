@@ -28,7 +28,7 @@ export default async function handler(req, res) {
             expiresIn: '2 days'
         });
 
-        return res.json({ email: userEmail, token, id , apellido ,nombre, username , posicion, categoria});
+        return res.json({ email: userEmail, token, id , apellido ,nombre, username , posicion, categoria,userValid});
     } catch (error) {
         console.error("Error en el servidor:", error);
         return res.status(500).json({ errorServerless: `Error ${error.name}`, error: error.message });
