@@ -1,14 +1,54 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import unknown from "../assets/unknown.jpg";
 
 export default function Profile({ token, user }) {
+  const [trueCategory, setTrueCategory] = useState(false);
+  const [newCategory, setNewCategory] = useState("");
+  const [truePosition, setTruePosition] = useState(false);
+  const [newPosition, setNewPosition] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
     if (!token) {
       navigate("/");
     }
   }, [token, navigate]);
+  const editCategory = () => {
+    setTrueCategory(!trueCategory);
+  };
+  const editPosition = () => {
+    setTruePosition(!truePosition);
+  };
+  const handlePosition = (e) => {
+    e.preventDefault();
+    console.log(newPosition);
+    fetch("/api/profile/position", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ position: newPosition }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
+  const handleCategory = (e) => {
+    e.preventDefault();
+    console.log(newCategory);
+    fetch("/api/profile/category", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ position: newCategory }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
   return (
     <div className="d-flex vh-100 aparecer">
       <div className="container text-center h-100 p-3 mt-5">
@@ -32,7 +72,11 @@ export default function Profile({ token, user }) {
                         <div className="fw-bold text-muted text-start">
                           Nombre
                         </div>
-                        <p className="text-start">{`${user.nombre} ${user.apellido}`}</p>
+                        <p className="text-start">
+                          {user.nombre
+                            ? `${user.nombre} ${user.apellido}`
+                            : "none"}
+                        </p>
                       </div>
                     </li>
                     <li className="list-group-item d-flex justify-content-between align-items-start">
@@ -40,7 +84,9 @@ export default function Profile({ token, user }) {
                         <div className="fw-bold text-muted text-start">
                           E-mail
                         </div>
-                        <p className="text-start">{user.email}</p>
+                        <p className="text-start">
+                          {user.email ? user.email : "none"}
+                        </p>
                       </div>
                     </li>
                     <li className="list-group-item d-flex justify-content-between align-items-start">
@@ -48,28 +94,136 @@ export default function Profile({ token, user }) {
                         <div className="fw-bold text-muted text-start">
                           Usuario
                         </div>
-                        <p className="text-start">{user.username}</p>
+                        <p className="text-start">
+                          {user.category ? user.category : "none"}
+                        </p>
                       </div>
                     </li>
                     <li className="list-group-item d-flex justify-content-between align-items-start">
-                      <div className="ms-2 me-auto">
+                      <div className="ms-2 me-auto w-100">
                         <div className="fw-bold text-muted text-start">
                           Posicion
                         </div>
-                        <p className="text-start">{user.position}</p>
+                        <div className="d-flex justify-content-between align-items-start">
+                          {truePosition ? (
+                            <form className="d-flex" onSubmit={handlePosition}>
+                              <input
+                                value={user.position}
+                                type="text"
+                                className="form-control me-2"
+                                onChange={(e) => setNewPosition(e.target.value)}
+                              />
+                              <button
+                                type="submit"
+                                className="btn btn-outline-success"
+                              >
+                                Editar
+                              </button>
+                            </form>
+                          ) : (
+                            <p className="text-start">
+                              {user.position ? user.position : "none"}
+                            </p>
+                          )}
+                        </div>
                       </div>
+                      <button
+                        className="btn btn-light"
+                        onClick={() => editPosition()}
+                      >
+                        {truePosition ? (
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            className="bi bi-x-circle-fill"
+                            viewBox="0 0 16 16"
+                          >
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z" />
+                          </svg>
+                        ) : (
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            className="bi bi-pencil"
+                            viewBox="0 0 16 16"
+                          >
+                            <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325" />
+                          </svg>
+                        )}
+                      </button>
                     </li>
                     <li className="list-group-item d-flex justify-content-between align-items-start">
-                      <div className="ms-2 me-auto">
+                      <div className="ms-2 me-auto w-100">
                         <div className="fw-bold text-muted text-start">
                           Categoria
                         </div>
-                        <p className="text-start">{user.category}</p>
+                        <div className="d-flex justify-content-between align-items-start">
+                          {trueCategory ? (
+                            <form className="d-flex" onSubmit={handleCategory}>
+                              <input
+                                value={user.category}
+                                type="text"
+                                className="form-control me-2"
+                                onChange={(e) => setNewCategory(e.target.value)}
+                              />
+                              <button
+                                type="submit"
+                                className="btn btn-outline-success"
+                              >
+                                Editar
+                              </button>
+                            </form>
+                          ) : (
+                            <p className="text-start">
+                              {user.category ? user.category : "none"}
+                            </p>
+                          )}
+                        </div>
                       </div>
+                      <button
+                        className="btn btn-light"
+                        onClick={() => editCategory()}
+                      >
+                        {trueCategory ? (
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            className="bi bi-x-circle-fill"
+                            viewBox="0 0 16 16"
+                          >
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z" />
+                          </svg>
+                        ) : (
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            className="bi bi-pencil"
+                            viewBox="0 0 16 16"
+                          >
+                            <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325" />
+                          </svg>
+                        )}
+                      </button>
                     </li>
                   </ul>
                 </div>
-                <div className="col-md-12 col-12 d-flex justify-content-md-end justify-content-end align-items-end">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+/*                <div className="col-md-12 col-12 d-flex justify-content-md-end justify-content-end align-items-end">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -100,39 +254,4 @@ export default function Profile({ token, user }) {
                   >
                     <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951" />
                   </svg>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-/*
-<ul className="list-group">
-                    <li className="list-group-item mb-1 text-start">
-                      <h4 className="text-muted">
-                        Nombre{" "}
-                        <span className="fs-4 text-dark">Name Lastname</span>
-                      </h4>
-                    </li>
-                    <li className="list-group-item mb-1 text-start">
-                      <h4 className="text-muted">
-                        e-mail{" "}
-                        <span className="fs-4 text-dark">Name Lastname</span>
-                      </h4>
-                    </li>
-                    <li className="list-group-item mb-1 text-start">
-                      <h4 className="text-muted">
-                        posicion{" "}
-                        <span className="fs-4 text-dark">Name Lastname</span>
-                      </h4>
-                    </li>
-                    <li className="list-group-item mb-1 text-start">
-                      <h4 className="text-muted">
-                        Categoria{" "}
-                        <span className="fs-4 text-dark">Name Lastname</span>
-                      </h4>
-                    </li>
-                  </ul> */
+                </div> */

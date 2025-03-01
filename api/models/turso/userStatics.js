@@ -122,4 +122,16 @@ export class UserModel {
       console.log(e)
     }
   }
+  static async newPosition ({ input }, { username }) {
+    const posicion = input.input
+    try{
+      await db.execute('UPDATE user SET posicion = ? WHERE username = ?', [posicion, username])
+
+    }catch(e){
+      console.log(e)
+    }
+          const { rows } = await db.execute('SELECT * FROM user WHERE username = ?', [username])
+    return rows[0]
+
+  }
 }
