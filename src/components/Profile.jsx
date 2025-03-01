@@ -42,7 +42,7 @@ export default function Profile({ token, user }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ position: newCategory }),
+      body: JSON.stringify({ categoria: newCategory }),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -95,7 +95,7 @@ export default function Profile({ token, user }) {
                           Usuario
                         </div>
                         <p className="text-start">
-                          {user.category ? user.category : "none"}
+                          {user.username ? user.username : "none"}
                         </p>
                       </div>
                     </li>
