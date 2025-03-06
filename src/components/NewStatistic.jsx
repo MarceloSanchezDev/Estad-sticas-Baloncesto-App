@@ -30,12 +30,12 @@ export default function AllStatisticPercentage({ token }) {
   };
 
   return (
-    <div className="container text-center p-3 mt-5">
+    <div className="container text-center p-3 mt-5 aparecer">
       <h1>Nueva Estadistica</h1>
-      <div className="bg-light d-flex justify-content-center flex-column p-3">
+      <div className="bg-light d-flex justify-content-center flex-column p-3 border-primary border rounded-3">
         <form onSubmit={handlerNewStatistic}>
           <div className="row">
-            <div className="mb-3 col">
+            <div className="mb-3 col-md-16 col-lg-6">
               <label htmlFor="input3Lanzados" className="form-label">
                 Cantidad de lanzamientos de 3 lanzados :
               </label>
@@ -49,7 +49,7 @@ export default function AllStatisticPercentage({ token }) {
                 }
               />
             </div>
-            <div className="mb-3 col">
+            <div className="mb-3 col-md-16 col-lg-6">
               <label htmlFor="input3Encestados" className="form-label">
                 Cantidad de lanzamientos de 3 encestados :
               </label>
@@ -65,7 +65,7 @@ export default function AllStatisticPercentage({ token }) {
             </div>
           </div>
           <div className="row">
-            <div className="mb-3 col">
+            <div className="mb-3 col-md-16 col-lg-6">
               <label htmlFor="input2Lanzados" className="form-label">
                 Cantidad de lanzamientos de 2 lanzados :
               </label>
@@ -79,7 +79,7 @@ export default function AllStatisticPercentage({ token }) {
                 }
               />
             </div>
-            <div className="mb-3 col">
+            <div className="mb-3 col-md-16 col-lg-6">
               <label htmlFor="input2Encestados" className="form-label">
                 Cantidad de lanzamientos de 2 encestados :
               </label>
@@ -95,7 +95,7 @@ export default function AllStatisticPercentage({ token }) {
             </div>
           </div>
           <div className="row">
-            <div className="mb-3 col">
+            <div className="mb-3 col-md-16 col-lg-6">
               <label htmlFor="inputLibresLanzados" className="form-label">
                 Cantidad de lanzamientos libres lanzados :
               </label>
@@ -109,7 +109,7 @@ export default function AllStatisticPercentage({ token }) {
                 }
               />
             </div>
-            <div className="mb-3 col">
+            <div className="mb-3 col-md-16 col-lg-6">
               <label htmlFor="inputLibresEncestados" className="form-label">
                 Cantidad de lanzamientos libres encestados :
               </label>
@@ -127,7 +127,7 @@ export default function AllStatisticPercentage({ token }) {
               />
             </div>
           </div>
-          <button className="btn btn-outline-dark btn-lg">
+          <button className="btn btn-success btn-lg">
             Crear Nueva Estadistica
           </button>
         </form>
