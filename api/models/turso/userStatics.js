@@ -31,15 +31,6 @@ WHERE e.user_username = ? AND u.username = ?`, [username, username])
 
   static async createStatistics ({ input }) {
 
-/*{ lanzamientos3,
-            encestados3,
-            lanzamientos2,
-            encestados2,
-            libresLanzados,
-            libresEncestados,
-            titulo,
-            fecha,
-            hora, username } */
     // extraigo del input los porcentajes y la fecha de la estadistica
     const { titulo,
       lanzamientos2,
