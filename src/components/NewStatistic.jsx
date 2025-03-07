@@ -21,7 +21,7 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-export default function AllStatisticPercentage({ token }) {
+export default function AllStatisticPercentage({ token, user }) {
   const navigate = useNavigate();
   useEffect(() => {
     if (!token) {
@@ -42,6 +42,7 @@ export default function AllStatisticPercentage({ token }) {
   const horaFormateada = `${horas}:${minutos}:${segundos}`;
   //Estadisticas Completas
   const [statistic, setStatistic] = useState({
+    titulo: "",
     lanzamientos3: 0,
     encestados3: 0,
     lanzamientos2: 0,
@@ -154,10 +155,7 @@ export default function AllStatisticPercentage({ token }) {
       ],
     });
   };
-  /* const formula = (lanzados, encestados) => {
-    if (lanzados === 0) return "0%";
-    return ((encestados / lanzados) * 100).toFixed(2) + "%";
-  };*/
+
 
   return (
     <div className="container text-center p-3 mt-5 aparecer">
@@ -165,6 +163,22 @@ export default function AllStatisticPercentage({ token }) {
       <div className="bg-light d-flex justify-content-center flex-column p-3 border-primary border rounded-3">
         <form onSubmit={handlerNewStatistic}>
           <div className="row">
+            <div className="mb-3 col-16">
+              <label htmlFor="nombreEstadistica" className="form-label">
+                Nombre de la Estadistica :
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Nombre de la Estadistica"
+                onChange={(e) =>
+                  setStatistic({
+                    ...statistic,
+                    titulo: e.target.value,
+                  })
+                }
+              />
+            </div>
             <div className="mb-3 col-md-16 col-lg-6">
               <label htmlFor="input3Lanzados" className="form-label">
                 Cantidad de lanzamientos de 3 lanzados :
@@ -279,7 +293,9 @@ export default function AllStatisticPercentage({ token }) {
       </div>
       {chartData && (
         <div className="mt-5 border border-primary rounded p-3">
-          <h2>Resumen de Estadísticas</h2>
+          <h2>
+            Resumen de <i>"{statistic.titulo}"</i>
+          </h2>
           <Bar
             key={JSON.stringify(chartData)}
             data={chartData}

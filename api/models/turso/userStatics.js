@@ -29,17 +29,37 @@ WHERE e.user_username = ? AND u.username = ?`, [username, username])
     }
   }
 
-  static async createStatistics ({ input }, { username }) {
+  static async createStatistics ({ input }) {
 
-
+/*{ lanzamientos3,
+            encestados3,
+            lanzamientos2,
+            encestados2,
+            libresLanzados,
+            libresEncestados,
+            titulo,
+            fecha,
+            hora, username } */
     // extraigo del input los porcentajes y la fecha de la estadistica
-    const { nombreStat, tiroDosPuntos, tiroTresPuntos, tiroTresPuntosEncestados, tiroDosPuntosEncestados, porcentaje2Puntos, porcentaje3Puntos, fechaFormateada, horaFormateada } = input.input   // creo un uuid
+    const { titulo,
+      lanzamientos2,
+      lanzamientos3,
+        encestados3,
+         encestados2,
+         libresLanzados,
+         libresEncestados,
+           porcentaje2Puntos,
+            porcentaje3Puntos,
+            porcentajeLibres,
+            fecha,
+            hora,
+               username } = input   // creo un uuid
     const uuidResult = crypto.randomUUID()
     try {
       // creo la query para insertar en la base de datos la nueva estadistica con la id y el input
       await db.execute(
-        'INSERT INTO user_estadisticas (id_stat ,fecha, hora , estadisticasDosPuntos, estadisticasTresPuntos, user_username, nombreEstadistica, cant_dosPuntos, cant_tresPuntos, cant_dosPuntosEncestados, cant_tresPuntosEncestados ) values(?,?,?,?,?,?,?,?,?,?,?)',
-        [uuidResult, fechaFormateada, horaFormateada, porcentaje2Puntos, porcentaje3Puntos, username, nombreStat, tiroDosPuntos, tiroTresPuntos, tiroDosPuntosEncestados, tiroTresPuntosEncestados])
+        'INSERT INTO user_estadisticas (id_stat ,fecha, hora , estadisticasDosPuntos, estadisticasTresPuntos, user_username, nombreEstadistica, cant_dosPuntos, cant_tresPuntos, cant_dosPuntosEncestados, cant_tresPuntosEncestados, estadisticasLibres,cantLibres,cantLibresEncestados ) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
+        [uuidResult, fecha, hora, porcentaje2Puntos, porcentaje3Puntos, username, titulo, lanzamientos2, lanzamientos3, encestados2, encestados3,porcentajeLibres,libresLanzados,libresEncestados])
     } catch (e) {
       // si hay algun error que envie el error
       console.log(e)
