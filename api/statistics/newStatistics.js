@@ -35,6 +35,7 @@ export default async function handler(req, res) {
             porcentaje3Puntos,
             porcentajeLibres,
             fecha,
+            titulo,
             hora, username}) 
             if (!result || !result.data) {
                 console.warn("⚠️ Datos de usuario inválidos");
