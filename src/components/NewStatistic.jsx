@@ -74,9 +74,7 @@ export default function AllStatisticPercentage({ token, user }) {
     try {
       const response = await fetch("/api/statistics/newStatistics", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ statistic, username: user.username }),
       });
       if (!response.ok) {
