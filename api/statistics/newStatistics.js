@@ -19,6 +19,7 @@ export default async function handler(req, res) {
             libresLanzados,
             libresEncestados,
             fecha,
+            titulo,
             hora}=statistic
             
             const porcentaje2Puntos = formula(lanzamientos2,encestados2);
@@ -52,6 +53,7 @@ export default async function handler(req, res) {
                 porcentajeLibres,
                 fecha,
                 hora,
+                titulo,
                 username,
               });
     } catch (error) {
