@@ -71,6 +71,17 @@ export default function AllStatisticPercentage({ token, user }) {
       hora: horaFormateada,
     });
     console.log("Nueva Estadistica", statistic);
+    try {
+      fetch("/api/statistics/newStatistics", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ statistic, username: user.username }),
+      });
+    } catch (error) {
+      console.log(error);
+    }
     setChartDataDonaL({
       labels: ["Encestados", "Fallados"],
       datasets: [
@@ -155,7 +166,6 @@ export default function AllStatisticPercentage({ token, user }) {
       ],
     });
   };
-
 
   return (
     <div className="container text-center p-3 mt-5 aparecer">

@@ -8,6 +8,7 @@ export default async function handler(req, res) {
         return res.status(405).json({ error: "Método no permitido" });
     }
     try {
+        const {statistic, username} = req.body
         const{ lanzamientos3,
             encestados3,
             lanzamientos2,
@@ -15,7 +16,7 @@ export default async function handler(req, res) {
             libresLanzados,
             libresEncestados,
             fecha,
-            hora, username }=req.body
+            hora}=statistic
             const porcentaje2Puntos = formula(lanzamientos2,encestados2);
             const porcentaje3Puntos = formula(lanzamientos3,encestados3);
             const porcentajeLibres = formula(libresLanzados,libresEncestados);
