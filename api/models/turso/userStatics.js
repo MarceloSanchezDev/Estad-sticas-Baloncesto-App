@@ -29,7 +29,7 @@ WHERE e.user_username = ? AND u.username = ?`, [username, username])
     }
   }
 
-  static async createStatistics ({ input }) {
+  static async createStatistics (input) {
 
     // extraigo del input los porcentajes y la fecha de la estadistica
     const { titulo,
