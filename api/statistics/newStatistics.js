@@ -4,9 +4,6 @@ import { StatisticsModel } from '../models/turso/userStatics.js';
     return ((encestados / lanzados) * 100).toFixed(2) + "%";
   };
 export default async function handler(req, res) {
-    if (req.method !== "POST") {
-        return res.status(405).json({ error: "Método no permitido" });
-    }
     try {
         const {statistic, username} = req.body
         if (!statistic || !username) {
