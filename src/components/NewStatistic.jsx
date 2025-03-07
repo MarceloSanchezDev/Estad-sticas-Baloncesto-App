@@ -66,13 +66,12 @@ export default function AllStatisticPercentage({ token, user }) {
   const handlerNewStatistic = async (e) => {
     e.preventDefault();
     console.log("Nueva Estadistica", statistic);
-    setStatistic({
-      ...statistic,
-      fecha: fechaFormateada,
-      hora: horaFormateada,
-    });
-    console.log("Nueva Estadistica", statistic);
     try {
+      setStatistic({
+        ...statistic,
+        fecha: fechaFormateada,
+        hora: horaFormateada,
+      });
       const response = await fetch("/api/statistics/newStatistics", {
         method: "POST",
         headers: { "Content-Type": "application/json" },

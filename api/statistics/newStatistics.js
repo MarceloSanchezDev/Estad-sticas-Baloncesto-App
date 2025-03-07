@@ -36,7 +36,8 @@ export default async function handler(req, res) {
             porcentajeLibres,
             fecha,
             titulo,
-            hora, username}) 
+            hora,
+             username}) 
             if (!result || !result.data) {
                 console.warn("⚠️ Datos de usuario inválidos");
                 return res.status(400).json({ error: "Datos de usuario inválidos" });
