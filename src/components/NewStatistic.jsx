@@ -79,7 +79,8 @@ export default function AllStatisticPercentage({ token, user }) {
         },
         body: JSON.stringify({ statistic, username: user.username }),
       });
-      console.log(response);
+      const data = await response.json();
+      console.log(data);
     } catch (error) {
       console.log(error);
     }
