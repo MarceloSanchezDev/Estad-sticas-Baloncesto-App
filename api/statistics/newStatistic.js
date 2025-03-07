@@ -9,6 +9,9 @@ export default async function handler(req, res) {
     }
     try {
         const {statistic, username} = req.body
+        if (!statistic || !username) {
+            return res.status(400).json({ error: "Datos incompletos" });
+          }
         const{ lanzamientos3,
             encestados3,
             lanzamientos2,
@@ -17,6 +20,7 @@ export default async function handler(req, res) {
             libresEncestados,
             fecha,
             hora}=statistic
+            
             const porcentaje2Puntos = formula(lanzamientos2,encestados2);
             const porcentaje3Puntos = formula(lanzamientos3,encestados3);
             const porcentajeLibres = formula(libresLanzados,libresEncestados);
@@ -36,7 +40,8 @@ export default async function handler(req, res) {
                 return res.status(400).json({ error: "Datos de usuario inválidos" });
             }
             */
-            return res.json({ lanzamientos3,
+            return res.status(200).json({
+                lanzamientos3,
                 encestados3,
                 lanzamientos2,
                 encestados2,
@@ -46,8 +51,11 @@ export default async function handler(req, res) {
                 porcentaje3Puntos,
                 porcentajeLibres,
                 fecha,
-                hora, username});
+                hora,
+                username,
+              });
     } catch (error) {
-        return res.status(400).json({ error: error })
-    }
+        console.error("Error en el servidor:", error);
+        return res.status(500).json({ error: "Error interno del servidor" });
+      }
 }

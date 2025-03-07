@@ -79,10 +79,14 @@ export default function AllStatisticPercentage({ token, user }) {
         },
         body: JSON.stringify({ statistic, username: user.username }),
       });
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Error desconocido");
+      }
       const data = await response.json();
-      console.log(data);
+      console.log("Estadísticas enviadas correctamente:", data);
     } catch (error) {
-      console.log(error);
+      console.error("Error al enviar estadísticas:", error.message);
     }
     setChartDataDonaL({
       labels: ["Encestados", "Fallados"],
