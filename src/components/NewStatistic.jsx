@@ -62,7 +62,7 @@ export default function AllStatisticPercentage({ token, user }) {
   const [chartDataDonaL, setChartDataDonaL] = useState(null);
 
   //Funcion para crear nueva estadistica
-  const handlerNewStatistic = (e) => {
+  const handlerNewStatistic = async (e) => {
     e.preventDefault();
     console.log("Nueva Estadistica", statistic);
     setStatistic({
@@ -72,13 +72,14 @@ export default function AllStatisticPercentage({ token, user }) {
     });
     console.log("Nueva Estadistica", statistic);
     try {
-      fetch("/api/statistics/newStatistics", {
+      const response = await fetch("/api/statistics/newStatistics", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ statistic, username: user.username }),
       });
+      console.log(response);
     } catch (error) {
       console.log(error);
     }
