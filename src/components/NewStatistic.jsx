@@ -60,7 +60,8 @@ export default function AllStatisticPercentage({ token, user }) {
   const [chartDataDona2, setChartDataDona2] = useState(null);
   const [chartDataPieL, setChartDataPieL] = useState(null);
   const [chartDataDonaL, setChartDataDonaL] = useState(null);
-
+  // handlerVeiw
+  const [veiw, setVeiw] = useState(true);
   //Funcion para crear nueva estadistica
   const handlerNewStatistic = async (e) => {
     e.preventDefault();
@@ -169,142 +170,145 @@ export default function AllStatisticPercentage({ token, user }) {
         },
       ],
     });
+    setVeiw(false);
   };
 
   return (
     <div className="container text-center p-3 mt-5 aparecer">
-      <h1>Nueva Estadistica</h1>
-      <div className="bg-light d-flex justify-content-center flex-column p-3 border-primary border rounded-3">
-        <form onSubmit={handlerNewStatistic}>
-          <div className="row">
-            <div className="mb-3 col-16">
-              <label htmlFor="nombreEstadistica" className="form-label">
-                Nombre de la Estadistica :
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Nombre de la Estadistica"
-                onChange={(e) =>
-                  setStatistic({
-                    ...statistic,
-                    titulo: e.target.value,
-                  })
-                }
-              />
+      <h1>{veiw ? "Nueva Estadistica" : statistic.titulo}</h1>
+      {veiw && (
+        <div className="bg-light d-flex justify-content-center flex-column p-3 border-primary border rounded-3">
+          <form onSubmit={handlerNewStatistic}>
+            <div className="row">
+              <div className="mb-3 col-16">
+                <label htmlFor="nombreEstadistica" className="form-label">
+                  Nombre de la Estadistica :
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Nombre de la Estadistica"
+                  onChange={(e) =>
+                    setStatistic({
+                      ...statistic,
+                      titulo: e.target.value,
+                    })
+                  }
+                />
+              </div>
+              <div className="mb-3 col-md-16 col-lg-6">
+                <label htmlFor="input3Lanzados" className="form-label">
+                  Cantidad de lanzamientos de 3 lanzados :
+                </label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="input3Lanzados"
+                  placeholder="50"
+                  onChange={(e) =>
+                    setStatistic({
+                      ...statistic,
+                      lanzamientos3: Number(e.target.value),
+                    })
+                  }
+                />
+              </div>
+              <div className="mb-3 col-md-16 col-lg-6">
+                <label htmlFor="input3Encestados" className="form-label">
+                  Cantidad de lanzamientos de 3 encestados :
+                </label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="input3Encestados"
+                  placeholder="50"
+                  onChange={(e) =>
+                    setStatistic({
+                      ...statistic,
+                      encestados3: Number(e.target.value),
+                    })
+                  }
+                />
+              </div>
             </div>
-            <div className="mb-3 col-md-16 col-lg-6">
-              <label htmlFor="input3Lanzados" className="form-label">
-                Cantidad de lanzamientos de 3 lanzados :
-              </label>
-              <input
-                type="number"
-                className="form-control"
-                id="input3Lanzados"
-                placeholder="50"
-                onChange={(e) =>
-                  setStatistic({
-                    ...statistic,
-                    lanzamientos3: Number(e.target.value),
-                  })
-                }
-              />
+            <div className="row">
+              <div className="mb-3 col-md-16 col-lg-6">
+                <label htmlFor="input2Lanzados" className="form-label">
+                  Cantidad de lanzamientos de 2 lanzados :
+                </label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="input2Lanzados"
+                  placeholder="50"
+                  onChange={(e) =>
+                    setStatistic({
+                      ...statistic,
+                      lanzamientos2: Number(e.target.value),
+                    })
+                  }
+                />
+              </div>
+              <div className="mb-3 col-md-16 col-lg-6">
+                <label htmlFor="input2Encestados" className="form-label">
+                  Cantidad de lanzamientos de 2 encestados :
+                </label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="input2Encestados"
+                  placeholder="50"
+                  onChange={(e) =>
+                    setStatistic({
+                      ...statistic,
+                      encestados2: Number(e.target.value),
+                    })
+                  }
+                />
+              </div>
             </div>
-            <div className="mb-3 col-md-16 col-lg-6">
-              <label htmlFor="input3Encestados" className="form-label">
-                Cantidad de lanzamientos de 3 encestados :
-              </label>
-              <input
-                type="number"
-                className="form-control"
-                id="input3Encestados"
-                placeholder="50"
-                onChange={(e) =>
-                  setStatistic({
-                    ...statistic,
-                    encestados3: Number(e.target.value),
-                  })
-                }
-              />
+            <div className="row">
+              <div className="mb-3 col-md-16 col-lg-6">
+                <label htmlFor="inputLibresLanzados" className="form-label">
+                  Cantidad de lanzamientos libres lanzados :
+                </label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="inputLibresLanzados"
+                  placeholder="50"
+                  onChange={(e) =>
+                    setStatistic({
+                      ...statistic,
+                      libresLanzados: Number(e.target.value),
+                    })
+                  }
+                />
+              </div>
+              <div className="mb-3 col-md-16 col-lg-6">
+                <label htmlFor="inputLibresEncestados" className="form-label">
+                  Cantidad de lanzamientos libres encestados :
+                </label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="inputLibresEncestados"
+                  placeholder="50"
+                  onChange={(e) =>
+                    setStatistic({
+                      ...statistic,
+                      libresEncestados: Number(e.target.value),
+                    })
+                  }
+                />
+              </div>
             </div>
-          </div>
-          <div className="row">
-            <div className="mb-3 col-md-16 col-lg-6">
-              <label htmlFor="input2Lanzados" className="form-label">
-                Cantidad de lanzamientos de 2 lanzados :
-              </label>
-              <input
-                type="number"
-                className="form-control"
-                id="input2Lanzados"
-                placeholder="50"
-                onChange={(e) =>
-                  setStatistic({
-                    ...statistic,
-                    lanzamientos2: Number(e.target.value),
-                  })
-                }
-              />
-            </div>
-            <div className="mb-3 col-md-16 col-lg-6">
-              <label htmlFor="input2Encestados" className="form-label">
-                Cantidad de lanzamientos de 2 encestados :
-              </label>
-              <input
-                type="number"
-                className="form-control"
-                id="input2Encestados"
-                placeholder="50"
-                onChange={(e) =>
-                  setStatistic({
-                    ...statistic,
-                    encestados2: Number(e.target.value),
-                  })
-                }
-              />
-            </div>
-          </div>
-          <div className="row">
-            <div className="mb-3 col-md-16 col-lg-6">
-              <label htmlFor="inputLibresLanzados" className="form-label">
-                Cantidad de lanzamientos libres lanzados :
-              </label>
-              <input
-                type="number"
-                className="form-control"
-                id="inputLibresLanzados"
-                placeholder="50"
-                onChange={(e) =>
-                  setStatistic({
-                    ...statistic,
-                    libresLanzados: Number(e.target.value),
-                  })
-                }
-              />
-            </div>
-            <div className="mb-3 col-md-16 col-lg-6">
-              <label htmlFor="inputLibresEncestados" className="form-label">
-                Cantidad de lanzamientos libres encestados :
-              </label>
-              <input
-                type="number"
-                className="form-control"
-                id="inputLibresEncestados"
-                placeholder="50"
-                onChange={(e) =>
-                  setStatistic({
-                    ...statistic,
-                    libresEncestados: Number(e.target.value),
-                  })
-                }
-              />
-            </div>
-          </div>
-          <button className="btn btn-success btn-lg">
-            Crear Nueva Estadistica
-          </button>
-        </form>
-      </div>
+            <button className="btn btn-success btn-lg">
+              Crear Nueva Estadistica
+            </button>
+          </form>
+        </div>
+      )}
       {chartData && (
         <div className="mt-5 border border-primary rounded p-3">
           <h2>
