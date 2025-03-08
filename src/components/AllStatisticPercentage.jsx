@@ -67,11 +67,12 @@ export default function AllStatisticPercentage({ token, user }) {
               ],
             }}
           />
-          {allPorcentages.map((e) => (
-            <p key={e} className="text-center text-muted">
-              {e}
-            </p>
-          ))}
+          <p className="text-center text-muted">
+            Lanzados : {allPorcentages[0].total_encestados}
+          </p>
+          <p className="text-center text-muted">
+            Encestados : {allPorcentages[0].total_tiros}
+          </p>
         </div>
       ) : (
         <div className="container d-flex justify-content-center">
