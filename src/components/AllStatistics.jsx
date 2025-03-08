@@ -41,7 +41,7 @@ export default function AllStatisticPercentage({ token, user }) {
         });
         console.log(result);
         const data = await result.json();
-        console.log(data);
+        console.log(data.response);
         setAllStatistics(data);
       } catch (error) {
         console.error("Error fetching statistics:", error);
