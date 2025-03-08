@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 
 export default function Nav({ token, logout }) {
   const [ball, setBall] = useState({
-    perfil: false,
+    perfil: true,
     nuevaEstadistica: false,
     todasLasEstadisticas: false,
     porcentajeTotal: false,
@@ -33,7 +33,11 @@ export default function Nav({ token, logout }) {
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item m-1">
               <button
-                className="btn btn-outline-dark w-100"
+                className={
+                  ball.perfil
+                    ? "btn btn-dark w-100 btn-disable"
+                    : "btn btn-outline-dark w-100"
+                }
                 onClick={() => {
                   handleNavigate("/profile");
                   setBall({
@@ -49,7 +53,11 @@ export default function Nav({ token, logout }) {
             </li>
             <li className="nav-item m-1">
               <button
-                className="btn btn-outline-dark w-100"
+                className={
+                  ball.nuevaEstadistica
+                    ? "btn btn-dark w-100 btn-disable"
+                    : "btn btn-outline-dark w-100"
+                }
                 onClick={() => {
                   handleNavigate("/newStatistic");
                   setBall({
@@ -65,7 +73,11 @@ export default function Nav({ token, logout }) {
             </li>
             <li className="nav-item m-1">
               <button
-                className="btn btn-outline-dark w-100"
+                className={
+                  ball.todasLasEstadisticas
+                    ? "btn btn-dark w-100 btn-disable"
+                    : "btn btn-outline-dark w-100"
+                }
                 onClick={() => {
                   handleNavigate("/allStatistic");
                   setBall({
@@ -81,7 +93,11 @@ export default function Nav({ token, logout }) {
             </li>
             <li className="nav-item m-1">
               <button
-                className="btn btn-outline-dark w-100"
+                className={
+                  ball.porcentajeTotal
+                    ? "btn btn-dark w-100 btn-disable"
+                    : "btn btn-outline-dark w-100"
+                }
                 onClick={() => {
                   handleNavigate("/allStatisticPercentage");
                   setBall({
