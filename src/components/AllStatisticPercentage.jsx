@@ -52,27 +52,37 @@ export default function AllStatisticPercentage({ token, user }) {
       <h1>Porcentaje Total</h1>
       {allPorcentages ? (
         <div className="container" style={{ maxHeight: "50vh" }}>
-          <Doughnut
-            data={{
-              labels: ["Encestados", "Lanzados"],
-              datasets: [
-                {
-                  label: "Distribución de Lanzamientos",
-                  data: [
-                    allPorcentages[0].total_encestados,
-                    allPorcentages[0].total_tiros,
+          <div className="row">
+            <div className="col">
+              <Doughnut
+                data={{
+                  labels: ["Encestados", "Lanzados"],
+                  datasets: [
+                    {
+                      label: "Distribución de Lanzamientos",
+                      data: [
+                        allPorcentages[0].total_encestados,
+                        allPorcentages[0].total_tiros,
+                      ],
+                      backgroundColor: [
+                        "rgb(255, 99, 132)",
+                        "rgb(54, 162, 235)",
+                      ],
+                    },
                   ],
-                  backgroundColor: ["rgb(255, 99, 132)", "rgb(54, 162, 235)"],
-                },
-              ],
-            }}
-          />
-          <p className="text-center text-muted">
-            Lanzados : {allPorcentages[0].total_encestados}
-          </p>
-          <p className="text-center text-muted">
-            Encestados : {allPorcentages[0].total_tiros}
-          </p>
+                }}
+              />
+            </div>
+
+            <div className="col">
+              <p className="text-center text-muted">
+                Lanzados : {allPorcentages[0].total_encestados}
+              </p>
+              <p className="text-center text-muted">
+                Encestados : {allPorcentages[0].total_tiros}
+              </p>
+            </div>
+          </div>
         </div>
       ) : (
         <div className="container d-flex justify-content-center">
