@@ -23,7 +23,40 @@ ChartJS.register(
 );
 
 export default function AllStatisticPercentage({ token, user }) {
-  const [allStatistics, setAllStatistics] = useState(null);
+  const [allStatistics, setAllStatistics] = useState([
+    {
+      id_stat: "03eb5326-3f99-4c88-8702-506e77cd774d",
+      fecha: "2025-03-07",
+      estadisticasDosPuntos: "100.00%",
+      estadisticasTresPuntos: "100.00%",
+      user_username: "elmarrce",
+      nombreEstadistica: "Marcelo",
+      cant_dosPuntos: 12,
+      cant_tresPuntos: 12,
+      cant_dosPuntosEncestados: 12,
+      cant_tresPuntosEncestados: 12,
+      hora: "18:17:10",
+      estadisticasLibres: "100.00%",
+      cantLibres: 12,
+      cantLibresEncestados: 12,
+    },
+    {
+      id_stat: "2600dcde-23f1-4f47-ba4b-ec9053074b5c",
+      fecha: "2025-03-08",
+      estadisticasDosPuntos: "41.67%",
+      estadisticasTresPuntos: "41.67%",
+      user_username: "elmarrce",
+      nombreEstadistica: "Ultima Estadistica Xd",
+      cant_dosPuntos: 12,
+      cant_tresPuntos: 12,
+      cant_dosPuntosEncestados: 5,
+      cant_tresPuntosEncestados: 5,
+      hora: "02:30:03",
+      estadisticasLibres: "83.33%",
+      cantLibres: 12,
+      cantLibresEncestados: 10,
+    },
+  ]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -50,14 +83,10 @@ export default function AllStatisticPercentage({ token, user }) {
 
     fetchData();
   }, [user.username]);
-  const formula = (lanzados, encestados) => {
-    if (lanzados === 0) return "0%";
-    return ((encestados / lanzados) * 100).toFixed(2) + "%";
-  };
   return (
     <div className="container text-center p-3 mt-5">
       <h1>Todas Las Estadisticas</h1>
-      {Array.isArray(allStatistics) && allStatistics.length > 0 ? (
+      {allStatistics ? (
         <div className="container bg-light border-primary border rounded-3">
           <div className="row">
             {allStatistics.map((e) => (
@@ -81,15 +110,13 @@ export default function AllStatisticPercentage({ token, user }) {
                               e.cantLibresEncestados +
                                 e.cant_tresPuntosEncestados +
                                 e.cant_dosPuntosEncestados,
-                              Math.max(
-                                0,
-                                e.cant_tresPuntos +
-                                  e.cant_dosPuntos +
-                                  e.libresLanzados -
-                                  (e.cantLibresEncestados +
-                                    e.cant_tresPuntosEncestados +
-                                    e.cant_dosPuntosEncestados)
-                              ),
+
+                              e.cant_tresPuntos +
+                                e.cant_dosPuntos +
+                                e.cantLibres -
+                                (e.cantLibresEncestados +
+                                  e.cant_tresPuntosEncestados +
+                                  e.cant_dosPuntosEncestados),
                             ],
                             backgroundColor: ["#36A2EB", "#FF6384"],
                           },
