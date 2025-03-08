@@ -61,7 +61,7 @@ export default function AllStatisticPercentage({ token, user }) {
         <div className="container bg-light border-primary border rounded-3">
           <div className="row">
             {allStatistics.map((e) => (
-              <div key={e.id} className="col-sm-6 col-xs-16 col-lg-4 my-3">
+              <div key={e.id_stat} className="col-sm-6 col-xs-16 col-lg-4 my-3">
                 <div className="card  ">
                   <div className="card-header">
                     <h5 className="card-title">{e.nombreEstadistica}</h5>
@@ -71,7 +71,7 @@ export default function AllStatisticPercentage({ token, user }) {
                   </div>
                   <div className="card-body">
                     <Doughnut
-                      key={e.id}
+                      key={e.id_stat}
                       data={{
                         labels: ["Encestados", "Fallados"],
                         datasets: [
@@ -81,12 +81,15 @@ export default function AllStatisticPercentage({ token, user }) {
                               e.cantLibresEncestados +
                                 e.cant_tresPuntosEncestados +
                                 e.cant_dosPuntosEncestados,
-                              e.cant_tresPuntos +
-                                e.cant_dosPuntos +
-                                e.libresLanzados -
-                                (e.cantLibresEncestados +
-                                  e.cant_tresPuntosEncestados +
-                                  e.cant_dosPuntosEncestados),
+                              Math.max(
+                                0,
+                                e.cant_tresPuntos +
+                                  e.cant_dosPuntos +
+                                  e.libresLanzados -
+                                  (e.cantLibresEncestados +
+                                    e.cant_tresPuntosEncestados +
+                                    e.cant_dosPuntosEncestados)
+                              ),
                             ],
                             backgroundColor: ["#36A2EB", "#FF6384"],
                           },
