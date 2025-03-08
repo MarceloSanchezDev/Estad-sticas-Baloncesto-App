@@ -33,20 +33,20 @@ export default function AllStatisticPercentage({ token, user }) {
   }, [token, navigate]);
   useEffect(() => {
     async function fetchData() {
-      const result = await fetch(`/api/statistics/allStatistics`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username: user.username }),
-      });
-      const data = await result.json();
-      return data;
+      try {
+        const result = await fetch(`/api/statistics/allStatistics`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username: user.username }),
+        });
+        const data = await result.json();
+        console.log(data); // Aquí verás el resultado
+      } catch (error) {
+        console.error("Error fetching statistics:", error);
+      }
     }
-    try {
-      const result = fetchData();
-      console.log(result);
-    } catch (error) {
-      console.log(error);
-    }
+
+    fetchData();
   }, [user.username]);
   const formula = (lanzados, encestados) => {
     if (lanzados === 0) return "0%";
