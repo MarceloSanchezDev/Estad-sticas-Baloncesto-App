@@ -1,6 +1,13 @@
+import { useState } from "react";
 import { useNavigate } from "react-router";
 
 export default function Nav({ token, logout }) {
+  const [ball, setBall] = useState({
+    perfil: false,
+    nuevaEstadistica: false,
+    todasLasEstadisticas: false,
+    porcentajeTotal: false,
+  });
   const navigate = useNavigate();
   function handleNavigate(route) {
     navigate(route);
@@ -27,39 +34,71 @@ export default function Nav({ token, logout }) {
             <li className="nav-item m-1">
               <button
                 className="btn btn-outline-dark w-100"
-                onClick={() => handleNavigate("/profile")}
+                onClick={() => {
+                  handleNavigate("/profile");
+                  setBall({
+                    perfil: true,
+                    nuevaEstadistica: false,
+                    todasLasEstadisticas: false,
+                    porcentajeTotal: false,
+                  });
+                }}
               >
-                Perfil
+                {ball.perfil && "🏀 "} Perfil
               </button>
             </li>
             <li className="nav-item m-1">
               <button
                 className="btn btn-outline-dark w-100"
-                onClick={() => handleNavigate("/newStatistic")}
+                onClick={() => {
+                  handleNavigate("/newStatistic");
+                  setBall({
+                    perfil: false,
+                    nuevaEstadistica: true,
+                    todasLasEstadisticas: false,
+                    porcentajeTotal: false,
+                  });
+                }}
               >
-                Nueva Estadística
+                {ball.nuevaEstadistica && "🏀 "}Nueva Estadística
               </button>
             </li>
             <li className="nav-item m-1">
               <button
                 className="btn btn-outline-dark w-100"
-                onClick={() => handleNavigate("/allStatistic")}
+                onClick={() => {
+                  handleNavigate("/allStatistic");
+                  setBall({
+                    perfil: false,
+                    nuevaEstadistica: false,
+                    todasLasEstadisticas: true,
+                    porcentajeTotal: false,
+                  });
+                }}
               >
-                Todas Las Estadísticas
+                {ball.todasLasEstadisticas && "🏀 "}Todas Las Estadísticas
               </button>
             </li>
             <li className="nav-item m-1">
               <button
                 className="btn btn-outline-dark w-100"
-                onClick={() => handleNavigate("/allStatisticPercentage")}
+                onClick={() => {
+                  handleNavigate("/allStatisticPercentage");
+                  setBall({
+                    perfil: false,
+                    nuevaEstadistica: false,
+                    todasLasEstadisticas: false,
+                    porcentajeTotal: true,
+                  });
+                }}
               >
-                Porcentaje Total
+                {ball.porcentajeTotal && "🏀 "}Porcentaje Total
               </button>
             </li>
           </ul>
           <div className="d-flex">
             <button className="btn btn-danger w-100" onClick={() => logout()}>
-              LogOut
+              Cerrar Sesion
             </button>
           </div>
         </div>
