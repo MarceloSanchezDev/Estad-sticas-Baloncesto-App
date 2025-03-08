@@ -23,7 +23,7 @@ ChartJS.register(
 );
 
 export default function AllStatisticPercentage({ token, user }) {
-  const [allStatistics, setAllStatistics] = useState();
+  const [allStatistics, setAllStatistics] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
