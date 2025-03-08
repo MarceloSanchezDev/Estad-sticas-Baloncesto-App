@@ -51,7 +51,7 @@ export default function AllStatisticPercentage({ token, user }) {
     <div className="container text-center h-100 p-3 mt-5">
       <h1>Porcentaje Total</h1>
       {allPorcentages ? (
-        <div className="container" style={{ maxHeight: "50vh" }}>
+        <div className="container" style={{ maxHeight: "70vh" }}>
           <div className="row">
             <div className="col">
               <Doughnut
