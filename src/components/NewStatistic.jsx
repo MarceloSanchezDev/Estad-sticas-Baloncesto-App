@@ -171,7 +171,9 @@ export default function AllStatisticPercentage({ token, user }) {
     });
     setVeiw(false);
   };
-
+  const options = {
+    maintainAspectRatio: false,
+  };
   return (
     <div className="container text-center p-3 mt-5 aparecer">
       <h1>{veiw ? "Nueva Estadistica" : statistic.titulo}</h1>
@@ -311,13 +313,13 @@ export default function AllStatisticPercentage({ token, user }) {
       {chartData && (
         <div className="mt-5 border border-primary rounded p-3">
           <h2>
-            Resumen de <i>"{statistic.titulo}"</i>
+            Resumen de "
+            <i className="text-muted text-decoration-underline">
+              {statistic.titulo}
+            </i>
+            "
           </h2>
-          <Bar
-            key={JSON.stringify(chartData)}
-            data={chartData}
-            options={{ responsive: true }}
-          />
+          <Bar key={JSON.stringify(chartData)} data={chartData} />
           <p>
             {fechaFormateada} {horaFormateada}
           </p>
@@ -327,14 +329,14 @@ export default function AllStatisticPercentage({ token, user }) {
               <Pie
                 key={JSON.stringify(chartDataPie3)}
                 data={chartDataPie3}
-                options={{ responsive: true }}
+                options={options}
               />
             </div>
             <div className="col-6">
               <Doughnut
                 key={JSON.stringify(chartDataDona3)}
                 data={chartDataDona3}
-                options={{ responsive: true }}
+                options={options}
               />
             </div>
             <p>
@@ -347,14 +349,14 @@ export default function AllStatisticPercentage({ token, user }) {
               <Pie
                 key={JSON.stringify(chartDataPie2)}
                 data={chartDataPie2}
-                options={{ responsive: true }}
+                options={options}
               />
             </div>
             <div className="col-6">
               <Doughnut
                 key={JSON.stringify(chartDataDona2)}
                 data={chartDataDona2}
-                options={{ responsive: true }}
+                options={options}
               />
             </div>
             <p>
@@ -367,14 +369,14 @@ export default function AllStatisticPercentage({ token, user }) {
               <Pie
                 key={JSON.stringify(chartDataPieL)}
                 data={chartDataPieL}
-                options={{ responsive: true }}
+                options={options}
               />
             </div>
             <div className="col-6">
               <Doughnut
                 key={JSON.stringify(chartDataDonaL)}
                 data={chartDataDonaL}
-                options={{ responsive: true }}
+                options={options}
               />
             </div>
             <p>
