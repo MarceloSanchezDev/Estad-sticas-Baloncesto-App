@@ -74,11 +74,11 @@ export default function AllStatisticPercentage({ token, user }) {
               />
             </div>
 
-            <div className="col d-flex .flex-column justify-content-center align-items-center h-100">
-              <p className="text-center text-muted">
+            <div className="col d-flex flex-md-column justify-content-center align-items-center ">
+              <p className="text-center text-muted w-100">
                 Lanzados : {allPorcentages[0].total_encestados}
-              </p>
-              <p className="text-center text-muted">
+              </p>{" "}
+              <p className="text-center text-muted w-100">
                 Encestados : {allPorcentages[0].total_tiros}
               </p>
             </div>
