@@ -52,11 +52,11 @@ export default function AllStatisticPercentage({ token, user }) {
     <div className="container text-center p-3 mt-5 aparecer">
       <h1>Todas Las Estadisticas</h1>
       {allStatistics ? (
-        <div className="container border-primary border rounded-3">
+        <div className="container">
           <div className="row">
             {allStatistics.map((e) => (
               <div key={e.id_stat} className="col-sm-6 col-xs-16 col-lg-4 my-3">
-                <div className="card  ">
+                <div className="card  border-primary border rounded-3">
                   <div className="card-header">
                     <h5 className="card-title">{e.nombreEstadistica}</h5>
                     <h6 className="card-subtitle mb-2 text-body-secondary">
@@ -113,7 +113,7 @@ export default function AllStatisticPercentage({ token, user }) {
           </div>
         </div>
       ) : (
-        <div className="container bg-light border-primary border rounded-3">
+        <div className="container">
           <div className="row">
             <div className="card col-sm-6 col-xs-16 col-lg-4 my-3 ">
               <div className="card-header">
