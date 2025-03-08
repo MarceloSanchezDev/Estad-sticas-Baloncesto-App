@@ -21,7 +21,6 @@ export default function Profile({ token, user }) {
   };
   const handlePosition = (e) => {
     e.preventDefault();
-    console.log(newPosition);
     fetch("/api/profile/position", {
       method: "POST",
       headers: {
@@ -31,13 +30,11 @@ export default function Profile({ token, user }) {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         sessionStorage.setItem("user", JSON.stringify(data.result));
       });
   };
   const handleCategory = (e) => {
     e.preventDefault();
-    console.log(newCategory);
     fetch("/api/profile/category", {
       method: "POST",
       headers: {
@@ -47,7 +44,6 @@ export default function Profile({ token, user }) {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         sessionStorage.setItem("user", JSON.stringify(data.result));
       });
   };

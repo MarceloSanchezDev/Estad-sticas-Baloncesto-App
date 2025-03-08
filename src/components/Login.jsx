@@ -12,7 +12,6 @@ export default function Login({ token, login }) {
   }, [token, navigate]);
   const handlerSubmitLogin = async (e) => {
     e.preventDefault();
-    console.log("FrontEnd Login", email, password);
 
     try {
       const response = await fetch("/api/auth/login", {
@@ -24,7 +23,6 @@ export default function Login({ token, login }) {
       });
 
       const data = await response.json();
-      console.log("Respuesta del backend:", data);
       const user = data;
       login(data.token, user);
     } catch (error) {

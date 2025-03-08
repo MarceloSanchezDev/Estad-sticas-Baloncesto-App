@@ -28,7 +28,6 @@ export default function Register({ token, login }) {
       });
 
       const data = await response.json();
-      console.log("Respuesta del backend:", data);
       const user = data;
       login(data.token, user);
     } catch (error) {

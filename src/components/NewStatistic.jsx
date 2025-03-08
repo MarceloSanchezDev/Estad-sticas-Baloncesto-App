@@ -65,7 +65,6 @@ export default function AllStatisticPercentage({ token, user }) {
   //Funcion para crear nueva estadistica
   const handlerNewStatistic = async (e) => {
     e.preventDefault();
-    console.log("Nueva Estadistica", statistic);
     try {
       setStatistic({
         ...statistic,
@@ -81,8 +80,6 @@ export default function AllStatisticPercentage({ token, user }) {
         const errorData = await response.json();
         throw new Error(errorData.error || "Error desconocido");
       }
-      const data = await response.json();
-      console.log("Estadísticas enviadas correctamente:", data);
     } catch (error) {
       console.error("Error al enviar estadísticas:", error.message);
     }
