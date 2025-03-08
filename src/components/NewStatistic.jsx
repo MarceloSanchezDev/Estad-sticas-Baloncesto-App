@@ -308,7 +308,7 @@ export default function AllStatisticPercentage({ token, user }) {
         </div>
       )}
       {chartData && (
-        <div className="mt-5 border border-primary rounded p-3">
+        <div className="mt-5 border border-primary rounded p-3 aparecer">
           <h2>
             Resumen de "
             <i className="text-muted text-decoration-underline">

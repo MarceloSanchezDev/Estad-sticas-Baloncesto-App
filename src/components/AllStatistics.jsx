@@ -82,7 +82,7 @@ export default function AllStatisticPercentage({ token, user }) {
     fetchData();
   }, [user.username]);
   return (
-    <div className="container text-center p-3 mt-5">
+    <div className="container text-center p-3 mt-5 aparecer">
       <h1>Todas Las Estadisticas</h1>
       {allStatistics ? (
         <div className="container bg-light border-primary border rounded-3">
