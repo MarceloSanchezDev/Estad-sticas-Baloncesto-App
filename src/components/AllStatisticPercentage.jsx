@@ -25,6 +25,10 @@ ChartJS.register(
 export default function AllStatisticPercentage({ token, user }) {
   const [allPorcentages, setAllPorcentages] = useState();
   const navigate = useNavigate();
+  const formula = (lanzados, encestados) => {
+    if (lanzados === 0) return "0%";
+    return ((encestados / lanzados) * 100).toFixed(2) + "%";
+  };
   useEffect(() => {
     if (!token) {
       navigate("/");
@@ -75,11 +79,18 @@ export default function AllStatisticPercentage({ token, user }) {
             </div>
 
             <div className="col d-flex flex-md-column justify-content-center align-items-center ">
+              <h2 className="text-center text-success">
+                Estadistica de Tiro :{" "}
+                {formula(
+                  allPorcentages[0].total_tiros,
+                  allPorcentages[0].total_encestados
+                )}
+              </h2>
               <p className="text-center text-muted w-100">
-                Lanzados : {allPorcentages[0].total_encestados}
+                Total Lanzados : {allPorcentages[0].total_encestados}
               </p>{" "}
               <p className="text-center text-muted w-100">
-                Encestados : {allPorcentages[0].total_tiros}
+                Total Encestados : {allPorcentages[0].total_tiros}
               </p>
             </div>
           </div>
