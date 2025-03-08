@@ -74,7 +74,7 @@ export default function AllStatisticPercentage({ token, user }) {
               />
             </div>
 
-            <div className="col aling-items-center">
+            <div className="col d-flex justify-content-center aling-items-center">
               <p className="text-center text-muted">
                 Lanzados : {allPorcentages[0].total_encestados}
               </p>
