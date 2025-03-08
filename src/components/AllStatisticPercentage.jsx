@@ -54,13 +54,13 @@ export default function AllStatisticPercentage({ token, user }) {
       {allPorcentages && (
         <Doughnut
           data={{
-            labels: ["Encestados", "Fallados"],
+            labels: ["Encestados", "Lanzados"],
             datasets: [
               {
                 label: "Distribución de Lanzamientos",
                 data: [
-                  allPorcentages.total_encestados,
-                  allPorcentages.total_tiros,
+                  allPorcentages[0].total_encestados,
+                  allPorcentages[0].total_tiros,
                 ],
                 backgroundColor: ["rgb(255, 99, 132)", "rgb(54, 162, 235)"],
               },
