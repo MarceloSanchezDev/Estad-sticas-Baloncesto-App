@@ -13,6 +13,20 @@ await db.execute('CREATE TABLE IF NOT EXISTS  USER(id_user varchar(36) primary k
 await db.execute('CREATE TABLE IF NOT EXISTS  user_estadisticas(id_stat varchar(36) primary key,fecha DATE,estadisticasDosPuntos decimal(5,2),estadisticasTresPuntos decimal(5,2),user_username varchar(255),nombreEstadistica varchar(255), cant_dosPuntos int(11),cant_tresPuntos int(11),cant_dosPuntosEncestados int(11),cant_tresPuntosEncestados int(11),hora time, foreign key(user_username) references user(username))');
 
 export class StatisticsModel {
+  static async getAllPorcentages(username){
+    try{
+      const {rows} = await db.execute(`SELECT 
+  SUM(e.cantLibres) + SUM(e.cant_dosPuntos) + SUM(e.cant_tresPuntos) AS total_tiros,
+  SUM(e.cantLibresEncestados) + SUM(e.cant_dosPuntosEncestados) + SUM(e.cant_tresPuntosEncestados) AS total_encestados
+FROM user u
+JOIN user_estadisticas e ON e.user_username = u.username
+WHERE u.username = ?`,[username])
+return rows
+} catch (e) {
+  // si hay algun error se envia el error
+  console.log(e)
+}
+  }
   static async getAllStatistics ( username ) {
     try {
       // hago la query a la base de datos para extraer todas las estadisticas

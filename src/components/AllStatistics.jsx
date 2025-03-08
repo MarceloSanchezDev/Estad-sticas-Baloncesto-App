@@ -23,40 +23,7 @@ ChartJS.register(
 );
 
 export default function AllStatisticPercentage({ token, user }) {
-  const [allStatistics, setAllStatistics] = useState([
-    {
-      id_stat: "03eb5326-3f99-4c88-8702-506e77cd774d",
-      fecha: "2025-03-07",
-      estadisticasDosPuntos: "100.00%",
-      estadisticasTresPuntos: "100.00%",
-      user_username: "elmarrce",
-      nombreEstadistica: "Marcelo",
-      cant_dosPuntos: 12,
-      cant_tresPuntos: 12,
-      cant_dosPuntosEncestados: 12,
-      cant_tresPuntosEncestados: 12,
-      hora: "18:17:10",
-      estadisticasLibres: "100.00%",
-      cantLibres: 12,
-      cantLibresEncestados: 12,
-    },
-    {
-      id_stat: "2600dcde-23f1-4f47-ba4b-ec9053074b5c",
-      fecha: "2025-03-08",
-      estadisticasDosPuntos: "41.67%",
-      estadisticasTresPuntos: "41.67%",
-      user_username: "elmarrce",
-      nombreEstadistica: "Ultima Estadistica Xd",
-      cant_dosPuntos: 12,
-      cant_tresPuntos: 12,
-      cant_dosPuntosEncestados: 5,
-      cant_tresPuntosEncestados: 5,
-      hora: "02:30:03",
-      estadisticasLibres: "83.33%",
-      cantLibres: 12,
-      cantLibresEncestados: 10,
-    },
-  ]);
+  const [allStatistics, setAllStatistics] = useState();
   const navigate = useNavigate();
 
   useEffect(() => {
