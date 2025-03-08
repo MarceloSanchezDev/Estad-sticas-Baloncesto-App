@@ -1,6 +1,27 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import { Doughnut } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  ArcElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import { all } from "axios";
 
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  ArcElement,
+  Title,
+  Tooltip,
+  Legend
+);
 export default function AllStatisticPercentage({ token, user }) {
   const [allPorcentages, setAllPorcentages] = useState();
   const navigate = useNavigate();
@@ -30,6 +51,21 @@ export default function AllStatisticPercentage({ token, user }) {
   return (
     <div className="container text-center h-100 p-3 mt-5">
       <h1>Porcentaje Total</h1>
+      <Doughnut
+        data={{
+          labels: ["Encestados", "Fallados"],
+          datasets: [
+            {
+              label: "Distribución de Lanzamientos",
+              data: [
+                allPorcentages.total_encestados,
+                allPorcentages.total_tiros,
+              ],
+              backgroundColor: ["rgb(255, 99, 132)", "rgb(54, 162, 235)"],
+            },
+          ],
+        }}
+      />
     </div>
   );
 }
