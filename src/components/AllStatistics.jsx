@@ -64,7 +64,7 @@ export default function AllStatisticPercentage({ token, user }) {
               <div key={e.id} className="col-sm-6 col-xs-16 col-lg-4 my-3">
                 <div className="card  ">
                   <div className="card-header">
-                    <h5 className="card-title">{e.titulo}</h5>
+                    <h5 className="card-title">{e.nombreEstadistica}</h5>
                     <h6 className="card-subtitle mb-2 text-body-secondary">
                       {` Fecha :${e.fecha} Hora :${e.hora}`}
                     </h6>
@@ -78,15 +78,15 @@ export default function AllStatisticPercentage({ token, user }) {
                           {
                             label: "Distribución de Lanzamientos",
                             data: [
-                              e.libresEncestados +
-                                e.encestados3 +
-                                e.encestados2,
-                              e.lanzamientos3 +
-                                e.lanzamientos2 +
+                              e.cantLibresEncestados +
+                                e.cant_tresPuntosEncestados +
+                                e.cant_dosPuntosEncestados,
+                              e.cant_tresPuntos +
+                                e.cant_dosPuntos +
                                 e.libresLanzados -
-                                (e.libresEncestados +
-                                  e.encestados3 +
-                                  e.encestados2),
+                                (e.cantLibresEncestados +
+                                  e.cant_tresPuntosEncestados +
+                                  e.cant_dosPuntosEncestados),
                             ],
                             backgroundColor: ["#36A2EB", "#FF6384"],
                           },
@@ -97,16 +97,14 @@ export default function AllStatisticPercentage({ token, user }) {
                   <ul className="list-group list-group-flush rounded">
                     <li className="list-group-item text-bg-info">
                       Porcentaje Lanzamientos de 3 puntos :{" "}
-                      {formula(e.lanzamientos3, e.encestados3)}
+                      {e.estadisticasTresPuntos}
                     </li>
                     <li className="list-group-item text-bg-info">
-                      Porcentaje de 2 puntos :{" "}
-                      {formula(e.lanzamientos2, e.encestados2)}
+                      Porcentaje de 2 puntos : {e.estadisticasDosPuntos}
                     </li>
 
                     <li className="list-group-item text-bg-info">
-                      Porcentaje de tiro Libre :{" "}
-                      {formula(e.libresLanzados, e.libresEncestados)}
+                      Porcentaje de tiro Libre : {e.estadisticasLibres}
                     </li>
                   </ul>
                   <div className="p-2">
