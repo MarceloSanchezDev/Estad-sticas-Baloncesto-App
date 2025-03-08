@@ -17,7 +17,7 @@ export class StatisticsModel {
     try {
       // hago la query a la base de datos para extraer todas las estadisticas
       const { rows } = await db.execute(`
-        SELECT * 
+        SELECT e.*
 FROM user u 
 JOIN user_estadisticas e 
 WHERE e.user_username = ? AND u.username = ?`, [username, username])

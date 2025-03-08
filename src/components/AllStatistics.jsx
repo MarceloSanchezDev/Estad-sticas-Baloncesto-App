@@ -55,7 +55,7 @@ export default function AllStatisticPercentage({ token, user }) {
   return (
     <div className="container text-center p-3 mt-5">
       <h1>Todas Las Estadisticas</h1>
-      {allStatistics ? (
+      {Array.isArray(allStatistics) && allStatistics.length > 0 ? (
         <div className="container bg-light border-primary border rounded-3">
           <div className="row">
             {allStatistics.map((e) => (
