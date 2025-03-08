@@ -57,7 +57,7 @@ export default function AllStatisticPercentage({ token, user }) {
       {allPorcentages ? (
         <div className="container" style={{ maxHeight: "70vh" }}>
           <div className="row">
-            <div className="col">
+            <div className="col col-xs-16">
               <Doughnut
                 data={{
                   labels: ["Encestados", "Lanzados"],
@@ -78,7 +78,7 @@ export default function AllStatisticPercentage({ token, user }) {
               />
             </div>
 
-            <div className="col d-flex flex-md-column justify-content-center align-items-center ">
+            <div className="col col-xs-16 d-flex flex-column justify-content-center align-items-center ">
               <h2 className="text-center text-success">
                 Estadistica de Tiro :{" "}
                 {formula(
