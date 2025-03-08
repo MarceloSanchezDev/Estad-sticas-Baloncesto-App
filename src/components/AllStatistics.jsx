@@ -25,28 +25,29 @@ ChartJS.register(
 export default function AllStatisticPercentage({ token, user }) {
   const [allStatistics, setAllStatistics] = useState();
   const navigate = useNavigate();
-  async function fetchData() {
-    const result = await fetch(`/api/statistics/allStatistics`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username: user.username }),
-    });
-    const data = await result.json();
-    return data;
-  }
+
   useEffect(() => {
     if (!token) {
       navigate("/");
     }
   }, [token, navigate]);
   useEffect(() => {
+    async function fetchData() {
+      const result = await fetch(`/api/statistics/allStatistics`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username: user.username }),
+      });
+      const data = await result.json();
+      return data;
+    }
     try {
       const result = fetchData();
       console.log(result);
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [user.username]);
   const formula = (lanzados, encestados) => {
     if (lanzados === 0) return "0%";
     return ((encestados / lanzados) * 100).toFixed(2) + "%";
