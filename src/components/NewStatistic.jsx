@@ -22,6 +22,7 @@ ChartJS.register(
   Legend
 );
 export default function AllStatisticPercentage({ token, user }) {
+  const [isDisabled, setIsDisabled] = useState(true);
   const navigate = useNavigate();
   useEffect(() => {
     if (!token) {
@@ -220,12 +221,15 @@ export default function AllStatisticPercentage({ token, user }) {
                   className="form-control"
                   id="input3Encestados"
                   placeholder="50"
-                  onChange={(e) =>
+                  onChange={(e) => {
                     setStatistic({
                       ...statistic,
                       encestados3: Number(e.target.value),
-                    })
-                  }
+                    });
+                    if (statistic.encestados3 < statistic.lanzamientos3) {
+                      setIsDisabled(false);
+                    }
+                  }}
                 />
               </div>
             </div>
@@ -239,12 +243,12 @@ export default function AllStatisticPercentage({ token, user }) {
                   className="form-control"
                   id="input2Lanzados"
                   placeholder="50"
-                  onChange={(e) =>
+                  onChange={(e) => {
                     setStatistic({
                       ...statistic,
                       lanzamientos2: Number(e.target.value),
-                    })
-                  }
+                    });
+                  }}
                 />
               </div>
               <div className="mb-3 col-md-16 col-lg-6">
@@ -256,12 +260,15 @@ export default function AllStatisticPercentage({ token, user }) {
                   className="form-control"
                   id="input2Encestados"
                   placeholder="50"
-                  onChange={(e) =>
+                  onChange={(e) => {
                     setStatistic({
                       ...statistic,
                       encestados2: Number(e.target.value),
-                    })
-                  }
+                    });
+                    if (statistic.encestados2 < statistic.lanzamientos2) {
+                      setIsDisabled(false);
+                    }
+                  }}
                 />
               </div>
             </div>
@@ -275,12 +282,12 @@ export default function AllStatisticPercentage({ token, user }) {
                   className="form-control"
                   id="inputLibresLanzados"
                   placeholder="50"
-                  onChange={(e) =>
+                  onChange={(e) => {
                     setStatistic({
                       ...statistic,
                       libresLanzados: Number(e.target.value),
-                    })
-                  }
+                    });
+                  }}
                 />
               </div>
               <div className="mb-3 col-md-16 col-lg-6">
@@ -292,16 +299,19 @@ export default function AllStatisticPercentage({ token, user }) {
                   className="form-control"
                   id="inputLibresEncestados"
                   placeholder="50"
-                  onChange={(e) =>
+                  onChange={(e) => {
                     setStatistic({
                       ...statistic,
                       libresEncestados: Number(e.target.value),
-                    })
-                  }
+                    });
+                    if (statistic.libresEncestados > statistic.libresLanzados) {
+                      setIsDisabled(false);
+                    }
+                  }}
                 />
               </div>
             </div>
-            <button className="btn btn-success btn-lg">
+            <button className="btn btn-success btn-lg" disabled={isDisabled}>
               Crear Nueva Estadistica
             </button>
           </form>

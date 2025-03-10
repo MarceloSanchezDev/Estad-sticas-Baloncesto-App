@@ -55,7 +55,7 @@ export default function AllStatisticPercentage({ token, user }) {
         <div className="container">
           <div className="row">
             {allStatistics.map((e) => (
-              <div key={e.id_stat} className="col-sm-6 col-xs-16 col-lg-4 my-3">
+              <div key={e.id_stat} className="col-sm-6 col-xs-12 col-lg-4 my-3">
                 <div className="card  border-primary border rounded-3">
                   <div className="card-header">
                     <h5 className="card-title">{e.nombreEstadistica}</h5>
@@ -115,7 +115,7 @@ export default function AllStatisticPercentage({ token, user }) {
       ) : (
         <div className="container">
           <div className="row">
-            <div className="card col-sm-6 col-xs-16 col-lg-4 my-3 ">
+            <div className="card col-sm-6 col-xs-12 col-lg-4 my-3 ">
               <div className="card-header">
                 <h5 className="card-title placeholder-glow ">
                   <span className="placeholder col-6"></span>
@@ -144,7 +144,7 @@ export default function AllStatisticPercentage({ token, user }) {
                 ></Link>
               </div>
             </div>
-            <div className="card col-sm-6 col-xs-16 col-lg-4 my-3 ">
+            <div className="card col-sm-6 col-xs-12 col-lg-4 my-3 ">
               <div className="card-header">
                 <h5 className="card-title placeholder-glow ">
                   <span className="placeholder col-6"></span>
@@ -173,7 +173,7 @@ export default function AllStatisticPercentage({ token, user }) {
                 ></Link>
               </div>
             </div>
-            <div className="card col-sm-6 col-xs-16 col-lg-4 my-3 ">
+            <div className="card col-sm-6 col-xs-12 col-lg-4 my-3 ">
               <div className="card-header">
                 <h5 className="card-title placeholder-glow ">
                   <span className="placeholder col-6"></span>
@@ -202,7 +202,7 @@ export default function AllStatisticPercentage({ token, user }) {
                 ></Link>
               </div>
             </div>
-            <div className="card col-sm-6 col-xs-16 col-lg-4 my-3 ">
+            <div className="card col-sm-6 col-xs-12 col-lg-4 my-3 ">
               <div className="card-header">
                 <h5 className="card-title placeholder-glow ">
                   <span className="placeholder col-6"></span>
@@ -231,7 +231,7 @@ export default function AllStatisticPercentage({ token, user }) {
                 ></Link>
               </div>
             </div>
-            <div className="card col-sm-6 col-xs-16 col-lg-4 my-3 ">
+            <div className="card col-sm-6 col-xs-12 col-lg-4 my-3 ">
               <div className="card-header">
                 <h5 className="card-title placeholder-glow ">
                   <span className="placeholder col-6"></span>
@@ -260,7 +260,7 @@ export default function AllStatisticPercentage({ token, user }) {
                 ></Link>
               </div>
             </div>
-            <div className="card col-sm-6 col-xs-16 col-lg-4 my-3 ">
+            <div className="card col-sm-6 col-xs-12 col-lg-4 my-3 ">
               <div className="card-header">
                 <h5 className="card-title placeholder-glow ">
                   <span className="placeholder col-6"></span>

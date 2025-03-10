@@ -57,7 +57,7 @@ export default function AllStatisticPercentage({ token, user }) {
       {allPorcentages ? (
         <div className="container" style={{ maxHeight: "70vh" }}>
           <div className="row">
-            <div className="col col-xs-16">
+            <div className="col col-xs-12">
               <Doughnut
                 data={{
                   labels: ["Encestados", "Lanzados"],
@@ -78,7 +78,7 @@ export default function AllStatisticPercentage({ token, user }) {
               />
             </div>
 
-            <div className="col col-xs-16 d-flex flex-column justify-content-center align-items-center ">
+            <div className="col col-xs-12 d-flex flex-column justify-content-center align-items-center ">
               <h2 className="text-center text-success">
                 Estadistica de Tiro :{" "}
                 {formula(
@@ -97,39 +97,8 @@ export default function AllStatisticPercentage({ token, user }) {
         </div>
       ) : (
         <div className="container d-flex justify-content-center">
-          <div className="card col-sm-6 col-xs-16 col-lg-16 my-3 w-100">
-            <div className="card-header">
-              <h5 className="card-title placeholder-glow ">
-                <span className="placeholder col-6"></span>
-              </h5>
-              <h6 className="card-subtitle placeholder-glow mb-2 text-body-secondary">
-                <span className="placeholder col-6"></span>
-              </h6>
-            </div>
-            <div className="card-body placeholder-glow">
-              <span className="placeholder col-7"></span>
-              <span className="placeholder col-4"></span>
-              <span className="placeholder col-4"></span>
-              <span className="placeholder col-6"></span>
-              <span className="placeholder col-8"></span>
-              <span className="placeholder col-7"></span>
-              <span className="placeholder col-4"></span>
-              <span className="placeholder col-4"></span>
-              <span className="placeholder col-6"></span>
-              <span className="placeholder col-8"></span>
-              <span className="placeholder col-7"></span>
-              <span className="placeholder col-4"></span>
-              <span className="placeholder col-4"></span>
-              <span className="placeholder col-6"></span>
-              <span className="placeholder col-8"></span>
-            </div>
-            <div className="p-2 placeholder-glow">
-              <Link
-                to={"/"}
-                className="btn btn-success disabled placeholder col-6"
-                aria-disabled="true"
-              ></Link>
-            </div>
+          <div className="spinner-border" role="status">
+            <span className="visually-hidden">Loading...</span>
           </div>
         </div>
       )}
