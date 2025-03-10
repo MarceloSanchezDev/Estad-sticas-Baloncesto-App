@@ -52,7 +52,6 @@ export default function Register({ token, login }) {
             type="email"
             name="emailRegister"
             id="emailRegister"
-            placeholder="youremail@gmail.com"
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
@@ -65,7 +64,6 @@ export default function Register({ token, login }) {
             type="text"
             id="usernameRegister"
             name="usernameRegister"
-            placeholder="user1234"
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
@@ -78,7 +76,6 @@ export default function Register({ token, login }) {
             type="text"
             id="nameRegister"
             name="usernameRegister"
-            placeholder="your name"
             onChange={(e) => setName(e.target.value)}
           />
         </div>
@@ -91,7 +88,6 @@ export default function Register({ token, login }) {
             type="text"
             id="lastNameRegister"
             name="usernameRegister"
-            placeholder="your last name"
             onChange={(e) => setLastName(e.target.value)}
           />
         </div>
@@ -104,7 +100,6 @@ export default function Register({ token, login }) {
             type="password"
             id="passwordRegister"
             name="passwordRegister"
-            placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
