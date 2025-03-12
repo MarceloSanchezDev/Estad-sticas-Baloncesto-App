@@ -11,6 +11,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import StatLoader from "./loaders/StatLoader";
 
 ChartJS.register(
   CategoryScale,
@@ -49,7 +50,7 @@ export default function AllStatisticPercentage({ token, user }) {
     fetchData();
   }, [user.username]);
   return (
-    <div className="container text-center p-3 mt-5 aparecer">
+    <div className="container text-center mt-5 aparecer">
       <h1>Todas Las Estadisticas</h1>
       {allStatistics ? (
         <div className="container">
@@ -113,183 +114,13 @@ export default function AllStatisticPercentage({ token, user }) {
           </div>
         </div>
       ) : (
-        <div className="container">
-          <div className="row">
-            <div className="card col-sm-6 col-xs-12 col-lg-4 my-3 ">
-              <div className="card-header">
-                <h5 className="card-title placeholder-glow ">
-                  <span className="placeholder col-6"></span>
-                </h5>
-                <h6 className="card-subtitle placeholder-glow mb-2 text-body-secondary">
-                  <span className="placeholder col-6"></span>
-                </h6>
-              </div>
-              <div className="card-body placeholder-glow">
-                <span className="placeholder col-7"></span>
-                <span className="placeholder col-4"></span>
-                <span className="placeholder col-4"></span>
-                <span className="placeholder col-6"></span>
-                <span className="placeholder col-8"></span>
-              </div>
-              <ul className="list-group list-group-flush rounded placeholder-glow">
-                <li className="list-group-item text-bg-info placeholder"></li>
-                <li className="list-group-item text-bg-info placeholder"></li>
-                <li className="list-group-item text-bg-info placeholder"></li>
-              </ul>
-              <div className="p-2 placeholder-glow">
-                <Link
-                  to={"/"}
-                  className="btn btn-success disabled placeholder col-6"
-                  aria-disabled="true"
-                ></Link>
-              </div>
-            </div>
-            <div className="card col-sm-6 col-xs-12 col-lg-4 my-3 ">
-              <div className="card-header">
-                <h5 className="card-title placeholder-glow ">
-                  <span className="placeholder col-6"></span>
-                </h5>
-                <h6 className="card-subtitle placeholder-glow mb-2 text-body-secondary">
-                  <span className="placeholder col-6"></span>
-                </h6>
-              </div>
-              <div className="card-body placeholder-glow">
-                <span className="placeholder col-7"></span>
-                <span className="placeholder col-4"></span>
-                <span className="placeholder col-4"></span>
-                <span className="placeholder col-6"></span>
-                <span className="placeholder col-8"></span>
-              </div>
-              <ul className="list-group list-group-flush rounded placeholder-glow">
-                <li className="list-group-item text-bg-info placeholder"></li>
-                <li className="list-group-item text-bg-info placeholder"></li>
-                <li className="list-group-item text-bg-info placeholder"></li>
-              </ul>
-              <div className="p-2 placeholder-glow">
-                <Link
-                  to={"/"}
-                  className="btn btn-success disabled placeholder col-6"
-                  aria-disabled="true"
-                ></Link>
-              </div>
-            </div>
-            <div className="card col-sm-6 col-xs-12 col-lg-4 my-3 ">
-              <div className="card-header">
-                <h5 className="card-title placeholder-glow ">
-                  <span className="placeholder col-6"></span>
-                </h5>
-                <h6 className="card-subtitle placeholder-glow mb-2 text-body-secondary">
-                  <span className="placeholder col-6"></span>
-                </h6>
-              </div>
-              <div className="card-body placeholder-glow">
-                <span className="placeholder col-7"></span>
-                <span className="placeholder col-4"></span>
-                <span className="placeholder col-4"></span>
-                <span className="placeholder col-6"></span>
-                <span className="placeholder col-8"></span>
-              </div>
-              <ul className="list-group list-group-flush rounded placeholder-glow">
-                <li className="list-group-item text-bg-info placeholder"></li>
-                <li className="list-group-item text-bg-info placeholder"></li>
-                <li className="list-group-item text-bg-info placeholder"></li>
-              </ul>
-              <div className="p-2 placeholder-glow">
-                <Link
-                  to={"/"}
-                  className="btn btn-success disabled placeholder col-6"
-                  aria-disabled="true"
-                ></Link>
-              </div>
-            </div>
-            <div className="card col-sm-6 col-xs-12 col-lg-4 my-3 ">
-              <div className="card-header">
-                <h5 className="card-title placeholder-glow ">
-                  <span className="placeholder col-6"></span>
-                </h5>
-                <h6 className="card-subtitle placeholder-glow mb-2 text-body-secondary">
-                  <span className="placeholder col-6"></span>
-                </h6>
-              </div>
-              <div className="card-body placeholder-glow">
-                <span className="placeholder col-7"></span>
-                <span className="placeholder col-4"></span>
-                <span className="placeholder col-4"></span>
-                <span className="placeholder col-6"></span>
-                <span className="placeholder col-8"></span>
-              </div>
-              <ul className="list-group list-group-flush rounded placeholder-glow">
-                <li className="list-group-item text-bg-info placeholder"></li>
-                <li className="list-group-item text-bg-info placeholder"></li>
-                <li className="list-group-item text-bg-info placeholder"></li>
-              </ul>
-              <div className="p-2 placeholder-glow">
-                <Link
-                  to={"/"}
-                  className="btn btn-success disabled placeholder col-6"
-                  aria-disabled="true"
-                ></Link>
-              </div>
-            </div>
-            <div className="card col-sm-6 col-xs-12 col-lg-4 my-3 ">
-              <div className="card-header">
-                <h5 className="card-title placeholder-glow ">
-                  <span className="placeholder col-6"></span>
-                </h5>
-                <h6 className="card-subtitle placeholder-glow mb-2 text-body-secondary">
-                  <span className="placeholder col-6"></span>
-                </h6>
-              </div>
-              <div className="card-body placeholder-glow">
-                <span className="placeholder col-7"></span>
-                <span className="placeholder col-4"></span>
-                <span className="placeholder col-4"></span>
-                <span className="placeholder col-6"></span>
-                <span className="placeholder col-8"></span>
-              </div>
-              <ul className="list-group list-group-flush rounded placeholder-glow">
-                <li className="list-group-item text-bg-info placeholder"></li>
-                <li className="list-group-item text-bg-info placeholder"></li>
-                <li className="list-group-item text-bg-info placeholder"></li>
-              </ul>
-              <div className="p-2 placeholder-glow">
-                <Link
-                  to={"/"}
-                  className="btn btn-success disabled placeholder col-6"
-                  aria-disabled="true"
-                ></Link>
-              </div>
-            </div>
-            <div className="card col-sm-6 col-xs-12 col-lg-4 my-3 ">
-              <div className="card-header">
-                <h5 className="card-title placeholder-glow ">
-                  <span className="placeholder col-6"></span>
-                </h5>
-                <h6 className="card-subtitle placeholder-glow mb-2 text-body-secondary">
-                  <span className="placeholder col-6"></span>
-                </h6>
-              </div>
-              <div className="card-body placeholder-glow">
-                <span className="placeholder col-7"></span>
-                <span className="placeholder col-4"></span>
-                <span className="placeholder col-4"></span>
-                <span className="placeholder col-6"></span>
-                <span className="placeholder col-8"></span>
-              </div>
-              <ul className="list-group list-group-flush rounded placeholder-glow">
-                <li className="list-group-item text-bg-info placeholder"></li>
-                <li className="list-group-item text-bg-info placeholder"></li>
-                <li className="list-group-item text-bg-info placeholder"></li>
-              </ul>
-              <div className="p-2 placeholder-glow">
-                <Link
-                  to={"/"}
-                  className="btn btn-success disabled placeholder col-6"
-                  aria-disabled="true"
-                ></Link>
-              </div>
-            </div>
-          </div>
+        <div className="row">
+          <StatLoader />
+          <StatLoader />
+          <StatLoader />
+          <StatLoader />
+          <StatLoader />
+          <StatLoader />
         </div>
       )}
     </div>

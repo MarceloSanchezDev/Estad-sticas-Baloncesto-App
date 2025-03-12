@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Loader from "../components/loaders/Loader";
 import { Link, useNavigate } from "react-router";
 import { Doughnut } from "react-chartjs-2";
 import {
@@ -52,56 +53,56 @@ export default function AllStatisticPercentage({ token, user }) {
     fetchData();
   }, [user.username]);
   return (
-    <div className="container text-center h-100 p-3 mt-5">
+    <div className="container text-center h-100 p-3 mt-5 vh-100">
       <h1>Porcentaje Total</h1>
-      {allPorcentages ? (
-        <div className="container" style={{ maxHeight: "70vh" }}>
-          <div className="row">
-            <div className="col col-xs-12">
-              <Doughnut
-                data={{
-                  labels: ["Encestados", "Lanzados"],
-                  datasets: [
-                    {
-                      label: "Distribución de Lanzamientos",
-                      data: [
-                        allPorcentages[0].total_encestados,
-                        allPorcentages[0].total_tiros,
-                      ],
-                      backgroundColor: [
-                        "rgb(255, 99, 132)",
-                        "rgb(54, 162, 235)",
-                      ],
-                    },
-                  ],
-                }}
-              />
-            </div>
-
-            <div className="col col-xs-12 d-flex flex-column justify-content-center align-items-center ">
-              <h2 className="text-center text-success">
-                Estadistica de Tiro :{" "}
-                {formula(
-                  allPorcentages[0].total_tiros,
-                  allPorcentages[0].total_encestados
-                )}
-              </h2>
-              <p className="text-center text-muted w-100">
-                Total Lanzados : {allPorcentages[0].total_encestados}
-              </p>{" "}
-              <p className="text-center text-muted w-100">
-                Total Encestados : {allPorcentages[0].total_tiros}
-              </p>
+      <div className="d-flex flex-column align-items-center justify-content-center h-75">
+        {allPorcentages ? (
+          <div
+            className="container border rounded-3 border-primary p-3"
+            style={{ maxHeight: "70vh" }}
+          >
+            <div className="row">
+              <div className="col col-xs-12">
+                <Doughnut
+                  data={{
+                    labels: ["Encestados", "Lanzados"],
+                    datasets: [
+                      {
+                        label: "Distribución de Lanzamientos",
+                        data: [
+                          allPorcentages[0].total_encestados,
+                          allPorcentages[0].total_tiros,
+                        ],
+                        backgroundColor: [
+                          "rgb(255, 99, 132)",
+                          "rgb(54, 162, 235)",
+                        ],
+                      },
+                    ],
+                  }}
+                />
+              </div>
+              <div className="col col-xs-12 d-flex flex-column justify-content-center align-items-center">
+                <h2 className="text-center text-success">
+                  Estadistica de Tiro :{" "}
+                  {formula(
+                    allPorcentages[0].total_tiros,
+                    allPorcentages[0].total_encestados
+                  )}
+                </h2>
+                <p className="text-center text-muted w-100">
+                  Total Lanzados : {allPorcentages[0].total_encestados}
+                </p>{" "}
+                <p className="text-center text-muted w-100">
+                  Total Encestados : {allPorcentages[0].total_tiros}
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      ) : (
-        <div className="container d-flex justify-content-center">
-          <div className="spinner-border" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </div>
-        </div>
-      )}
+        ) : (
+          <Loader />
+        )}
+      </div>
     </div>
   );
 }

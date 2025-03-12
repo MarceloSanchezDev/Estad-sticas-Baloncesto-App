@@ -9,6 +9,7 @@ import Profile from "./components/Profile";
 import NewStatistic from "./components/NewStatistic";
 import AllStatistic from "./components/AllStatistics";
 import AllStatisticPercentage from "./components/AllStatisticPercentage";
+import InfoStat from "./components/InfoStat";
 
 function App() {
   const [token, setToken] = useState("");
@@ -69,6 +70,10 @@ function App() {
             <Route
               path="/allStatisticPercentage"
               element={<AllStatisticPercentage token={token} user={user} />}
+            />
+            <Route
+              path="/InfoStat"
+              element={<InfoStat token={token} user={user} />}
             />
           </Routes>
         </div>
