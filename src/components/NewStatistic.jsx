@@ -23,7 +23,7 @@ ChartJS.register(
   Legend
 );
 export default function AllStatisticPercentage({ token, user }) {
-  //const [isDisabled, setIsDisabled] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(false);
   const navigate = useNavigate();
   useEffect(() => {
     if (!token) {
@@ -69,21 +69,21 @@ export default function AllStatisticPercentage({ token, user }) {
   const handlerNewStatistic = async (e) => {
     e.preventDefault();
     /*
-  if (!isDisabled) {
-    if (statistic.lanzamientos3 >= statistic.encestados3) {
-      setIsDisabled(true);
-      return;
+    if (!isDisabled) {
+      if (statistic.lanzamientos3 >= statistic.encestados3) {
+        setIsDisabled(true);
+        return;
+      }
+      if (statistic.lanzamientos2 >= statistic.encestados2) {
+        setIsDisabled(true);
+        return;
+      }
+      if (statistic.libresLanzados >= statistic.libresEncestados) {
+        setIsDisabled(true);
+        return;
+      }
     }
-    if (statistic.lanzamientos2 >= statistic.encestados2) {
-      setIsDisabled(true);
-      return;
-    }
-    if (statistic.libresLanzados >= statistic.libresEncestados) {
-      setIsDisabled(true);
-      return;
-    }
-  }
-   */
+*/
     try {
       setStatistic({
         ...statistic,
