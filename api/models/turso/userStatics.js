@@ -42,7 +42,15 @@ WHERE e.user_username = ? AND u.username = ?`, [username, username])
       console.log(e)
     }
   }
-
+  static async getStatistics(id){
+    try{
+      const { rows } = await db.execute(`
+        SELECT *
+FROM user_estadisticas
+WHERE id_stat = ?`, [id])
+        return rows
+    }catch(e){console.log(e)}
+  }
   static async createStatistics (input) {
 
     // extraigo del input los porcentajes y la fecha de la estadistica
