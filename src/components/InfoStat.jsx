@@ -87,7 +87,7 @@ export default function InfoStat({ token, user }) {
                   />
                 </div>
                 <div className="col-md-8">
-                  <div className="card-body border-start">
+                  <div className="card-body border-start h-100">
                     <h5 className="card-title">Lanzamientos de 3 Puntos</h5>
                     <p className="card-text">
                       Tiros Lanzados : {info.cant_tresPuntos}
@@ -124,7 +124,7 @@ export default function InfoStat({ token, user }) {
                   />
                 </div>
                 <div className="col-md-8">
-                  <div className="card-body border-start">
+                  <div className="card-body border-start h-100">
                     <h5 className="card-title">Lanzamientos de 2 Puntos</h5>
                     <p className="card-text">
                       Tiros Lanzados : {info.cant_dosPuntos}
@@ -161,7 +161,7 @@ export default function InfoStat({ token, user }) {
                   />
                 </div>
                 <div className="col-md-8">
-                  <div className="card-body border-start">
+                  <div className="card-body border-start h-100">
                     <h5 className="card-title">Lanzamientos de Tiros Libres</h5>
                     <p className="card-text">
                       Tiros Lanzados : {info.cantLibres}
@@ -205,7 +205,7 @@ export default function InfoStat({ token, user }) {
                   />
                 </div>
                 <div className="col-md-8">
-                  <div className="card-body border-start">
+                  <div className="card-body border-start h-100">
                     <h5 className="card-title">
                       Porcentaje Total de Lanzamientos
                     </h5>
