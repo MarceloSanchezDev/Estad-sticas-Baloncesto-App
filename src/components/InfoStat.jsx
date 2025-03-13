@@ -63,8 +63,8 @@ export default function InfoStat({ token, user }) {
           </h1>
           <h2>Hora: {info.hora}</h2>
           <h2>Fecha: {info.fecha}</h2>
-          <div className="border border-primary d-flex flex-column rounded-3 aparecer">
-            <div className="card m-3">
+          <div className=" d-flex flex-column aparecer">
+            <div className="card m-3 border border-primary ">
               <div className="row g-0">
                 <div className="col-md-4">
                   <Doughnut
@@ -102,7 +102,7 @@ export default function InfoStat({ token, user }) {
                 </div>
               </div>
             </div>
-            <div className="card m-3">
+            <div className="card m-3 border border-primary">
               <div className="row g-0">
                 <div className="col-md-4">
                   <Doughnut
@@ -139,7 +139,7 @@ export default function InfoStat({ token, user }) {
                 </div>
               </div>
             </div>
-            <div className="card m-3">
+            <div className="card m-3 border border-primary">
               <div className="row g-0">
                 <div className="col-md-4">
                   <Doughnut
@@ -176,7 +176,7 @@ export default function InfoStat({ token, user }) {
                 </div>
               </div>
             </div>
-            <div className="card m-3">
+            <div className="card m-3 border border-primary">
               <div className="row g-0">
                 <div className="col-md-4">
                   <Doughnut
