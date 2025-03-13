@@ -36,24 +36,23 @@ export default function InfoStat({ token, user }) {
       navigate("/");
     }
   }, [token, navigate]);
-useEffect(() => {
-  const fetchStatInfo = async () => {
-    try {
-      const response = await fetch(
-        `/api/statistics/infoStat?statID=${statID}`
-      );
-      if (!response.ok) throw new Error("Error al obtener las estadísticas");
-      const data = await response.json();
-      setInfo(data[0]);
-    } catch (error) {
-      // Manejo de errores
-      console.error("Error al obtener los datos de la API:", error);
-    }
-  };
+  useEffect(() => {
+    const fetchStatInfo = async () => {
+      try {
+        const response = await fetch(
+          `/api/statistics/infoStat?statID=${statID}`
+        );
+        if (!response.ok) throw new Error("Error al obtener las estadísticas");
+        const data = await response.json();
+        setInfo(data[0]);
+      } catch (error) {
+        // Manejo de errores
+        console.error("Error al obtener los datos de la API:", error);
+      }
+    };
 
-  fetchStatInfo();
-}, [statID]);
- 
+    fetchStatInfo();
+  }, [statID]);
 
   return (
     <>
@@ -259,7 +258,7 @@ useEffect(() => {
                   <span className="">Loading...</span>
                 </div>
                 <div className="col-md-8">
-                  <div className="card-body placeholder-glow border-start">
+                  <div className="card-body placeholder-glow border-start h-100">
                     <h5 className="card-title">Lanzamientos de 3 Puntos</h5>
                     <p className="card-text">
                       Tiros Lanzados :{" "}
@@ -284,7 +283,7 @@ useEffect(() => {
                   <span className="">Loading...</span>
                 </div>
                 <div className="col-md-8">
-                  <div className="card-body placeholder-glow border-start">
+                  <div className="card-body placeholder-glow border-start h-100">
                     <h5 className="card-title">Lanzamientos de 2 Puntos</h5>
                     <p className="card-text">
                       Tiros Lanzados :{" "}
@@ -309,7 +308,7 @@ useEffect(() => {
                   <span className="">Loading...</span>
                 </div>
                 <div className="col-md-8">
-                  <div className="card-body placeholder-glow border-start">
+                  <div className="card-body placeholder-glow border-start h-100">
                     <h5 className="card-title">Lanzamientos de Tiros Libres</h5>
                     <p className="card-text">
                       Tiros Lanzados :{" "}
@@ -334,7 +333,7 @@ useEffect(() => {
                   <span className="">Loading...</span>
                 </div>
                 <div className="col-md-8">
-                  <div className="card-body placeholder-glow border-start">
+                  <div className="card-body placeholder-glow border-start h-100">
                     <h5 className="card-title">
                       Porcentaje Total de Lanzamientos
                     </h5>
