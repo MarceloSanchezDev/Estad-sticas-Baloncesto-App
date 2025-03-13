@@ -87,17 +87,19 @@ export default function InfoStat({ token, user }) {
                   />
                 </div>
                 <div className="col-md-8">
-                  <div className="card-body border-start h-100 d-flex flex-column justify-content-center align-items-center">
-                    <h5 className="card-title">Lanzamientos de 3 Puntos</h5>
-                    <p className="card-text">
-                      Tiros Lanzados : {info.cant_tresPuntos}
-                    </p>
-                    <p className="card-text">
-                      Tiros Encestados : {info.cant_tresPuntosEncestados}
-                    </p>
-                    <p className="card-text">
-                      Porcentaje Total : {info.estadisticasTresPuntos}
-                    </p>
+                  <div className="card-body border-start h-100">
+                    <div className="d-flex flex-column justify-content-center align-items-center h-100">
+                      <h5 className="card-title">Lanzamientos de 3 Puntos</h5>
+                      <p className="card-text">
+                        Tiros Lanzados : {info.cant_tresPuntos}
+                      </p>
+                      <p className="card-text">
+                        Tiros Encestados : {info.cant_tresPuntosEncestados}
+                      </p>
+                      <p className="card-text">
+                        Porcentaje Total : {info.estadisticasTresPuntos}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
