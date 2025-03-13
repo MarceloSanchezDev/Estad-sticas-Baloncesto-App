@@ -88,7 +88,9 @@ export default function InfoStat({ token, user }) {
                 </div>
                 <div className="col-md-8">
                   <div className="card-body border-start h-100 d-flex flex-column justify-content-center align-items-center">
-                    <h5 className="card-title">Lanzamientos de 3 Puntos</h5>
+                    <h5 className="card-title  mb-2">
+                      Lanzamientos de 3 Puntos
+                    </h5>
                     <p className="card-text text-danger">
                       Tiros Lanzados : {info.cant_tresPuntos}
                     </p>
@@ -125,7 +127,9 @@ export default function InfoStat({ token, user }) {
                 </div>
                 <div className="col-md-8">
                   <div className="card-body border-start h-100 d-flex flex-column justify-content-center align-items-center">
-                    <h5 className="card-title">Lanzamientos de 2 Puntos</h5>
+                    <h5 className="card-title  mb-2">
+                      Lanzamientos de 2 Puntos
+                    </h5>
                     <p className="card-text text-danger">
                       Tiros Lanzados : {info.cant_dosPuntos}
                     </p>
@@ -162,7 +166,9 @@ export default function InfoStat({ token, user }) {
                 </div>
                 <div className="col-md-8">
                   <div className="card-body border-start h-100 d-flex flex-column justify-content-center align-items-center">
-                    <h5 className="card-title">Lanzamientos de Tiros Libres</h5>
+                    <h5 className="card-title  mb-2">
+                      Lanzamientos de Tiros Libres
+                    </h5>
                     <p className="card-text text-danger">
                       Tiros Lanzados : {info.cantLibres}
                     </p>
@@ -206,7 +212,7 @@ export default function InfoStat({ token, user }) {
                 </div>
                 <div className="col-md-8">
                   <div className="card-body border-start h-100 d-flex flex-column justify-content-center align-items-center">
-                    <h5 className="card-title">
+                    <h5 className="card-title mb-2">
                       Porcentaje Total de Lanzamientos
                     </h5>
                     <p className="card-text text-danger">
