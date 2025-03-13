@@ -51,7 +51,7 @@ export default function AllStatisticPercentage({ token, user }) {
   }, [user.username]);
   return (
     <div className="container text-center mt-5 aparecer">
-      <h1>Todas Las Estadisticas</h1>
+      <h1 className="pt-3">Todas Las Estadisticas</h1>
       {allStatistics ? (
         <div className="container">
           <div className="row">
