@@ -39,7 +39,8 @@ export default function InfoStat({ token, user }) {
         );
         if (!response.ok) throw new Error("Error al obtener las estadísticas");
         const data = await response.json();
-        console.log(data);
+        console.log(data[0]);
+        setInfo(data[0]);
       } catch (error) {
         // Manejo de errores
         console.error("Error al obtener los datos de la API:", error);
