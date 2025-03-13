@@ -10,7 +10,7 @@ export default async function handler(req, res) {
          }
          * 
          */
-        return res.status(200).json({id : statID});
+         return res.status(200).json({ id: statID, message: "Estadística encontrada" });
         }
      catch (error) {
         console.log(error)
