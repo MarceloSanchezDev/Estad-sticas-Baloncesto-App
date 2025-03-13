@@ -34,7 +34,9 @@ export default function InfoStat({ token, user }) {
     const fetchStatInfo = async () => {
       try {
         // Hacer el pedido a la API
-        const response = await fetch(`/api/statistics/info?statID=${statID}`);
+        const response = await fetch(
+          `/api/statistics/infoStat?statID=${statID}`
+        );
         if (!response.ok) throw new Error("Error al obtener las estadísticas");
         const data = await response.json();
         console.log(data);
