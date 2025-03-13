@@ -32,28 +32,28 @@ export default function InfoStat({ token, user }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchStatInfo = async () => {
-      try {
-        const response = await fetch(
-          `/api/statistics/infoStat?statID=${statID}`
-        );
-        if (!response.ok) throw new Error("Error al obtener las estadísticas");
-        const data = await response.json();
-        setInfo(data[0]);
-      } catch (error) {
-        // Manejo de errores
-        console.error("Error al obtener los datos de la API:", error);
-      }
-    };
-
-    fetchStatInfo();
-  }, [statID]);
-
-  useEffect(() => {
     if (!token) {
       navigate("/");
     }
   }, [token, navigate]);
+useEffect(() => {
+  const fetchStatInfo = async () => {
+    try {
+      const response = await fetch(
+        `/api/statistics/infoStat?statID=${statID}`
+      );
+      if (!response.ok) throw new Error("Error al obtener las estadísticas");
+      const data = await response.json();
+      setInfo(data[0]);
+    } catch (error) {
+      // Manejo de errores
+      console.error("Error al obtener los datos de la API:", error);
+    }
+  };
+
+  fetchStatInfo();
+}, [statID]);
+ 
 
   return (
     <>
@@ -88,7 +88,7 @@ export default function InfoStat({ token, user }) {
                   />
                 </div>
                 <div className="col-md-8">
-                  <div className="card-body">
+                  <div className="card-body border-start">
                     <h5 className="card-title">Lanzamientos de 3 Puntos</h5>
                     <p className="card-text">
                       Tiros Lanzados : {info.cant_tresPuntos}
@@ -125,7 +125,7 @@ export default function InfoStat({ token, user }) {
                   />
                 </div>
                 <div className="col-md-8">
-                  <div className="card-body">
+                  <div className="card-body border-start">
                     <h5 className="card-title">Lanzamientos de 2 Puntos</h5>
                     <p className="card-text">
                       Tiros Lanzados : {info.cant_dosPuntos}
@@ -162,7 +162,7 @@ export default function InfoStat({ token, user }) {
                   />
                 </div>
                 <div className="col-md-8">
-                  <div className="card-body">
+                  <div className="card-body border-start">
                     <h5 className="card-title">Lanzamientos de Tiros Libres</h5>
                     <p className="card-text">
                       Tiros Lanzados : {info.cantLibres}
@@ -206,7 +206,7 @@ export default function InfoStat({ token, user }) {
                   />
                 </div>
                 <div className="col-md-8">
-                  <div className="card-body">
+                  <div className="card-body border-start">
                     <h5 className="card-title">
                       Porcentaje Total de Lanzamientos
                     </h5>
@@ -259,7 +259,7 @@ export default function InfoStat({ token, user }) {
                   <span className="">Loading...</span>
                 </div>
                 <div className="col-md-8">
-                  <div className="card-body placeholder-glow">
+                  <div className="card-body placeholder-glow border-start">
                     <h5 className="card-title">Lanzamientos de 3 Puntos</h5>
                     <p className="card-text">
                       Tiros Lanzados :{" "}
@@ -284,7 +284,7 @@ export default function InfoStat({ token, user }) {
                   <span className="">Loading...</span>
                 </div>
                 <div className="col-md-8">
-                  <div className="card-body placeholder-glow">
+                  <div className="card-body placeholder-glow border-start">
                     <h5 className="card-title">Lanzamientos de 2 Puntos</h5>
                     <p className="card-text">
                       Tiros Lanzados :{" "}
@@ -309,7 +309,7 @@ export default function InfoStat({ token, user }) {
                   <span className="">Loading...</span>
                 </div>
                 <div className="col-md-8">
-                  <div className="card-body placeholder-glow">
+                  <div className="card-body placeholder-glow border-start">
                     <h5 className="card-title">Lanzamientos de Tiros Libres</h5>
                     <p className="card-text">
                       Tiros Lanzados :{" "}
@@ -334,7 +334,7 @@ export default function InfoStat({ token, user }) {
                   <span className="">Loading...</span>
                 </div>
                 <div className="col-md-8">
-                  <div className="card-body placeholder-glow">
+                  <div className="card-body placeholder-glow border-start">
                     <h5 className="card-title">
                       Porcentaje Total de Lanzamientos
                     </h5>
