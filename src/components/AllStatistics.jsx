@@ -115,13 +115,15 @@ export default function AllStatisticPercentage({ token, user }) {
           </div>
         </div>
       ) : (
-        <div className="row">
-          <StatLoader />
-          <StatLoader />
-          <StatLoader />
-          <StatLoader />
-          <StatLoader />
-          <StatLoader />
+        <div className="container">
+          <div className="row d-flex align-items-center justify-content-center py-3 px-3">
+            <StatLoader />
+            <StatLoader />
+            <StatLoader />
+            <StatLoader />
+            <StatLoader />
+            <StatLoader />
+          </div>
         </div>
       )}
     </div>
