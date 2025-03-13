@@ -55,10 +55,10 @@ export default function AllStatisticPercentage({ token, user }) {
   return (
     <div className="container text-center h-100 p-3 mt-5 vh-100">
       <h1>Porcentaje Total</h1>
-      <div className="d-flex flex-column align-items-center justify-content-center h-75">
+      <div className="d-flex flex-column align-items-center justify-content-center h-75 ">
         {allPorcentages ? (
           <div
-            className="container border rounded-3 border-primary p-3"
+            className="container border rounded-3 border-primary p-3 shadow-lg"
             style={{ maxHeight: "70vh" }}
           >
             <div className="row">

@@ -63,7 +63,7 @@ export default function InfoStat({ token, user }) {
           </h1>
           <h2>Hora: {info.hora}</h2>
           <h2>Fecha: {info.fecha}</h2>
-          <div className=" d-flex flex-column aparecer">
+          <div className=" d-flex flex-column aparecer shadow-lg">
             <div className="card m-3 border border-primary ">
               <div className="row g-0">
                 <div className="col-md-4">
@@ -87,7 +87,7 @@ export default function InfoStat({ token, user }) {
                   />
                 </div>
                 <div className="col-md-8">
-                  <div className="card-body border-start h-100 d-flex flex-column justify-content-center align-items-center">
+                  <div className="card-body border-start h-100 d-flex flex-column justify-content-center align-items-center ">
                     <h5 className="card-title  mb-2">
                       Lanzamientos de 3 Puntos
                     </h5>

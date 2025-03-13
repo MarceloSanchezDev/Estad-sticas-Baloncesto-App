@@ -3,7 +3,7 @@ import { Link } from "react-router";
 export default function StatLoader() {
   return (
     <div
-      className="card col-sm-6 col-xs-12 col-lg-3 mx-1 my-1 border rounded border-primary"
+      className="card col-sm-6 col-xs-12 col-lg-3 mx-1 my-1 border rounded border-primary shadow-lg"
       style={{ margin: "0.5px" }}
     >
       <div className="card-header">
