@@ -30,7 +30,7 @@ export default function InfoStat({ token, user }) {
   let query = new URLSearchParams(window.location.search);
   let statID = query.get("StatID");
   const navigate = useNavigate();
-  /*
+
   useEffect(() => {
     const fetchStatInfo = async () => {
       try {
@@ -49,11 +49,11 @@ export default function InfoStat({ token, user }) {
     };
 
     fetchStatInfo();
-  }, [statID]);*/
+  }, [statID]);
 
   useEffect(() => {
     if (!token) {
-      // navigate("/");
+      navigate("/");
     }
   }, [token, navigate]);
 
