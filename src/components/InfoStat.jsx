@@ -34,13 +34,11 @@ export default function InfoStat({ token, user }) {
   useEffect(() => {
     const fetchStatInfo = async () => {
       try {
-        // Hacer el pedido a la API
         const response = await fetch(
           `/api/statistics/infoStat?statID=${statID}`
         );
         if (!response.ok) throw new Error("Error al obtener las estadísticas");
         const data = await response.json();
-        console.log(data[0]);
         setInfo(data[0]);
       } catch (error) {
         // Manejo de errores
@@ -93,13 +91,13 @@ export default function InfoStat({ token, user }) {
                   <div className="card-body">
                     <h5 className="card-title">Lanzamientos de 3 Puntos</h5>
                     <p className="card-text">
-                      Tiros Lanzados : {info.cantLibres}
+                      Tiros Lanzados : {info.cant_tresPuntos}
                     </p>
                     <p className="card-text">
-                      Tiros Encestados : {info.cantLibresEncestados}
+                      Tiros Encestados : {info.cant_tresPuntosEncestados}
                     </p>
                     <p className="card-text">
-                      Porcentaje Total : {info.estadisticasLibres}
+                      Porcentaje Total : {info.estadisticasTresPuntos}
                     </p>
                   </div>
                 </div>
@@ -130,13 +128,13 @@ export default function InfoStat({ token, user }) {
                   <div className="card-body">
                     <h5 className="card-title">Lanzamientos de 2 Puntos</h5>
                     <p className="card-text">
-                      Tiros Lanzados : {info.cantLibres}
+                      Tiros Lanzados : {info.cant_dosPuntos}
                     </p>
                     <p className="card-text">
-                      Tiros Encestados : {info.cantLibresEncestados}
+                      Tiros Encestados : {info.cant_dosPuntosEncestados}
                     </p>
                     <p className="card-text">
-                      Porcentaje Total : {info.estadisticasLibres}
+                      Porcentaje Total : {info.estadisticasDosPuntos}
                     </p>
                   </div>
                 </div>
