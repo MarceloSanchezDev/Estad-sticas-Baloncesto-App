@@ -30,6 +30,7 @@ export default function InfoStat({ token, user }) {
   let query = new URLSearchParams(window.location.search);
   let statID = query.get("StatID");
   const navigate = useNavigate();
+  /*
   useEffect(() => {
     const fetchStatInfo = async () => {
       try {
@@ -48,11 +49,11 @@ export default function InfoStat({ token, user }) {
     };
 
     fetchStatInfo();
-  }, [statID]);
+  }, [statID]);*/
 
   useEffect(() => {
     if (!token) {
-      navigate("/");
+      // navigate("/");
     }
   }, [token, navigate]);
 
@@ -241,7 +242,17 @@ export default function InfoStat({ token, user }) {
           </div>
         </div>
       ) : (
-        <div className="container text-center p-3 mt-5 aparecer">
+        <div className="container text-center p-3 mt-5 placeholder-glow aparecer">
+          <h1 className="">
+            Informacion de la estadistica:{" "}
+            <span className="placeholder col-2"></span>
+          </h1>
+          <h2>
+            Hora: <span className="placeholder col-1"></span>
+          </h2>
+          <h2>
+            Fecha: <span className="placeholder col-1"></span>
+          </h2>
           <div className="border border-primary d-flex flex-column align-items-center rounded-3 aparecer">
             <div className="card m-3 w-75">
               <div className="row g-0">
