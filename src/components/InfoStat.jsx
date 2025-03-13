@@ -89,13 +89,13 @@ export default function InfoStat({ token, user }) {
                 <div className="col-md-8">
                   <div className="card-body border-start h-100 d-flex flex-column justify-content-center align-items-center">
                     <h5 className="card-title">Lanzamientos de 3 Puntos</h5>
-                    <p className="card-text">
+                    <p className="card-text text-danger-emphasis">
                       Tiros Lanzados : {info.cant_tresPuntos}
                     </p>
-                    <p className="card-text">
+                    <p className="card-text text-primary-emphasis">
                       Tiros Encestados : {info.cant_tresPuntosEncestados}
                     </p>
-                    <p className="card-text">
+                    <p className="card-text text-success">
                       Porcentaje Total : {info.estadisticasTresPuntos}
                     </p>
                   </div>
@@ -126,13 +126,13 @@ export default function InfoStat({ token, user }) {
                 <div className="col-md-8">
                   <div className="card-body border-start h-100 d-flex flex-column justify-content-center align-items-center">
                     <h5 className="card-title">Lanzamientos de 2 Puntos</h5>
-                    <p className="card-text">
+                    <p className="card-text text-danger-emphasis">
                       Tiros Lanzados : {info.cant_dosPuntos}
                     </p>
-                    <p className="card-text">
+                    <p className="card-text text-primary-emphasis">
                       Tiros Encestados : {info.cant_dosPuntosEncestados}
                     </p>
-                    <p className="card-text">
+                    <p className="card-text text-success">
                       Porcentaje Total : {info.estadisticasDosPuntos}
                     </p>
                   </div>
@@ -163,13 +163,13 @@ export default function InfoStat({ token, user }) {
                 <div className="col-md-8">
                   <div className="card-body border-start h-100 d-flex flex-column justify-content-center align-items-center">
                     <h5 className="card-title">Lanzamientos de Tiros Libres</h5>
-                    <p className="card-text">
+                    <p className="card-text text-danger-emphasis">
                       Tiros Lanzados : {info.cantLibres}
                     </p>
-                    <p className="card-text">
+                    <p className="card-text text-primary-emphasis">
                       Tiros Encestados : {info.cantLibresEncestados}
                     </p>
-                    <p className="card-text">
+                    <p className="card-text text-success">
                       Porcentaje Total : {info.estadisticasLibres}
                     </p>
                   </div>
@@ -209,19 +209,19 @@ export default function InfoStat({ token, user }) {
                     <h5 className="card-title">
                       Porcentaje Total de Lanzamientos
                     </h5>
-                    <p className="card-text">
+                    <p className="card-text text-danger-emphasis">
                       Tiros Lanzados :{" "}
                       {info.cantLibres +
                         info.cant_dosPuntos +
                         info.cant_tresPuntos}
                     </p>
-                    <p className="card-text">
+                    <p className="card-text text-primary-emphasis">
                       Tiros Encestados :{" "}
                       {info.cantLibresEncestados +
                         info.cant_dosPuntosEncestados +
                         info.cant_tresPuntosEncestados}
                     </p>
-                    <p className="card-text">
+                    <p className="card-text text-success">
                       Porcentaje Total :{" "}
                       {formula(
                         info.cantLibres +
