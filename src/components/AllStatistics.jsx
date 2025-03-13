@@ -105,7 +105,10 @@ export default function AllStatisticPercentage({ token, user }) {
                     </li>
                   </ul>
                   <div className="p-2">
-                    <Link to={"/"} className="btn btn-success">
+                    <Link
+                      to={`/infoStat?StatID=${e.id_stat}`}
+                      className="btn btn-success"
+                    >
                       Ver Estadistica
                     </Link>
                   </div>

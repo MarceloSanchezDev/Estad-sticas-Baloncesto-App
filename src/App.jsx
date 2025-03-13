@@ -72,7 +72,7 @@ function App() {
               element={<AllStatisticPercentage token={token} user={user} />}
             />
             <Route
-              path="/InfoStat"
+              path="/infoStat"
               element={<InfoStat token={token} user={user} />}
             />
           </Routes>
