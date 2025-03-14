@@ -28,7 +28,7 @@ export default function AllStatisticPercentage({ token, user }) {
   const navigate = useNavigate();
   const formula = (lanzados, encestados) => {
     if (lanzados === 0) return "0%";
-    return ((encestados / lanzados) * 100).toFixed(2) + "%";
+    return ((encestados / lanzados) * 100).toFixed(2);
   };
   useEffect(() => {
     if (!token) {
@@ -83,7 +83,16 @@ export default function AllStatisticPercentage({ token, user }) {
                 />
               </div>
               <div className="col col-xs-12 d-flex flex-column justify-content-center align-items-center">
-                <h2 className="text-center text-success">
+                <h2
+                  className={
+                    formula(
+                      allPorcentages[0].total_tiros,
+                      allPorcentages[0].total_encestados
+                    ) > 50
+                      ? "text-center text-success"
+                      : "text-center text-warning"
+                  }
+                >
                   Estadistica de Tiro :{" "}
                   {formula(
                     allPorcentages[0].total_tiros,
