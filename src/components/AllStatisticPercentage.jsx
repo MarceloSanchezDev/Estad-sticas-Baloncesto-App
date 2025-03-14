@@ -102,7 +102,7 @@ export default function AllStatisticPercentage({ token, user }) {
                 <p className="text-center text-danger w-100">
                   Total Lanzados : {allPorcentages[0].total_tiros}
                 </p>{" "}
-                <p className="text-centertext-primary w-100">
+                <p className="text-center text-primary w-100">
                   Total Encestados : {allPorcentages[0].total_encestados}
                 </p>
               </div>

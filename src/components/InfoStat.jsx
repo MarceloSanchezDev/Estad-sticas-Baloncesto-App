@@ -63,8 +63,8 @@ export default function InfoStat({ token, user }) {
           </h1>
           <h2>Hora: {info.hora}</h2>
           <h2>Fecha: {info.fecha}</h2>
-          <div className=" d-flex flex-column aparecer shadow-lg">
-            <div className="card m-3 border border-primary ">
+          <div className=" d-flex flex-column aparecer ">
+            <div className="card m-3 border border-primary shadow-lg">
               <div className="row g-0">
                 <div className="col-md-4">
                   <Doughnut
@@ -104,7 +104,7 @@ export default function InfoStat({ token, user }) {
                 </div>
               </div>
             </div>
-            <div className="card m-3 border border-primary">
+            <div className="card m-3 border border-primary shadow-lg">
               <div className="row g-0">
                 <div className="col-md-4">
                   <Doughnut
@@ -143,7 +143,7 @@ export default function InfoStat({ token, user }) {
                 </div>
               </div>
             </div>
-            <div className="card m-3 border border-primary">
+            <div className="card m-3 border border-primary shadow-lg">
               <div className="row g-0">
                 <div className="col-md-4">
                   <Doughnut
@@ -182,7 +182,7 @@ export default function InfoStat({ token, user }) {
                 </div>
               </div>
             </div>
-            <div className="card m-3 border border-primary">
+            <div className="card m-3 border border-primary shadow-lg">
               <div className="row g-0">
                 <div className="col-md-4">
                   <Doughnut
@@ -256,8 +256,8 @@ export default function InfoStat({ token, user }) {
           <h2>
             Fecha: <span className="placeholder col-1"></span>
           </h2>
-          <div className="border border-primary d-flex flex-column align-items-center rounded-3 aparecer">
-            <div className="card m-3 w-75">
+          <div className="d-flex flex-column align-items-center rounded-3 aparecer ">
+            <div className="card m-3 w-75 shadow-lg border border-primary ">
               <div className="row g-0">
                 <div className="col-md-4 d-flex flex-column justify-content-center align-items-center">
                   <div className="spinner-border" role="status"></div>
@@ -282,7 +282,7 @@ export default function InfoStat({ token, user }) {
                 </div>
               </div>
             </div>
-            <div className="card m-3 w-75">
+            <div className="card m-3 w-75 shadow-lg border border-primary ">
               <div className="row g-0">
                 <div className="col-md-4 d-flex flex-column justify-content-center align-items-center">
                   <div className="spinner-border" role="status"></div>
@@ -307,7 +307,7 @@ export default function InfoStat({ token, user }) {
                 </div>
               </div>
             </div>
-            <div className="card m-3 w-75">
+            <div className="card m-3 w-75 shadow-lg border border-primary ">
               <div className="row g-0">
                 <div className="col-md-4 d-flex flex-column justify-content-center align-items-center">
                   <div className="spinner-border" role="status"></div>
@@ -332,7 +332,7 @@ export default function InfoStat({ token, user }) {
                 </div>
               </div>
             </div>
-            <div className="card m-3 w-75">
+            <div className="card m-3 w-75 shadow-lg border border-primary ">
               <div className="row g-0">
                 <div className="col-md-4 d-flex flex-column justify-content-center align-items-center">
                   <div className="spinner-border" role="status"></div>
