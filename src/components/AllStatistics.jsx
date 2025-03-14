@@ -56,8 +56,11 @@ export default function AllStatisticPercentage({ token, user }) {
         <div className="container">
           <div className="row">
             {allStatistics.map((e) => (
-              <div key={e.id_stat} className="col-sm-6 col-xs-12 col-lg-4 my-3 shadow-lg">
-                <div className="card  border-primary border rounded-3">
+              <div
+                key={e.id_stat}
+                className="col-sm-6 col-xs-12 col-lg-4 my-3 "
+              >
+                <div className="card  border-primary border rounded-3 shadow-lg">
                   <div className="card-header">
                     <h5 className="card-title">{e.nombreEstadistica}</h5>
                     <h6 className="card-subtitle mb-2 text-body-secondary">
