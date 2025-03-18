@@ -27,29 +27,24 @@ export default function StatInit({ titulo, info }) {
       {info ? (
         <div className="col-md-4 col-sm-12 h-100 d-flex align-items-center justify-content-center">
           <div className="row d-flex flex-column align-items-center justify-content-center w-100 h-100 p-2">
-            <h2>{titulo}</h2>
+            <h1>{titulo}</h1>
             <div
-              className="col-12 border my-1 rounded-3 border-primary shadow"
-              style={{ height: "40%" }}
+              className="col-12 border my-1 rounded-3 border-primary shadow d-flex flex-column align-items-center justify-content-center"
+              style={{ minHeight: "250px" }}
             >
-              <Pie
-                key={1}
-                data={{
-                  labels: ["Encestados", "Fallados"],
-                  datasets: [
-                    {
-                      label: "Distribución de Lanzamientos",
-                      data: [22, 25],
-                      backgroundColor: ["#36A2EB", "#FF6384"],
-                    },
-                  ],
-                }}
-                options={{ maintainAspectRatio: false }}
-              />
+              <h3>Lanzamientos Encestados : </h3>
+              <p className="fs-1">{info[0]}</p>
+            </div>
+            <div
+              className="col-12 border my-1 rounded-3 border-primary shadow d-flex flex-column align-items-center justify-content-center"
+              style={{ minHeight: "250px" }}
+            >
+              <h3>Lanzamientos Totales : </h3>
+              <p className="fs-1">{info[1]}</p>
             </div>
             <div
               className="col-12 border my-1 rounded-3 border-primary shadow"
-              style={{ height: "40%" }}
+              style={{ minHeight: "250px" }}
             >
               <Pie
                 key={2}
@@ -58,7 +53,7 @@ export default function StatInit({ titulo, info }) {
                   datasets: [
                     {
                       label: "Distribución de Lanzamientos",
-                      data: [22, 25],
+                      data: [info[0], info[1]],
                       backgroundColor: ["#36A2EB", "#FF6384"],
                     },
                   ],
