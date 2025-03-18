@@ -12,6 +12,7 @@ import {
   Legend,
 } from "chart.js";
 import StatLoader from "./loaders/StatLoader";
+import Swal from "sweetalert2";
 
 ChartJS.register(
   CategoryScale,
@@ -41,6 +42,23 @@ export default function AllStatisticPercentage({ token, user }) {
           body: JSON.stringify({ username: user.username }),
         });
         const data = await result.json();
+        if (!result.ok) {
+          Swal.fire({
+            position: "bottom-end",
+            timer: 1500,
+            title: "Error al Cargar las Estadisticas",
+            text: data.error || "Ocurrió un error inesperado.",
+            icon: "error",
+            showConfirmButton: false,
+          });
+          return;
+        }
+        Swal.fire({
+          position: "bottom-end",
+          title: "¡Éxito al Cargar las Estadisticas!",
+          icon: "success",
+          showConfirmButton: false,
+        });
         setAllStatistics(data.response);
       } catch (error) {
         console.error("Error fetching statistics:", error);
