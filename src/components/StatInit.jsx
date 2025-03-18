@@ -10,7 +10,6 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { useState } from "react";
 
 ChartJS.register(
   CategoryScale,

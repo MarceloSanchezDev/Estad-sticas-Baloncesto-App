@@ -30,7 +30,7 @@ export default function Inicio({ token, user }) {
   }, [user.username]);
   return (
     <div className="container text-center aparecer d-flex flex-column align-items-center justify-content-center ">
-      {user ? (
+      {info ? (
         <div
           className="row rounded-3 d-flex align-items-start justify-content-between"
           style={{ minHeight: "100vh", width: "100%" }}
