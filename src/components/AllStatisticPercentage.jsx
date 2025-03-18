@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Loader from "../components/loaders/Loader";
 import { Link, useNavigate } from "react-router";
 import { Doughnut } from "react-chartjs-2";
 import {
@@ -108,7 +107,10 @@ export default function AllStatisticPercentage({ token, user }) {
             </div>
           </div>
         ) : (
-          <Loader />
+          <div className="container d-flex flex-column align-items-center justify-content-center">
+            <div className="spinner-border text-light" role="status"></div>
+            <span className="text-light">Cargando...</span>
+          </div>
         )}
       </div>
     </div>

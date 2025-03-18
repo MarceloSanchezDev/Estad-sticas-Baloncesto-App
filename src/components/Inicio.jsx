@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import StatInit from "../components/StatInit";
 import { useNavigate } from "react-router";
-import Loader from "./loaders/Loader";
 export default function Inicio({ token, user }) {
   const [info, setInfo] = useState();
   const navigate = useNavigate();
@@ -55,7 +54,10 @@ export default function Inicio({ token, user }) {
           />
         </div>
       ) : (
-        <Loader />
+        <div className="container d-flex flex-column align-items-center justify-content-center h-100 vh-100">
+          <div className="spinner-border text-light" role="status"></div>
+          <span className="text-light">Cargando...</span>
+        </div>
       )}
     </div>
   );

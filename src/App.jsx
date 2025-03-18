@@ -43,7 +43,7 @@ function App() {
 
   return (
     <Router>
-      <div className="container-fluid">
+      <div className="container-fluid ">
         {token && <Nav logout={logout} />}
         <div className="content">
           <Routes>
