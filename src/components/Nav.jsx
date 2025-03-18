@@ -3,7 +3,8 @@ import { useNavigate } from "react-router";
 
 export default function Nav({ token, logout }) {
   const [ball, setBall] = useState({
-    perfil: true,
+    inicio: true,
+    perfil: false,
     nuevaEstadistica: false,
     todasLasEstadisticas: false,
     porcentajeTotal: false,
@@ -13,7 +14,7 @@ export default function Nav({ token, logout }) {
     navigate(route);
   }
   return (
-    <nav className="navbar fixed-top navbar-expand-lg bg-body-tertiary">
+    <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
         <a className="navbar-brand" href="#">
           🏀 Estadísticas
@@ -34,6 +35,27 @@ export default function Nav({ token, logout }) {
             <li className="nav-item m-1">
               <button
                 className={
+                  ball.inicio
+                    ? "btn btn-dark w-100 btn-disable"
+                    : "btn btn-outline-dark w-100"
+                }
+                onClick={() => {
+                  handleNavigate("/inicio");
+                  setBall({
+                    inicio: true,
+                    perfil: false,
+                    nuevaEstadistica: false,
+                    todasLasEstadisticas: false,
+                    porcentajeTotal: false,
+                  });
+                }}
+              >
+                {ball.inicio && "🏀 "} Inicio
+              </button>
+            </li>
+            <li className="nav-item m-1">
+              <button
+                className={
                   ball.perfil
                     ? "btn btn-dark w-100 btn-disable"
                     : "btn btn-outline-dark w-100"
@@ -41,6 +63,7 @@ export default function Nav({ token, logout }) {
                 onClick={() => {
                   handleNavigate("/profile");
                   setBall({
+                    inicio: false,
                     perfil: true,
                     nuevaEstadistica: false,
                     todasLasEstadisticas: false,
@@ -61,6 +84,7 @@ export default function Nav({ token, logout }) {
                 onClick={() => {
                   handleNavigate("/newStatistic");
                   setBall({
+                    inicio: false,
                     perfil: false,
                     nuevaEstadistica: true,
                     todasLasEstadisticas: false,
@@ -81,6 +105,7 @@ export default function Nav({ token, logout }) {
                 onClick={() => {
                   handleNavigate("/allStatistic");
                   setBall({
+                    inicio: false,
                     perfil: false,
                     nuevaEstadistica: false,
                     todasLasEstadisticas: true,
@@ -101,6 +126,7 @@ export default function Nav({ token, logout }) {
                 onClick={() => {
                   handleNavigate("/allStatisticPercentage");
                   setBall({
+                    inicio: false,
                     perfil: false,
                     nuevaEstadistica: false,
                     todasLasEstadisticas: false,

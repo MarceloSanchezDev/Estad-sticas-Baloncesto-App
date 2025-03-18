@@ -53,7 +53,7 @@ export default function AllStatisticPercentage({ token, user }) {
     fetchData();
   }, [user.username]);
   return (
-    <div className="container text-center h-100 p-3 mt-5 vh-100">
+    <div className="container text-center h-100 vh-100">
       <h1>Porcentaje Total</h1>
       <div className="d-flex flex-column align-items-center justify-content-center h-75 ">
         {allPorcentages ? (

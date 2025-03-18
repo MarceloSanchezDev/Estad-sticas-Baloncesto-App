@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import swal from "sweetalert2";
 
 export default function Login({ token, login }) {
   const [email, setEmail] = useState("");
@@ -21,13 +22,32 @@ export default function Login({ token, login }) {
         },
         body: JSON.stringify({ email, password }),
       });
-
       const data = await response.json();
+      if (!response.ok) {
+        swal.fire({
+          title: "Error al Iniciar Sesión",
+          text: data.error || "Ocurrió un error inesperado.",
+          icon: "error",
+          confirmButtonText: "Ok",
+        });
+        return;
+      }
+      swal.fire({
+        title: "¡Éxito!",
+        text: `Bienvenido ${data.email}!`,
+        icon: "success",
+        confirmButtonText: "Ok",
+      });
       const user = data;
       login(data.token, user);
     } catch (error) {
-      console.error("Error en la solicitud:", error);
-      alert("No se pudo conectar con el servidor");
+      console.error("❌ Error en la solicitud:", error);
+      swal.fire({
+        title: "Error al Iniciar Sesión",
+        text: "No se pudo conectar con el servidor. Intenta de nuevo.",
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
     }
   };
 

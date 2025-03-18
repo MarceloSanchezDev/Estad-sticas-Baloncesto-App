@@ -10,6 +10,7 @@ import NewStatistic from "./components/NewStatistic";
 import AllStatistic from "./components/AllStatistics";
 import AllStatisticPercentage from "./components/AllStatisticPercentage";
 import InfoStat from "./components/InfoStat";
+import Inicio from "./components/Inicio";
 
 function App() {
   const [token, setToken] = useState("");
@@ -42,11 +43,15 @@ function App() {
 
   return (
     <Router>
-      <div className="container">
+      <div className="container-fluid">
         {token && <Nav logout={logout} />}
         <div className="content">
           <Routes>
             <Route path="/" element={<Main token={token} />} />
+            <Route
+              path="/inicio"
+              element={<Inicio login={login} token={token} />}
+            />
             <Route
               path="/login"
               element={<Login login={login} token={token} />}

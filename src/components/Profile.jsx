@@ -48,8 +48,8 @@ export default function Profile({ token, user }) {
       });
   };
   return (
-    <div className="container text-center h-100 p-3 mt-5 aparecer">
-      <h1>Perfil</h1>
+    <div className="container text-center h-100 aparecer">
+      <h1 className="mt-1">Perfil</h1>
       <div className="row h-100 ">
         <div className="col h-100 p-3 m-2 ">
           <div className="row h-100 d-flex flex-column justify-content-between border-primary border rounded-3">
