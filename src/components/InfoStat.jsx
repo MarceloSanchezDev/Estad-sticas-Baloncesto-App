@@ -97,7 +97,20 @@ export default function InfoStat({ token, user }) {
                     <p className="card-text text-primary">
                       Tiros Encestados : {info.cant_tresPuntosEncestados}
                     </p>
-                    <p className="card-text text-success">
+                    <p
+                      className={
+                        formula(
+                          info.cantLibres +
+                            info.cant_dosPuntos +
+                            info.cant_tresPuntos,
+                          info.cantLibresEncestados +
+                            info.cant_dosPuntosEncestados +
+                            info.cant_tresPuntosEncestados
+                        ) > 50
+                          ? "card-text text-success"
+                          : "card-text text-warning"
+                      }
+                    >
                       Porcentaje Total : {info.estadisticasTresPuntos}
                     </p>
                   </div>
@@ -131,13 +144,26 @@ export default function InfoStat({ token, user }) {
                       Lanzamientos de 2 Puntos
                     </h5>
                     <p className="card-text text-danger">
-                      Tiros Lanzados : {info.cant_dosPuntos}
+                      Tiros Lanzados : {info.cant_dosPuntos}.
                     </p>
                     <p className="card-text text-primary">
-                      Tiros Encestados : {info.cant_dosPuntosEncestados}
+                      Tiros Encestados : {info.cant_dosPuntosEncestados}.
                     </p>
-                    <p className="card-text text-success">
-                      Porcentaje Total : {info.estadisticasDosPuntos}
+                    <p
+                      className={
+                        formula(
+                          info.cantLibres +
+                            info.cant_dosPuntos +
+                            info.cant_tresPuntos,
+                          info.cantLibresEncestados +
+                            info.cant_dosPuntosEncestados +
+                            info.cant_tresPuntosEncestados
+                        ) > 50
+                          ? "card-text text-success"
+                          : "card-text text-warning"
+                      }
+                    >
+                      Porcentaje Total : {info.estadisticasDosPuntos}%
                     </p>
                   </div>
                 </div>
@@ -170,13 +196,26 @@ export default function InfoStat({ token, user }) {
                       Lanzamientos de Tiros Libres
                     </h5>
                     <p className="card-text text-danger">
-                      Tiros Lanzados : {info.cantLibres}
+                      Tiros Lanzados : {info.cantLibres}.
                     </p>
                     <p className="card-text text-primary">
-                      Tiros Encestados : {info.cantLibresEncestados}
+                      Tiros Encestados : {info.cantLibresEncestados}.
                     </p>
-                    <p className="card-text text-success">
-                      Porcentaje Total : {info.estadisticasLibres}
+                    <p
+                      className={
+                        formula(
+                          info.cantLibres +
+                            info.cant_dosPuntos +
+                            info.cant_tresPuntos,
+                          info.cantLibresEncestados +
+                            info.cant_dosPuntosEncestados +
+                            info.cant_tresPuntosEncestados
+                        ) > 50
+                          ? "card-text text-success"
+                          : "card-text text-warning"
+                      }
+                    >
+                      Porcentaje Total : {info.estadisticasLibres}%
                     </p>
                   </div>
                 </div>
@@ -219,16 +258,16 @@ export default function InfoStat({ token, user }) {
                       Tiros Lanzados :{" "}
                       {info.cantLibres +
                         info.cant_dosPuntos +
-                        info.cant_tresPuntos}{" "}
-                      %
+                        info.cant_tresPuntos}
+                      .
                     </p>
                     <p className="card-text text-primary">
                       Tiros Encestados :{" "}
                       {info.cantLibresEncestados +
                         info.cant_dosPuntosEncestados +
                         info.cant_tresPuntosEncestados}
-                    </p>{" "}
-                    %
+                    </p>
+                    .
                     <p
                       className={
                         formula(
