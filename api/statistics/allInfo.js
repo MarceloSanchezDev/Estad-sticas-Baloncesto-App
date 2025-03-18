@@ -3,7 +3,7 @@ import { StatisticsModel } from "../models/turso/userStatics.js";
 export default async function handler(req, res) {
     try {
         const {username}= req.body
-       const  response = await StatisticsModel.getAllStatistics(username)
+       const  response = await StatisticsModel.getAllInfo(username)
         if(!response){
             return res.status(400).json({error : "Error"})
         }

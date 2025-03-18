@@ -25,6 +25,19 @@ return rows
 } catch (e) {
   // si hay algun error se envia el error
   console.log(e)
+}}
+static async getAllInfo(username){
+  try{
+    const {rows} = await db.execute(`SELECT 
+SUM(e.cantLibres) AS libresLanzadosTotales,  SUM(e.cant_dosPuntos) AS dosPuntosLanzadosTotales,  SUM(e.cant_tresPuntos) AS tresTirosLanzadosTotales,
+SUM(e.cantLibresEncestados) AS LibresEncestadosTotales, SUM(e.cant_dosPuntosEncestados) AS dosPuntosEncestadosTotales, SUM(e.cant_tresPuntosEncestados) AS tresTitosEncestadosTotales
+FROM user u
+JOIN user_estadisticas e ON e.user_username = u.username
+WHERE u.username = ?`,[username])
+return rows
+} catch (e) {
+// si hay algun error se envia el error
+console.log(e)
 }
   }
   static async getAllStatistics ( username ) {
