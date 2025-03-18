@@ -206,7 +206,7 @@ export default function AllStatisticPercentage({ token, user }) {
     maintainAspectRatio: false,
   };
   return (
-    <div className="container text-center aparecer vh-100">
+    <div className="container text-center aparecer h-100">
       <div className="d-flex align-items-center justify-content-center">
         {veiw && (
           <div className="bg-light d-flex justify-content-center align-items-center flex-column p-3 border-primary border rounded-3 shadow-lg">
