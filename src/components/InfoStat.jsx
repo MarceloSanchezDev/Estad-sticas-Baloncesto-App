@@ -1,32 +1,12 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import { Doughnut } from "react-chartjs-2";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  ArcElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js";
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  ArcElement,
-  Title,
-  Tooltip,
-  Legend
-);
 const formula = (lanzados, encestados) => {
   if (lanzados === 0) return "0%";
-  return ((encestados / lanzados) * 100).toFixed(2) + "%";
+  return ((encestados / lanzados) * 100).toFixed(2);
 };
 export default function InfoStat({ token, user }) {
-  const [info, setInfo] = useState();
+  const [info, setInfo] = useState({});
   let query = new URLSearchParams(window.location.search);
   let statID = query.get("StatID");
   const navigate = useNavigate();
@@ -36,6 +16,7 @@ export default function InfoStat({ token, user }) {
       navigate("/");
     }
   }, [token, navigate]);
+
   useEffect(() => {
     const fetchStatInfo = async () => {
       try {
@@ -219,15 +200,30 @@ export default function InfoStat({ token, user }) {
                       Tiros Lanzados :{" "}
                       {info.cantLibres +
                         info.cant_dosPuntos +
-                        info.cant_tresPuntos}
+                        info.cant_tresPuntos}{" "}
+                      %
                     </p>
                     <p className="card-text text-primary">
                       Tiros Encestados :{" "}
                       {info.cantLibresEncestados +
                         info.cant_dosPuntosEncestados +
                         info.cant_tresPuntosEncestados}
-                    </p>
-                    <p className="card-text text-success">
+                    </p>{" "}
+                    %
+                    <p
+                      className={
+                        formula(
+                          info.cantLibres +
+                            info.cant_dosPuntos +
+                            info.cant_tresPuntos,
+                          info.cantLibresEncestados +
+                            info.cant_dosPuntosEncestados +
+                            info.cant_tresPuntosEncestados
+                        ) > 50
+                          ? "card-text text-success"
+                          : "card-text text-warning"
+                      }
+                    >
                       Porcentaje Total :{" "}
                       {formula(
                         info.cantLibres +
@@ -236,7 +232,8 @@ export default function InfoStat({ token, user }) {
                         info.cantLibresEncestados +
                           info.cant_dosPuntosEncestados +
                           info.cant_tresPuntosEncestados
-                      )}
+                      )}{" "}
+                      %
                     </p>
                   </div>
                 </div>
