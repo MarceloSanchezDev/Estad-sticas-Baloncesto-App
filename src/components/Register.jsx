@@ -40,10 +40,11 @@ export default function Register({ token, login }) {
       }
       swal.fire({
         title: "¡Éxito!",
-        text: `Bienvenido ${data.username}!`,
+        text: `Bienvenido ${data.email}!`,
         icon: "success",
         confirmButtonText: "Ok",
       });
+
       const user = data;
       login(data.token, user);
     } catch (error) {

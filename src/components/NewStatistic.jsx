@@ -12,6 +12,7 @@ import {
   Legend,
 } from "chart.js";
 import { useNavigate } from "react-router";
+import Swal from "sweetalert2";
 
 ChartJS.register(
   CategoryScale,
@@ -99,8 +100,22 @@ export default function AllStatisticPercentage({ token, user }) {
         const errorData = await response.json();
         throw new Error(errorData.error || "Error desconocido");
       }
+      Swal.fire({
+        position: "bottom-end",
+        icon: "success",
+        title: "Estadistica Creada Correctamente",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     } catch (error) {
       console.error("Error al enviar estadísticas:", error.message);
+      Swal.fire({
+        position: "bottom-end",
+        icon: "error",
+        title: "Error al crear Estadistica",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     }
     setChartDataDonaL({
       labels: ["Encestados", "Fallados"],
