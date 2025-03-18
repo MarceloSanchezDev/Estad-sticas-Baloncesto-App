@@ -77,7 +77,6 @@ export default function AllStatisticPercentage({ token, user }) {
   }, [user.username]);
   return (
     <div className="container text-center aparecer">
-      <h1 className="mt-1">Todas Las Estadisticas</h1>
       {allStatistics ? (
         <div className="container">
           <div className="row">

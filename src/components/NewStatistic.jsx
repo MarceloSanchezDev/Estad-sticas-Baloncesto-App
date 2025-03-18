@@ -207,7 +207,6 @@ export default function AllStatisticPercentage({ token, user }) {
   };
   return (
     <div className="container text-center aparecer vh-100">
-      <h1 className="mt-1">{veiw ? "Nueva Estadistica" : statistic.titulo}</h1>
       <div className="d-flex align-items-center justify-content-center">
         {veiw && (
           <div className="bg-light d-flex justify-content-center align-items-center flex-column p-3 border-primary border rounded-3 shadow-lg">
