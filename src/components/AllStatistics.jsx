@@ -45,6 +45,7 @@ export default function AllStatisticPercentage({ token, user }) {
         if (!result.ok) {
           Swal.fire({
             position: "bottom-end",
+            width: 400,
             timer: 1500,
             title: "Error al Cargar las Estadisticas",
             text: data.error || "Ocurrió un error inesperado.",
@@ -55,6 +56,7 @@ export default function AllStatisticPercentage({ token, user }) {
         }
         Swal.fire({
           position: "bottom-end",
+          width: 400,
           timer: 1500,
           title: "¡Éxito al Cargar las Estadisticas!",
           icon: "success",
@@ -64,6 +66,7 @@ export default function AllStatisticPercentage({ token, user }) {
       } catch (error) {
         Swal.fire({
           position: "bottom-end",
+          width: 400,
           timer: 1500,
           title: "Error al Cargar las Estadisticas",
           text: error.message || "Ocurrió un error inesperado.",
