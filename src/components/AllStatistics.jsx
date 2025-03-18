@@ -55,13 +55,21 @@ export default function AllStatisticPercentage({ token, user }) {
         }
         Swal.fire({
           position: "bottom-end",
+          timer: 1500,
           title: "¡Éxito al Cargar las Estadisticas!",
           icon: "success",
           showConfirmButton: false,
         });
         setAllStatistics(data.response);
       } catch (error) {
-        console.error("Error fetching statistics:", error);
+        Swal.fire({
+          position: "bottom-end",
+          timer: 1500,
+          title: "Error al Cargar las Estadisticas",
+          text: error.message || "Ocurrió un error inesperado.",
+          icon: "error",
+          showConfirmButton: false,
+        });
       }
     }
 
