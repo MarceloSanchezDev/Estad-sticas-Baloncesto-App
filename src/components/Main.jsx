@@ -5,7 +5,7 @@ export default function Main({ token }) {
   const navigate = useNavigate();
   useEffect(() => {
     if (token) {
-      navigate("/profile");
+      navigate("/inicio");
     }
   }, [token, navigate]);
   return (

@@ -8,7 +8,7 @@ export default function Login({ token, login }) {
   const navigate = useNavigate();
   useEffect(() => {
     if (token) {
-      navigate("/profile");
+      navigate("/inicio");
     }
   }, [token, navigate]);
   const handlerSubmitLogin = async (e) => {

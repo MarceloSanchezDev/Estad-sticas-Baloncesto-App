@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import swal from "sweetalert2";
 import { useNavigate } from "react-router";
 export default function Register({ token, login }) {
   const [email, setEmail] = useState("");
@@ -9,7 +10,7 @@ export default function Register({ token, login }) {
   const navigate = useNavigate();
   useEffect(() => {
     if (token) {
-      navigate("/profile");
+      navigate("/inicio");
     }
   }, [token, navigate]);
   const handlerSubmitRegister = async (e) => {
@@ -28,11 +29,31 @@ export default function Register({ token, login }) {
       });
 
       const data = await response.json();
+      if (!response.ok) {
+        swal.fire({
+          title: "Error al Registrarse!",
+          text: data.error || "Ocurrió un error inesperado.",
+          icon: "error",
+          confirmButtonText: "Ok",
+        });
+        return; // Detiene la ejecución aquí
+      }
+      swal.fire({
+        title: "¡Éxito!",
+        text: `Bienvenido ${data.username}!`,
+        icon: "success",
+        confirmButtonText: "Ok",
+      });
       const user = data;
       login(data.token, user);
     } catch (error) {
-      console.error("Error en la solicitud:", error);
-      alert("No se pudo conectar con el servidor");
+      console.error("❌ Error en la solicitud:", error);
+      swal.fire({
+        title: "Error al Iniciar Sesión",
+        text: "No se pudo conectar con el servidor. Intenta de nuevo.",
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
     }
   };
 
