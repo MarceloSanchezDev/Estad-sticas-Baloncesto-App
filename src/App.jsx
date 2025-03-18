@@ -50,7 +50,7 @@ function App() {
             <Route path="/" element={<Main token={token} />} />
             <Route
               path="/inicio"
-              element={<Inicio login={login} token={token} />}
+              element={<Inicio login={login} token={token} user={user} />}
             />
             <Route
               path="/login"
