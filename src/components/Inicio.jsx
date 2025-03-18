@@ -3,14 +3,7 @@ import StatInit from "../components/StatInit";
 import { useNavigate } from "react-router";
 import Loader from "./loaders/Loader";
 export default function Inicio({ token, user }) {
-  const [info, setInfo] = useState({
-    libresLanzadosTotales: 513,
-    dosPuntosLanzadosTotales: 308,
-    tresTirosLanzadosTotales: 188,
-    LibresEncestadosTotales: 141,
-    dosPuntosEncestadosTotales: 129,
-    tresTitosEncestadosTotales: 129,
-  });
+  const [info, setInfo] = useState();
   const navigate = useNavigate();
   useEffect(() => {
     if (!token) {
