@@ -38,32 +38,29 @@ export default function Inicio({ token, user }) {
   return (
     <div className="container text-center aparecer d-flex flex-column align-items-center justify-content-center ">
       {user ? (
-        <>
-          <h1 className="mt-1">Inicio</h1>
-          <div
-            className="row rounded-3 d-flex align-items-start justify-content-between"
-            style={{ minHeight: "100vh", width: "100%" }}
-          >
-            <StatInit
-              titulo={"Lanzamientos totales de 3 puntos"}
-              info={[
-                info.tresTitosEncestadosTotales, 
-                info.tresTirosLanzadosTotales,
-              ]}
-            />
-            <StatInit
-              titulo={"Lanzamientos totales de 2 puntos"}
-              info={[
-                info.dosPuntosEncestadosTotales,
-                info.dosPuntosLanzadosTotales,
-              ]}
-            />
-            <StatInit
-              titulo={"Lanzamientos totales de Libres"}
-              info={[info.LibresEncestadosTotales, info.libresLanzadosTotales]}
-            />
-          </div>
-        </>
+        <div
+          className="row rounded-3 d-flex align-items-start justify-content-between"
+          style={{ minHeight: "100vh", width: "100%" }}
+        >
+          <StatInit
+            titulo={"Lanzamientos totales de 3 puntos"}
+            info={[
+              info.tresTitosEncestadosTotales,
+              info.tresTirosLanzadosTotales,
+            ]}
+          />
+          <StatInit
+            titulo={"Lanzamientos totales de 2 puntos"}
+            info={[
+              info.dosPuntosEncestadosTotales,
+              info.dosPuntosLanzadosTotales,
+            ]}
+          />
+          <StatInit
+            titulo={"Lanzamientos totales de Libres"}
+            info={[info.LibresEncestadosTotales, info.libresLanzadosTotales]}
+          />
+        </div>
       ) : (
         <Loader />
       )}
