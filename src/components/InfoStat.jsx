@@ -1,6 +1,25 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-
+import { Doughnut } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  ArcElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  ArcElement,
+  Title,
+  Tooltip,
+  Legend
+);
 const formula = (lanzados, encestados) => {
   if (lanzados === 0) return "0%";
   return ((encestados / lanzados) * 100).toFixed(2);
