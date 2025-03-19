@@ -14,7 +14,7 @@ export default function Nav({ token, logout }) {
     navigate(route);
   }
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+    <nav className="navbar navbar-expand-lg bg-body-tertiary rounded">
       <div className="container-fluid">
         <a className="navbar-brand" href="#">
           🏀 Estadísticas
