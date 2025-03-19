@@ -42,6 +42,7 @@ export default function AllStatisticPercentage({ token, user }) {
           body: JSON.stringify({ username: user.username }),
         });
         const data = await result.json();
+        console.log(data.response);
         if (!result.ok) {
           Swal.fire({
             position: "bottom-end",
