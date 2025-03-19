@@ -82,7 +82,7 @@ export default function AllStatisticPercentage({ token, user }) {
     <div className="container text-center aparecer">
       {allStatistics ? (
         <div className="container">
-          {allStatistics.legth > 1 ? (
+          {allStatistics.legth >= 1 ? (
             <div className="row">
               {allStatistics.map((e) => (
                 <div
