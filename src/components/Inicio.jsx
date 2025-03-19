@@ -18,7 +18,6 @@ export default function Inicio({ token, user }) {
           body: JSON.stringify({ username: user.username }),
         });
         const data = await result.json();
-        console.log(data);
         setInfo(data.response[0]);
       } catch (error) {
         console.error("Error fetching statistics:", error);

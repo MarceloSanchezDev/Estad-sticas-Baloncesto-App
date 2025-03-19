@@ -17,9 +17,8 @@ export default function Register({ token, login }) {
   }, [token, navigate]);
   const handlerSubmitRegister = async (e) => {
     e.preventDefault();
-    console.log("FrontEnd Login", email, password);
+
     e.preventDefault();
-    console.log("Probando conexión con el backend...");
 
     try {
       const response = await fetch("/api/auth/register", {
