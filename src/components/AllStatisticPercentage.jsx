@@ -11,7 +11,6 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { all } from "axios";
 
 ChartJS.register(
   CategoryScale,
@@ -24,7 +23,7 @@ ChartJS.register(
 );
 export default function AllStatisticPercentage({ token, user }) {
   const [allPorcentages, setAllPorcentages] = useState();
-  const navigate = useNavigate();
+  const navigate = useNavigate({});
   const formula = (lanzados, encestados) => {
     if (lanzados === 0) return "0%";
     return ((encestados / lanzados) * 100).toFixed(2);
@@ -52,7 +51,7 @@ export default function AllStatisticPercentage({ token, user }) {
     fetchData();
   }, [user.username]);
   return (
-    <div className="container text-center h-100 vh-100">
+    <div className="container text-center text-white h-100 vh-100">
       <div className="d-flex flex-column align-items-center justify-content-center h-75 ">
         {allPorcentages ? (
           <div

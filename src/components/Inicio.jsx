@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import StatInit from "../components/StatInit";
 import { useNavigate } from "react-router";
 export default function Inicio({ token, user }) {
-  const [info, setInfo] = useState();
+  const [info, setInfo] = useState({});
   const navigate = useNavigate();
   useEffect(() => {
     if (!token) {
@@ -28,7 +28,7 @@ export default function Inicio({ token, user }) {
     fetchData();
   }, [user.username]);
   return (
-    <div className="container text-center aparecer d-flex flex-column align-items-center justify-content-center ">
+    <div className="container text-center text-white aparecer d-flex flex-column align-items-center justify-content-center ">
       {info ? (
         <div
           className="row rounded-3 d-flex align-items-start justify-content-between"
