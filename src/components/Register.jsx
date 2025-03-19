@@ -133,7 +133,7 @@ export default function Register({ token, login }) {
       </form>
       <div className="mt-3 text-center">
         <button
-          className="btn btn-outline-dark"
+          className="btn btn-outline-light"
           onClick={() => {
             navigate("/");
           }}

@@ -96,7 +96,7 @@ export default function Login({ token, login }) {
       </form>
 
       <div className="mt-3 ">
-        <button className="btn btn-outline-dark" onClick={() => navigate("/")}>
+        <button className="btn btn-outline-light" onClick={() => navigate("/")}>
           Volver ⛹️‍♂️
         </button>
       </div>
