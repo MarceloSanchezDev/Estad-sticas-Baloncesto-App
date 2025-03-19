@@ -49,25 +49,27 @@ export default function StatInit({ titulo, info }) {
                 <p className="fs-1">0</p>
               )}
             </div>
-            <div
-              className="col-12 border my-1 rounded-3 border-primary shadow"
-              style={{ minHeight: "250px" }}
-            >
-              <Pie
-                key={2}
-                data={{
-                  labels: ["Encestados", "Fallados"],
-                  datasets: [
-                    {
-                      label: "Distribución de Lanzamientos",
-                      data: [info[0], info[1]],
-                      backgroundColor: ["#36A2EB", "#FF6384"],
-                    },
-                  ],
-                }}
-                options={{ maintainAspectRatio: false }}
-              />
-            </div>
+            {info[0] && info[1] && (
+              <div
+                className="col-12 border my-1 rounded-3 border-primary shadow"
+                style={{ minHeight: "250px" }}
+              >
+                <Pie
+                  key={2}
+                  data={{
+                    labels: ["Encestados", "Fallados"],
+                    datasets: [
+                      {
+                        label: "Distribución de Lanzamientos",
+                        data: [info[0], info[1]],
+                        backgroundColor: ["#36A2EB", "#FF6384"],
+                      },
+                    ],
+                  }}
+                  options={{ maintainAspectRatio: false }}
+                />
+              </div>
+            )}
           </div>
         </div>
       ) : (
