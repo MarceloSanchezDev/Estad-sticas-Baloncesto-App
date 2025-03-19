@@ -32,14 +32,22 @@ export default function StatInit({ titulo, info }) {
               style={{ minHeight: "250px" }}
             >
               <h3>Lanzamientos Encestados : </h3>
-              <p className="fs-1">{info[0]}</p>
+              {info[0] ? (
+                <p className="fs-1">{info[0]}</p>
+              ) : (
+                <p className="fs-1">0</p>
+              )}
             </div>
             <div
               className="col-12 border my-1 rounded-3 border-primary shadow d-flex flex-column align-items-center justify-content-center"
               style={{ minHeight: "250px" }}
             >
               <h3>Lanzamientos Totales : </h3>
-              <p className="fs-1">{info[1]}</p>
+              {info[1] ? (
+                <p className="fs-1">{info[1]}</p>
+              ) : (
+                <p className="fs-1">0</p>
+              )}
             </div>
             <div
               className="col-12 border my-1 rounded-3 border-primary shadow"
