@@ -111,7 +111,7 @@ export default function AllStatisticPercentage({ token, user }) {
               <div className="row">
                 <div className="col col-xs-12 d-flex flex-column justify-content-center align-items-center">
                   <h2 className="text-center text-success">
-                    Estadistica de Tiro :0
+                    Estadistica de Tiro : 0
                   </h2>
                   <p className="text-center text-success w-100">
                     Total Lanzados : 0
