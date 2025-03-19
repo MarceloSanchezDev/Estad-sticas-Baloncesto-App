@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import swal from "sweetalert2";
 import { useNavigate } from "react-router";
+import Loader from "./loaders/Loader";
 export default function Register({ token, login }) {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
   const [lastname, setLastName] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   useEffect(() => {
     if (token) {
@@ -36,6 +38,8 @@ export default function Register({ token, login }) {
           icon: "error",
           confirmButtonText: "Ok",
         });
+        setLoading(true);
+
         return; // Detiene la ejecución aquí
       }
       swal.fire({
@@ -55,7 +59,11 @@ export default function Register({ token, login }) {
         icon: "error",
         confirmButtonText: "Ok",
       });
+      setLoading(true);
     }
+  };
+  const handlerClick = () => {
+    setLoading(false);
   };
 
   return (
@@ -67,7 +75,7 @@ export default function Register({ token, login }) {
         <h2 className="mb-4 text-center">Registro 🏀⛹️‍♂️</h2>
         <div className="mb-3">
           <label className="form-label" htmlFor="emailRegister">
-            Email :
+            E-mail :
           </label>
           <input
             className="form-control"
@@ -79,7 +87,7 @@ export default function Register({ token, login }) {
         </div>
         <div className="mb-3">
           <label className="form-label" htmlFor="usernameRegister">
-            Username :
+            Usuario :
           </label>
           <input
             className="form-control"
@@ -91,7 +99,7 @@ export default function Register({ token, login }) {
         </div>
         <div className="mb-3">
           <label className="form-label" htmlFor="usernameRegister">
-            Name :
+            Nombre :
           </label>
           <input
             className="form-control"
@@ -103,7 +111,7 @@ export default function Register({ token, login }) {
         </div>
         <div className="mb-3">
           <label className="form-label" htmlFor="usernameRegister">
-            Last Name :
+            Apellido :
           </label>
           <input
             className="form-control"
@@ -115,7 +123,7 @@ export default function Register({ token, login }) {
         </div>
         <div className="mb-3">
           <label className="form-label" htmlFor="passwordRegister">
-            Password:{" "}
+            Contraseña:
           </label>
           <input
             className="form-control"
@@ -126,8 +134,12 @@ export default function Register({ token, login }) {
           />
         </div>
         <div className="d-grid">
-          <button type="submit" className="btn btn-success">
-            Registrarse 🏀
+          <button
+            type="submit"
+            className="btn btn-success"
+            onClick={handlerClick}
+          >
+            {loading ? "Registrarse 🏀" : <Loader />}
           </button>
         </div>
       </form>

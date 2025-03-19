@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import swal from "sweetalert2";
+import Loader from "./loaders/Loader";
 
 export default function Login({ token, login }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   useEffect(() => {
     if (token) {
@@ -30,6 +32,7 @@ export default function Login({ token, login }) {
           icon: "error",
           confirmButtonText: "Ok",
         });
+        setLoading(true);
         return;
       }
       swal.fire({
@@ -48,9 +51,12 @@ export default function Login({ token, login }) {
         icon: "error",
         confirmButtonText: "Ok",
       });
+      setLoading(true);
     }
   };
-
+  const handlerClick = () => {
+    setLoading(false);
+  };
   return (
     <div className="text-dark vh-100 d-flex flex-column justify-content-center align-items-center aparecer">
       <form
@@ -89,8 +95,12 @@ export default function Login({ token, login }) {
         </div>
 
         <div className="d-grid">
-          <button type="submit" className="btn btn-success">
-            Ingresar 🏀
+          <button
+            type="submit"
+            className="btn btn-success"
+            onClick={handlerClick}
+          >
+            {loading ? "Ingresar 🏀" : <Loader />}
           </button>
         </div>
       </form>
