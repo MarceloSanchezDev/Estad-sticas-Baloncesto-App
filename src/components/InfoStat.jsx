@@ -57,7 +57,7 @@ export default function InfoStat({ token, user }) {
   return (
     <>
       {info ? (
-        <div className="container text-center aparecer">
+        <div className="container text-center text-white aparecer">
           <h1 className="">
             Informacion de la estadistica <i>{info.nombreEstadistica}</i>
           </h1>
