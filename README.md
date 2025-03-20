@@ -20,7 +20,7 @@ Una aplicación web para visualizar y analizar estadísticas de lanzamientos de 
 - Vercel (Frontend y API)
 - Render (posiblemente para el backend)
 
----
+----
 
 ## 🛠 Instalación y Configuración
 
