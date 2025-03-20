@@ -163,7 +163,7 @@ export default function InfoStat({ token, user }) {
                           : "card-text text-warning"
                       }
                     >
-                      Porcentaje Total : {info.estadisticasDosPuntos}%
+                      Porcentaje Total : {info.estadisticasDosPuntos}
                     </p>
                   </div>
                 </div>
@@ -215,7 +215,7 @@ export default function InfoStat({ token, user }) {
                           : "card-text text-warning"
                       }
                     >
-                      Porcentaje Total : {info.estadisticasLibres}%
+                      Porcentaje Total : {info.estadisticasLibres}
                     </p>
                   </div>
                 </div>
@@ -291,7 +291,6 @@ export default function InfoStat({ token, user }) {
                           info.cant_dosPuntosEncestados +
                           info.cant_tresPuntosEncestados
                       )}{" "}
-                      %
                     </p>
                   </div>
                 </div>
