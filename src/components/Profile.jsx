@@ -4,10 +4,11 @@ import unknown from "../assets/unknown.jpg";
 import { useAuth } from "../context/AuthContext";
 
 export default function Profile() {
-  const { token, user } = useAuth();
+  const { token, user, updateUser } = useAuth();
+
   const [trueCategory, setTrueCategory] = useState(false);
-  const [newCategory, setNewCategory] = useState("");
   const [truePosition, setTruePosition] = useState(false);
+  const [newCategory, setNewCategory] = useState("");
   const [newPosition, setNewPosition] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
@@ -15,12 +16,14 @@ export default function Profile() {
       navigate("/");
     }
   }, [token, navigate]);
+
   const editCategory = () => {
     setTrueCategory(!trueCategory);
   };
   const editPosition = () => {
     setTruePosition(!truePosition);
   };
+
   const handlePosition = (e) => {
     e.preventDefault();
     fetch("/api/profile/position", {
@@ -33,6 +36,7 @@ export default function Profile() {
       .then((res) => res.json())
       .then((data) => {
         sessionStorage.setItem("user", JSON.stringify(data.result));
+        updateUser(data.result);
       });
   };
   const handleCategory = (e) => {
@@ -47,8 +51,10 @@ export default function Profile() {
       .then((res) => res.json())
       .then((data) => {
         sessionStorage.setItem("user", JSON.stringify(data.result));
+        updateUser(data.result);
       });
   };
+
   return (
     <div className="container text-center h-100 aparecer">
       <div className="row h-100 ">
@@ -219,7 +225,6 @@ export default function Profile() {
     </div>
   );
 }
-/*                <div className="col-md-12 col-12 d-flex justify-content-md-end justify-content-end align-items-end">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"

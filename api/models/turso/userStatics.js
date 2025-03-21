@@ -26,7 +26,7 @@ return rows
   // si hay algun error se envia el error
   console.log(e)
 }}
-static async getAllInfo(username){
+  static async getAllInfo(username){
   try{
     const {rows} = await db.execute(`SELECT 
 SUM(e.cantLibres) AS libresLanzadosTotales,  SUM(e.cant_dosPuntos) AS dosPuntosLanzadosTotales,  SUM(e.cant_tresPuntos) AS tresTirosLanzadosTotales,
@@ -96,7 +96,6 @@ WHERE id_stat = ?`, [id])
     )
     return rows[0]
   }
-
   static async delete ({ id }) {
     try {
       // busco y borro la estadistica con el id indicado en el parametro
@@ -146,7 +145,6 @@ export class UserModel {
     )
     return rows
   }
-
   static async login ({ input }) {
     // extraigo del input los siguientes datos
     const {

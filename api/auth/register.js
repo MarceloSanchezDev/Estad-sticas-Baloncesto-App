@@ -28,7 +28,7 @@ export default async function handler(req, res) {
             expiresIn: 60 * 60
         });
 
-        res.status(200).json({ email, token, id , apellido ,nombre, username , posicion, categoria });
+        res.status(200).json({ email, token, apellido ,nombre, username , posicion, categoria });
     } catch (error) {
         console.error("Error en el servidor:", error);
         res.status(500).json({ error: "Error en el servidor", message: error.message });
