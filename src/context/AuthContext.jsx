@@ -3,8 +3,10 @@ import { createContext, useContext, useState, useEffect } from "react";
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [token, setToken] = useState("");
-  const [user, setUser] = useState({});
+  const [token, setToken] = useState(sessionStorage.getItem("token") || null);
+  const [user, setUser] = useState(
+    JSON.parse(sessionStorage.getItem("user")) || null
+  );
 
   useEffect(() => {
     const storedToken = sessionStorage.getItem("token");
@@ -19,7 +21,10 @@ export const AuthProvider = ({ children }) => {
     setToken(tok);
     setUser(user);
   };
-
+  const updateUser = (newUserData) => {
+    setUser(newUserData);
+    sessionStorage.setItem("user", JSON.stringify(newUserData));
+  };
   const logout = () => {
     sessionStorage.removeItem("token");
     sessionStorage.removeItem("user");
@@ -28,7 +33,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ token, user, login, logout }}>
+    <AuthContext.Provider value={{ token, user, login, logout, updateUser }}>
       {children}
     </AuthContext.Provider>
   );
