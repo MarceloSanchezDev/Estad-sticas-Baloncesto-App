@@ -1,7 +1,9 @@
 import { useNavigate } from "react-router";
 import grafico from "../assets/grafico-de-barras.png";
 import { useEffect } from "react";
-export default function Main({ token }) {
+import { useAuth } from "../context/AuthContext";
+export default function Main() {
+  const { token } = useAuth();
   const navigate = useNavigate();
   useEffect(() => {
     if (token) {

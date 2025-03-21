@@ -11,6 +11,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import { useAuth } from "../context/AuthContext";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -24,7 +25,8 @@ const formula = (lanzados, encestados) => {
   if (lanzados === 0) return "0%";
   return ((encestados / lanzados) * 100).toFixed(2);
 };
-export default function InfoStat({ token, user }) {
+export default function InfoStat() {
+  const { token } = useAuth();
   const [info, setInfo] = useState({});
   let query = new URLSearchParams(window.location.search);
   let statID = query.get("StatID");

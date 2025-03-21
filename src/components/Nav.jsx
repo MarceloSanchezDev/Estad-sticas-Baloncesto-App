@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { useAuth } from "../context/AuthContext";
 
-export default function Nav({ token, logout }) {
+export default function Nav() {
+  const { logout } = useAuth();
   const [ball, setBall] = useState({
     inicio: true,
     perfil: false,
