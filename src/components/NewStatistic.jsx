@@ -25,6 +25,7 @@ ChartJS.register(
 );
 export default function AllStatisticPercentage() {
   const { token, user } = useAuth();
+  const [isDisabled, setIsDisabled] = useState(false);
   const navigate = useNavigate();
   useEffect(() => {
     if (!token) {
