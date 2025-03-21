@@ -11,6 +11,7 @@ import AllStatisticPercentage from "./components/AllStatisticPercentage";
 import InfoStat from "./components/InfoStat";
 import Inicio from "./components/Inicio";
 import { AuthProvider, useAuth } from "./context/AuthContext";
+import { StatisticsProvider } from "./context/StatisticContext";
 
 function AppContent() {
   const { token, user, login, logout } = useAuth();
@@ -63,7 +64,9 @@ function AppContent() {
 function App() {
   return (
     <AuthProvider>
-      <AppContent />
+      <StatisticsProvider>
+        <AppContent />
+      </StatisticsProvider>
     </AuthProvider>
   );
 }
