@@ -37,6 +37,7 @@ export default function Profile() {
       .then((data) => {
         sessionStorage.setItem("user", JSON.stringify(data.result));
         updateUser(data.result);
+        editPosition();
       });
   };
   const handleCategory = (e) => {
@@ -52,6 +53,7 @@ export default function Profile() {
       .then((data) => {
         sessionStorage.setItem("user", JSON.stringify(data.result));
         updateUser(data.result);
+        editPosition();
       });
   };
 
