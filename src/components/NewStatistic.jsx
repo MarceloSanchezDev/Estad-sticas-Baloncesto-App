@@ -23,7 +23,7 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-export default function AllStatisticPercentage() {
+export default function newStatistic() {
   const { token, user } = useAuth();
   const [isDisabled, setIsDisabled] = useState(false);
   const navigate = useNavigate();
