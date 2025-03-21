@@ -13,6 +13,7 @@ import {
 } from "chart.js";
 import StatLoader from "./loaders/StatLoader";
 import Swal from "sweetalert2";
+import { useAuth } from "../context/AuthContext";
 
 ChartJS.register(
   CategoryScale,
@@ -24,7 +25,8 @@ ChartJS.register(
   Legend
 );
 
-export default function AllStatisticPercentage({ token, user }) {
+export default function AllStatisticPercentage() {
+  const { token, user } = useAuth();
   const [allStatistics, setAllStatistics] = useState();
   const navigate = useNavigate();
   useEffect(() => {

@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import StatInit from "../components/StatInit";
 import { useNavigate } from "react-router";
-export default function Inicio({ token, user }) {
+import { useAuth } from "../context/AuthContext";
+
+export default function Inicio() {
+  const { token, user } = useAuth();
   const [info, setInfo] = useState({});
   const navigate = useNavigate();
   useEffect(() => {

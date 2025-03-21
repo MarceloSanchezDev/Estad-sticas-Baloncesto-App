@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Bar, Pie, Doughnut } from "react-chartjs-2";
-import Loader from "../components/loaders/Loader";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -13,6 +12,7 @@ import {
 } from "chart.js";
 import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
+import { useAuth } from "../context/AuthContext";
 
 ChartJS.register(
   CategoryScale,
@@ -23,8 +23,8 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-export default function AllStatisticPercentage({ token, user }) {
-  const [isDisabled, setIsDisabled] = useState(false);
+export default function AllStatisticPercentage() {
+  const { token, user } = useAuth();
   const navigate = useNavigate();
   useEffect(() => {
     if (!token) {

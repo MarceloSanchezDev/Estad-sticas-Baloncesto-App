@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import unknown from "../assets/unknown.jpg";
+import { useAuth } from "../context/AuthContext";
 
-export default function Profile({ token, user }) {
+export default function Profile() {
+  const { token, user } = useAuth();
   const [trueCategory, setTrueCategory] = useState(false);
   const [newCategory, setNewCategory] = useState("");
   const [truePosition, setTruePosition] = useState(false);

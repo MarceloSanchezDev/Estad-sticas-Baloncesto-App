@@ -4,46 +4,20 @@ import Nav from "./components/Nav";
 import Login from "./components/Login";
 import Main from "./components/Main";
 import Register from "./components/Register";
-import { useEffect, useState } from "react";
 import Profile from "./components/Profile";
 import NewStatistic from "./components/NewStatistic";
 import AllStatistic from "./components/AllStatistics";
 import AllStatisticPercentage from "./components/AllStatisticPercentage";
 import InfoStat from "./components/InfoStat";
 import Inicio from "./components/Inicio";
+import { AuthProvider, useAuth } from "./context/AuthContext";
 
-function App() {
-  const [token, setToken] = useState("");
-  const [user, setUser] = useState({});
-
-  useEffect(() => {
-    const storedToken = sessionStorage.getItem("token");
-    const storedUser = sessionStorage.getItem("user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
-    if (storedToken) {
-      setToken(storedToken);
-    }
-  }, []);
-
-  const logout = () => {
-    sessionStorage.removeItem("token");
-    sessionStorage.removeItem("user");
-    setToken("");
-    setUser({});
-  };
-
-  const login = (tok, user) => {
-    sessionStorage.setItem("token", tok);
-    sessionStorage.setItem("user", JSON.stringify(user));
-    setToken(tok);
-    setUser(user);
-  };
+function AppContent() {
+  const { token, user, login, logout } = useAuth();
 
   return (
     <Router>
-      <div className="container-fluid ">
+      <div className="container-fluid">
         {token && <Nav logout={logout} />}
         <div className="content">
           <Routes>
@@ -84,6 +58,13 @@ function App() {
         </div>
       </div>
     </Router>
+  );
+}
+function App() {
+  return (
+    <AuthProvider>
+      <AppContent />
+    </AuthProvider>
   );
 }
 

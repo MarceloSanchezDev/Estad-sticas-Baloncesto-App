@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import { useAuth } from "../context/AuthContext";
 import swal from "sweetalert2";
 import Loader from "./loaders/Loader";
 
-export default function Login({ token, login }) {
+export default function Login() {
+  const { token, login } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(true);
@@ -15,7 +17,6 @@ export default function Login({ token, login }) {
   }, [token, navigate]);
   const handlerSubmitLogin = async (e) => {
     e.preventDefault();
-
     try {
       const response = await fetch("/api/auth/login", {
         method: "POST",

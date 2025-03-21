@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { Doughnut } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -11,6 +11,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import { useAuth } from "../context/AuthContext";
 
 ChartJS.register(
   CategoryScale,
@@ -21,7 +22,8 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-export default function AllStatisticPercentage({ token, user }) {
+export default function AllStatisticPercentage() {
+  const { token, user } = useAuth();
   const [allPorcentages, setAllPorcentages] = useState();
   const navigate = useNavigate();
   const formula = (lanzados, encestados) => {

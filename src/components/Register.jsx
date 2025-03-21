@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import swal from "sweetalert2";
 import { useNavigate } from "react-router";
+import { useAuth } from "../context/AuthContext";
 import Loader from "./loaders/Loader";
-export default function Register({ token, login }) {
+
+export default function Register() {
+  const { token, login } = useAuth();
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
