@@ -53,7 +53,7 @@ export default function Profile() {
       .then((data) => {
         sessionStorage.setItem("user", JSON.stringify(data.result));
         updateUser(data.result);
-        editPosition();
+        editCategory();
       });
   };
 
