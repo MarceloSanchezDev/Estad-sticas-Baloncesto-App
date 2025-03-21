@@ -5,7 +5,7 @@ import { useAuth } from "../context/AuthContext";
 import { useStatistics } from "../context/StatisticContext";
 export default function Inicio() {
   const { token } = useAuth();
-  const [stats] = useStatistics();
+  const { stats } = useStatistics();
 
   const navigate = useNavigate();
   useEffect(() => {
