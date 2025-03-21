@@ -25,7 +25,7 @@ ChartJS.register(
   Legend
 );
 
-export default function AllStatisticPercentage() {
+export default function AllStatistic() {
   const { token, user } = useAuth();
   const [allStatistics, setAllStatistics] = useState();
   const navigate = useNavigate();
