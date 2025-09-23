@@ -1,0 +1,131 @@
+name: CI & Deploy a Vercel (Vite + React + API)
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+env:
+  NODE_VERSION: 20
+
+jobs:
+  ci:
+    name: Verificación (lint, test, build)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+
+      - name: 🔧 Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: 📦 Instalar dependencias
+        run: npm ci
+
+      - name: 🧹 Lint (si existe script)
+        run: npm run lint --if-present
+
+      - name: 🧪 Tests (si existe script)
+        run: npm test --if-present -- --ci
+
+      - name: 🏗️ Build Vite (validación local)
+        run: npm run build --if-present
+
+      - name: 📤 Subir artefacto (build local opcional)
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build
+          path: |
+            dist
+            build
+          if-no-files-found: ignore
+
+  preview:
+    name: Preview en Vercel (PR)
+    needs: ci
+    if: github.event_name == 'pull_request' && needs.ci.result == 'success'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+
+      - name: 🔧 Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: 📦 Instalar
+        run: npm ci
+
+      - name: 🔧 Instalar Vercel CLI
+        run: npm i -g vercel@latest
+
+      - name: 🧩 Vercel pull (Preview)
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: vercel pull --yes --environment=preview --token="$VERCEL_TOKEN"
+
+      - name: 🏗️ Build con Vercel (Preview)
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: vercel build --token="$VERCEL_TOKEN"
+
+      - name: 🚀 Deploy prebuilt (Preview)
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          DEPLOY_URL=$(vercel deploy --prebuilt --token="$VERCEL_TOKEN")
+          echo "url=$DEPLOY_URL" >> $GITHUB_OUTPUT
+        id: vercel
+
+      - name: 📝 Comentar URL de Preview
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          message: |
+            ✅ Preview deploy: ${{ steps.vercel.outputs.url }}
+
+  production:
+    name: Deploy a Producción (main)
+    needs: ci
+    if: github.ref == 'refs/heads/main' && needs.ci.result == 'success'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+
+      - name: 🔧 Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: 📦 Instalar
+        run: npm ci
+
+      - name: 🔧 Instalar Vercel CLI
+        run: npm i -g vercel@latest
+
+      - name: 🧩 Vercel pull (Prod)
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: vercel pull --yes --environment=production --token="$VERCEL_TOKEN"
+
+      - name: 🏗️ Build con Vercel (Prod)
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: vercel build --prod --token="$VERCEL_TOKEN"
+
+      - name: 🚀 Deploy prebuilt (Prod)
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: vercel deploy --prebuilt --prod --token="$VERCEL_TOKEN"
