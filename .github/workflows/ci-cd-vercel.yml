@@ -1,4 +1,4 @@
-name: CI mínimo (build Vite)
+name: CI mínimo (build Vite) PRUEBA
 
 on:
   push:
