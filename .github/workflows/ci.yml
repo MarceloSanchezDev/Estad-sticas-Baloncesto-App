@@ -1,0 +1,41 @@
+name: CI mínimo (build Vite)
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    name: Build con Node 20
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1) Traer código
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+
+      # 2) Node + cache de npm
+      - name: 🔧 Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      # 3) Instalar deps (reproducible)
+      - name: 📦 Instalar dependencias
+        run: npm ci
+
+      # 4) Compilar con Vite (usa "build" de package.json)
+      - name: 🏗️ Build
+        run: npm run build
+
+      # 5) (Opcional) Subir /dist como artefacto
+      - name: 📤 Subir artefacto dist
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+          if-no-files-found: ignore
+          retention-days: 7
