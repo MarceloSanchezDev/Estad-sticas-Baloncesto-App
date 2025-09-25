@@ -5,9 +5,8 @@ import {
   validUser,
   validRegisterUser,
   validStatistic,
-} from "../lib/validators.js";
-import { UserModel } from "../lib/models/user.js";
-import { StatisticsModel } from "../lib/models/statistics.js";
+} from "../lib/schema/userSchema.js";
+import { StatisticsModel, UserModel } from "../lib/models/turso/userStatics.js";
 
 const SECRET_KEY = process.env.JWT_SECRET || "change-me";
 
@@ -49,8 +48,7 @@ export default async function handler(req, res) {
     // ===== AUTH =====
     if (method === "POST" && pathname === "/auth/login") {
       const { email, password } = req.body || {};
-      /*
-      
+
       const result = validUser?.({ email, password });
       if (!result || !result.data)
         return send(res, 400, { error: "Datos de usuario inválidos" });
@@ -80,10 +78,8 @@ export default async function handler(req, res) {
         posicion,
         categoria,
       });
-      */
-      return send(email, password);
     }
-    /*
+
     if (method === "POST" && pathname === "/auth/register") {
       const result = validRegisterUser?.(req.body);
       if (!result || !result.data)
@@ -205,7 +201,7 @@ export default async function handler(req, res) {
 
       return send(res, 200, { statValid });
     }
-*/
+
     // 404 por defecto
     return send(res, 404, { error: "Ruta no encontrada" });
   } catch (error) {
