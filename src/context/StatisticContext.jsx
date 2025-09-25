@@ -12,7 +12,7 @@ export const StatisticsProvider = ({ children }) => {
 
     async function fetchStatistics() {
       try {
-        const result = await fetch(`/api/statistics/allInfo`, {
+        const result = await fetch(`/api/statistics`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ username: user.username }),

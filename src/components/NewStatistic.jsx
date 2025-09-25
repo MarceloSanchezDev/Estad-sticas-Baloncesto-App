@@ -92,7 +92,7 @@ export default function newStatistic() {
         fecha: fechaFormateada,
         hora: horaFormateada,
       });
-      const response = await fetch("/api/statistics/newStatistics", {
+      const response = await fetch("/api/statistics/create", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ statistic, username: user.username }),

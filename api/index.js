@@ -1,11 +1,214 @@
-export default function handler(req, res) {
-    res.setHeader('Access-Control-Allow-Origin', '*'); // Permite acceso desde cualquier origen
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    
-    if (req.method === 'OPTIONS') {
-      res.status(200).end(); // Manejo de preflight requests
-      return;
+// api/index.js
+import jwt from "jsonwebtoken";
+// Importá tus helpers/modelos REALES:
+import {
+  validUser,
+  validRegisterUser,
+  validStatistic,
+} from "../lib/validators.js";
+import { UserModel } from "../lib/models/user.js";
+import { StatisticsModel } from "../lib/models/statistics.js";
+
+const SECRET_KEY = process.env.JWT_SECRET || "change-me";
+
+function send(res, status, data) {
+  res.status(status).json(data);
+}
+const formula = (lanzados, encestados) => {
+  if (lanzados === 0) return "0%";
+  return ((encestados / lanzados) * 100).toFixed(2) + "%";
+};
+function enableCORS(req, res) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, DELETE, OPTIONS"
+  );
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  if (req.method === "OPTIONS") {
+    res.status(200).end();
+    return true;
+  }
+  return false;
+}
+
+export default async function handler(req, res) {
+  try {
+    if (enableCORS(req, res)) return;
+
+    // Construí el pathname real incluso cuando Vercel hace rewrites
+    const fullUrl = new URL(req.url, `http://${req.headers.host}`);
+    const pathname = fullUrl.pathname.replace(/^\/api/, "") || "/"; // normalizamos quitando /api
+    const method = req.method;
+
+    // Salud
+    if (method === "GET" && pathname === "/") {
+      return send(res, 200, { message: "Estadísticas de baloncesto" });
     }
-  
-    res.status(200).json({ message: 'Estadísticas de baloncesto' });
-  } 
+
+    // ===== AUTH =====
+    if (method === "POST" && pathname === "/auth/login") {
+      const { email, password } = req.body || {};
+      const result = validUser?.({ email, password });
+      if (!result || !result.data)
+        return send(res, 400, { error: "Datos de usuario inválidos" });
+
+      const userValid = await UserModel.login({ input: result.data });
+      if (!userValid)
+        return send(res, 401, { error: "Credenciales incorrectas" });
+
+      const {
+        email: userEmail,
+        id,
+        apellido,
+        nombre,
+        username,
+        posicion,
+        categoria,
+      } = userValid;
+      const token = jwt.sign({ id, email: userEmail }, SECRET_KEY, {
+        expiresIn: "2 days",
+      });
+      return send(res, 200, {
+        email: userEmail,
+        token,
+        apellido,
+        nombre,
+        username,
+        posicion,
+        categoria,
+      });
+    }
+
+    if (method === "POST" && pathname === "/auth/register") {
+      const result = validRegisterUser?.(req.body);
+      if (!result || !result.data)
+        return send(res, 400, { error: "Datos de registro inválidos" });
+
+      const userValid = await UserModel.registerUser({ input: result.data });
+      if (!userValid || userValid.length === 0)
+        return send(res, 400, { error: "Error al registrar el usuario" });
+
+      const { username, nombre, apellido, id, posicion, categoria, email } =
+        userValid[0];
+      const token = jwt.sign({ id, username }, SECRET_KEY, {
+        expiresIn: 60 * 60,
+      });
+      return send(res, 200, {
+        email,
+        token,
+        apellido,
+        nombre,
+        username,
+        posicion,
+        categoria,
+      });
+    }
+
+    // ===== CATEGORY =====
+    if (method === "POST" && pathname === "/category/new") {
+      const { categoria, username } = req.body || {};
+      const result = await UserModel.newCategory({
+        input: { categoria, username },
+      });
+      return send(res, 200, {
+        mensaje: "Categoria creada correctamente",
+        result,
+      });
+    }
+
+    // ===== STATISTICS =====
+    if (method === "POST" && pathname === "/statistics") {
+      const { username } = req.body || {};
+      const response = await StatisticsModel.getAllInfo(username);
+      if (!response) return send(res, 400, { error: "Error" });
+      return send(res, 200, { response });
+    }
+
+    if (method === "POST" && pathname === "/statistics/percentages") {
+      const { username } = req.body || {};
+      const response = await StatisticsModel.getAllPorcentages(username);
+      if (!response) return send(res, 400, { error: "Error" });
+      return send(res, 200, { response });
+    }
+
+    if (method === "POST" && pathname === "/statistics/list") {
+      const { username } = req.body || {};
+      const response = await StatisticsModel.getAllStatistics(username);
+      if (!response) return send(res, 400, { error: "Error" });
+      return send(res, 200, { response });
+    }
+
+    // GET /api/statistics/:statID
+    if (method === "GET" && /^\/statistics\/[^/]+$/.test(pathname)) {
+      const statID = pathname.split("/")[2];
+      const response = await StatisticsModel.getStatistics(statID);
+      if (!response)
+        return send(res, 404, { error: "Estadística no encontrada" });
+      return send(res, 200, response);
+    }
+
+    if (method === "POST" && pathname === "/statistics/create") {
+      const { statistic, username } = req.body || {};
+      if (!statistic || !username)
+        return send(res, 400, { error: "Datos incompletos" });
+
+      const {
+        lanzamientos3,
+        encestados3,
+        lanzamientos2,
+        encestados2,
+        libresLanzados,
+        libresEncestados,
+        fecha,
+        titulo,
+        hora,
+      } = statistic;
+
+      const result = validStatistic?.({
+        lanzamientos3,
+        encestados3,
+        lanzamientos2,
+        encestados2,
+        libresLanzados,
+        libresEncestados,
+        fecha,
+        titulo,
+        hora,
+      });
+      if (!result || !result.data)
+        return send(res, 400, { error: "Datos de estadistica inválidos" });
+
+      const porcentaje2Puntos = formula(lanzamientos2, encestados2);
+      const porcentaje3Puntos = formula(lanzamientos3, encestados3);
+      const porcentajeLibres = formula(libresLanzados, libresEncestados);
+
+      const statValid = await StatisticsModel.createStatistics({
+        lanzamientos3,
+        encestados3,
+        lanzamientos2,
+        encestados2,
+        libresLanzados,
+        libresEncestados,
+        porcentaje2Puntos,
+        porcentaje3Puntos,
+        porcentajeLibres,
+        fecha,
+        titulo,
+        hora,
+        username,
+      });
+
+      return send(res, 200, { statValid });
+    }
+
+    // 404 por defecto
+    return send(res, 404, { error: "Ruta no encontrada" });
+  } catch (error) {
+    console.error("Error en el servidor:", error);
+    return send(res, 500, {
+      error: "Error interno del servidor",
+      message: error.message,
+    });
+  }
+}

@@ -37,7 +37,7 @@ export default function AllStatistic() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const result = await fetch(`/api/statistics/allStatistics`, {
+        const result = await fetch(`/api/statistics/list`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ username: user.username }),

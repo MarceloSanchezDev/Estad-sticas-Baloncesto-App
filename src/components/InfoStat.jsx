@@ -42,7 +42,7 @@ export default function InfoStat() {
     const fetchStatInfo = async () => {
       try {
         const response = await fetch(
-          `/api/statistics/infoStat?statID=${statID}`
+          `/api/statistics/${statID}`
         );
         if (!response.ok) throw new Error("Error al obtener las estadísticas");
         const data = await response.json();

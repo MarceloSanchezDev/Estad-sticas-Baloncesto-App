@@ -38,7 +38,7 @@ export default function AllStatisticPercentage() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const result = await fetch(`/api/statistics/allPorcentage`, {
+        const result = await fetch(`/api/statistics/percentages`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ username: user.username }),
