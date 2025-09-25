@@ -7,7 +7,7 @@ import {
 } from "../lib/schema/userSchema.js";
 import { StatisticsModel, UserModel } from "../lib/models/turso/userStatics.js";
 
-const SECRET_KEY = process.env.JWT_SECRET || "change-me";
+const SECRET_KEY = process.env.SECRET_KEY || "change-me";
 
 function send(res, status, data) {
   res.statusCode = status;
