@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { useAuth } from "../../context/AuthContext";
-import swal from "sweetalert2";
 import Loader from "../loaders/Loader";
+import swal from "sweetalert2";
 
 export default function Login() {
   const { token, login } = useAuth();
