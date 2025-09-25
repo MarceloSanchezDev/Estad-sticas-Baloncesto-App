@@ -1,22 +1,30 @@
-// api/index.js
-import jwt from "jsonwebtoken";
-// Importá tus helpers/modelos REALES:
-import {
+// api/index.js  (CommonJS)
+const jwt = require("jsonwebtoken");
+
+// Importá tus helpers/modelos REALES (ajustá rutas si hace falta)
+const {
   validUser,
   validRegisterUser,
   validStatistic,
-} from "../lib/schema/userSchema.js";
-import { StatisticsModel, UserModel } from "../lib/models/turso/userStatics.js";
+} = require("../lib/schema/userSchema.js");
+const {
+  StatisticsModel,
+  UserModel,
+} = require("../lib/models/turso/userStatics.js");
 
 const SECRET_KEY = process.env.JWT_SECRET || "change-me";
 
 function send(res, status, data) {
-  res.status(status).json(data);
+  res.statusCode = status;
+  res.setHeader("Content-Type", "application/json; charset=utf-8");
+  res.end(JSON.stringify(data));
 }
+
 const formula = (lanzados, encestados) => {
   if (lanzados === 0) return "0%";
   return ((encestados / lanzados) * 100).toFixed(2) + "%";
 };
+
 function enableCORS(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
@@ -25,13 +33,34 @@ function enableCORS(req, res) {
   );
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   if (req.method === "OPTIONS") {
-    res.status(200).end();
+    res.statusCode = 200;
+    res.end();
     return true;
   }
   return false;
 }
 
-export default async function handler(req, res) {
+// Fallback para obtener el body en JSON cuando no viene parseado
+async function getBody(req) {
+  if (req.method === "GET" || req.method === "HEAD") return null;
+  if (req.body && typeof req.body === "object") return req.body;
+
+  return new Promise((resolve, reject) => {
+    let raw = "";
+    req.on("data", (c) => (raw += c));
+    req.on("end", () => {
+      if (!raw) return resolve(null);
+      try {
+        resolve(JSON.parse(raw));
+      } catch {
+        resolve(null);
+      }
+    });
+    req.on("error", reject);
+  });
+}
+
+module.exports = async function handler(req, res) {
   try {
     if (enableCORS(req, res)) return;
 
@@ -39,6 +68,7 @@ export default async function handler(req, res) {
     const fullUrl = new URL(req.url, `http://${req.headers.host}`);
     const pathname = fullUrl.pathname.replace(/^\/api/, "") || "/"; // normalizamos quitando /api
     const method = req.method;
+    const body = (await getBody(req)) || {}; // asegura body JSON
 
     // Salud
     if (method === "GET" && pathname === "/") {
@@ -47,9 +77,9 @@ export default async function handler(req, res) {
 
     // ===== AUTH =====
     if (method === "POST" && pathname === "/auth/login") {
-      const { email, password } = req.body || {};
-
-      const result = validUser?.({ email, password });
+      const { email, password } = body || {};
+      const result =
+        typeof validUser === "function" ? validUser({ email, password }) : null;
       if (!result || !result.data)
         return send(res, 400, { error: "Datos de usuario inválidos" });
 
@@ -81,7 +111,10 @@ export default async function handler(req, res) {
     }
 
     if (method === "POST" && pathname === "/auth/register") {
-      const result = validRegisterUser?.(req.body);
+      const result =
+        typeof validRegisterUser === "function"
+          ? validRegisterUser(body)
+          : null;
       if (!result || !result.data)
         return send(res, 400, { error: "Datos de registro inválidos" });
 
@@ -107,7 +140,7 @@ export default async function handler(req, res) {
 
     // ===== CATEGORY =====
     if (method === "POST" && pathname === "/category/new") {
-      const { categoria, username } = req.body || {};
+      const { categoria, username } = body || {};
       const result = await UserModel.newCategory({
         input: { categoria, username },
       });
@@ -119,21 +152,21 @@ export default async function handler(req, res) {
 
     // ===== STATISTICS =====
     if (method === "POST" && pathname === "/statistics") {
-      const { username } = req.body || {};
+      const { username } = body || {};
       const response = await StatisticsModel.getAllInfo(username);
       if (!response) return send(res, 400, { error: "Error" });
       return send(res, 200, { response });
     }
 
     if (method === "POST" && pathname === "/statistics/percentages") {
-      const { username } = req.body || {};
+      const { username } = body || {};
       const response = await StatisticsModel.getAllPorcentages(username);
       if (!response) return send(res, 400, { error: "Error" });
       return send(res, 200, { response });
     }
 
     if (method === "POST" && pathname === "/statistics/list") {
-      const { username } = req.body || {};
+      const { username } = body || {};
       const response = await StatisticsModel.getAllStatistics(username);
       if (!response) return send(res, 400, { error: "Error" });
       return send(res, 200, { response });
@@ -149,7 +182,7 @@ export default async function handler(req, res) {
     }
 
     if (method === "POST" && pathname === "/statistics/create") {
-      const { statistic, username } = req.body || {};
+      const { statistic, username } = body || {};
       if (!statistic || !username)
         return send(res, 400, { error: "Datos incompletos" });
 
@@ -165,17 +198,20 @@ export default async function handler(req, res) {
         hora,
       } = statistic;
 
-      const result = validStatistic?.({
-        lanzamientos3,
-        encestados3,
-        lanzamientos2,
-        encestados2,
-        libresLanzados,
-        libresEncestados,
-        fecha,
-        titulo,
-        hora,
-      });
+      const result =
+        typeof validStatistic === "function"
+          ? validStatistic({
+              lanzamientos3,
+              encestados3,
+              lanzamientos2,
+              encestados2,
+              libresLanzados,
+              libresEncestados,
+              fecha,
+              titulo,
+              hora,
+            })
+          : null;
       if (!result || !result.data)
         return send(res, 400, { error: "Datos de estadistica inválidos" });
 
@@ -211,4 +247,4 @@ export default async function handler(req, res) {
       message: error.message,
     });
   }
-}
+};
