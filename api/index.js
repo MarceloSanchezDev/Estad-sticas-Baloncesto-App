@@ -1,16 +1,11 @@
-// api/index.js  (CommonJS)
-const jwt = require("jsonwebtoken");
-
-// Importá tus helpers/modelos REALES (ajustá rutas si hace falta)
-const {
+// api/index.js (ESM)
+import jwt from "jsonwebtoken";
+import {
   validUser,
   validRegisterUser,
   validStatistic,
-} = require("../lib/schema/userSchema.js");
-const {
-  StatisticsModel,
-  UserModel,
-} = require("../lib/models/turso/userStatics.js");
+} from "../lib/schema/userSchema.js";
+import { StatisticsModel, UserModel } from "../lib/models/turso/userStatics.js";
 
 const SECRET_KEY = process.env.JWT_SECRET || "change-me";
 
@@ -40,35 +35,28 @@ function enableCORS(req, res) {
   return false;
 }
 
-// Fallback para obtener el body en JSON cuando no viene parseado
+// Fallback para leer JSON body en ESM/Node serverless
 async function getBody(req) {
   if (req.method === "GET" || req.method === "HEAD") return null;
   if (req.body && typeof req.body === "object") return req.body;
-
-  return new Promise((resolve, reject) => {
-    let raw = "";
-    req.on("data", (c) => (raw += c));
-    req.on("end", () => {
-      if (!raw) return resolve(null);
-      try {
-        resolve(JSON.parse(raw));
-      } catch {
-        resolve(null);
-      }
-    });
-    req.on("error", reject);
-  });
+  let raw = "";
+  for await (const chunk of req) raw += chunk;
+  if (!raw) return null;
+  try {
+    return JSON.parse(raw);
+  } catch {
+    return null;
+  }
 }
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   try {
     if (enableCORS(req, res)) return;
 
-    // Construí el pathname real incluso cuando Vercel hace rewrites
     const fullUrl = new URL(req.url, `http://${req.headers.host}`);
-    const pathname = fullUrl.pathname.replace(/^\/api/, "") || "/"; // normalizamos quitando /api
+    const pathname = fullUrl.pathname.replace(/^\/api/, "") || "/";
     const method = req.method;
-    const body = (await getBody(req)) || {}; // asegura body JSON
+    const body = (await getBody(req)) || {};
 
     // Salud
     if (method === "GET" && pathname === "/") {
@@ -77,7 +65,7 @@ module.exports = async function handler(req, res) {
 
     // ===== AUTH =====
     if (method === "POST" && pathname === "/auth/login") {
-      const { email, password } = body || {};
+      const { email, password } = body;
       const result =
         typeof validUser === "function" ? validUser({ email, password }) : null;
       if (!result || !result.data)
@@ -140,7 +128,7 @@ module.exports = async function handler(req, res) {
 
     // ===== CATEGORY =====
     if (method === "POST" && pathname === "/category/new") {
-      const { categoria, username } = body || {};
+      const { categoria, username } = body;
       const result = await UserModel.newCategory({
         input: { categoria, username },
       });
@@ -152,21 +140,21 @@ module.exports = async function handler(req, res) {
 
     // ===== STATISTICS =====
     if (method === "POST" && pathname === "/statistics") {
-      const { username } = body || {};
+      const { username } = body;
       const response = await StatisticsModel.getAllInfo(username);
       if (!response) return send(res, 400, { error: "Error" });
       return send(res, 200, { response });
     }
 
     if (method === "POST" && pathname === "/statistics/percentages") {
-      const { username } = body || {};
+      const { username } = body;
       const response = await StatisticsModel.getAllPorcentages(username);
       if (!response) return send(res, 400, { error: "Error" });
       return send(res, 200, { response });
     }
 
     if (method === "POST" && pathname === "/statistics/list") {
-      const { username } = body || {};
+      const { username } = body;
       const response = await StatisticsModel.getAllStatistics(username);
       if (!response) return send(res, 400, { error: "Error" });
       return send(res, 200, { response });
@@ -182,7 +170,7 @@ module.exports = async function handler(req, res) {
     }
 
     if (method === "POST" && pathname === "/statistics/create") {
-      const { statistic, username } = body || {};
+      const { statistic, username } = body;
       if (!statistic || !username)
         return send(res, 400, { error: "Datos incompletos" });
 
@@ -198,7 +186,7 @@ module.exports = async function handler(req, res) {
         hora,
       } = statistic;
 
-      const result =
+      const v =
         typeof validStatistic === "function"
           ? validStatistic({
               lanzamientos3,
@@ -212,7 +200,7 @@ module.exports = async function handler(req, res) {
               hora,
             })
           : null;
-      if (!result || !result.data)
+      if (!v || !v.data)
         return send(res, 400, { error: "Datos de estadistica inválidos" });
 
       const porcentaje2Puntos = formula(lanzamientos2, encestados2);
@@ -238,7 +226,6 @@ module.exports = async function handler(req, res) {
       return send(res, 200, { statValid });
     }
 
-    // 404 por defecto
     return send(res, 404, { error: "Ruta no encontrada" });
   } catch (error) {
     console.error("Error en el servidor:", error);
@@ -247,4 +234,4 @@ module.exports = async function handler(req, res) {
       message: error.message,
     });
   }
-};
+}
