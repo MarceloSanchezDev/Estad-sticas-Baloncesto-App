@@ -70,7 +70,7 @@ export default function Login() {
 
         <div className="mb-3">
           <label htmlFor="emailLogin" className="form-label">
-            E-mail:
+            E-mail :
           </label>
           <input
             type="email"
@@ -84,7 +84,7 @@ export default function Login() {
 
         <div className="mb-3">
           <label htmlFor="passwordLogin" className="form-label">
-            Contraseña:
+            Contraseña :
           </label>
           <input
             type="password"

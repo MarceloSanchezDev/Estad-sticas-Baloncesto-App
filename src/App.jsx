@@ -3,7 +3,7 @@ import "./App.css";
 import Nav from "./components/Nav";
 import Login from "./components/Login/Login.jsx";
 import Main from "./components/Main/Main.jsx";
-import Register from "./components/Register";
+import Register from "./components/Register/Register.jsx";
 import Profile from "./components/Profile";
 import NewStatistic from "./components/NewStatistic";
 import AllStatistic from "./components/AllStatistics";
