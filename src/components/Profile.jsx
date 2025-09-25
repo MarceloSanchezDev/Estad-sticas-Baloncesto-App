@@ -42,7 +42,7 @@ export default function Profile() {
   };
   const handleCategory = (e) => {
     e.preventDefault();
-    fetch("/api/profile/category", {
+    fetch("/api/category/new", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

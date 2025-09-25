@@ -1,16 +1,22 @@
-name: CI mínimo (build Vite)
+
+name: CI + Preview + Prod (Vite + Vercel)
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
 
 jobs:
   build:
     name: Build con Node 20
     runs-on: ubuntu-latest
-
     steps:
       # 1) Traer código
       - name: 📥 Checkout
@@ -22,17 +28,17 @@ jobs:
         with:
           node-version: 20
           cache: npm
-
-      # 3) Instalar deps (reproducible)
+          cache-dependency-path: package-lock.json
       - name: 📦 Instalar dependencias
         run: npm ci
 
-      # 4) Compilar con Vite (usa "build" de package.json)
+      - name: 🧪 Tests (Vitest)
+        run: npm run test:ci --if-present
+
       - name: 🏗️ Build
         run: npm run build
 
-      # 5) (Opcional) Subir /dist como artefacto
-      - name: 📤 Subir artefacto dist
+      - name: 📤 Subir artefacto dist (opcional)
         uses: actions/upload-artifact@v4
         with:
           name: dist
