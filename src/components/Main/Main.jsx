@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
-import grafico from "../assets/grafico-de-barras.png";
+import grafico from "../../assets/grafico-de-barras.png";
 import { useEffect } from "react";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 export default function Main() {
   const { token } = useAuth();
   const navigate = useNavigate();
@@ -10,6 +10,7 @@ export default function Main() {
       navigate("/inicio");
     }
   }, [token, navigate]);
+
   return (
     <div className="container text-white vh-100 w-100 d-flex justify-content-between aparecer user-select-none">
       <div className="col-12 col-md-6 d-flex flex-column justify-content-center align-items-center text-center">
