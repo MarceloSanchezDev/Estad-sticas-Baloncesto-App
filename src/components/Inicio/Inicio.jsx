@@ -1,19 +1,18 @@
 import { useEffect } from "react";
-import StatInit from "../components/StatInit";
+import StatInit from "../StatInit/StatInit.jsx";
 import { useNavigate } from "react-router";
-import { useAuth } from "../context/AuthContext";
-import { useStatistics } from "../context/StatisticContext";
+import { useAuth } from "../../context/AuthContext";
+import { useStatistics } from "../../context/StatisticContext";
 export default function Inicio() {
   const { token } = useAuth();
-  const { stats } = useStatistics();
-
+  // si todavia no se carga 'STATS' lo inicia con un array vacio
+  const { stats = null } = useStatistics() ?? { stats: null };
   const navigate = useNavigate();
   useEffect(() => {
     if (!token) {
       navigate("/");
     }
   }, [token, navigate]);
-
   return (
     <div className="container text-center text-white aparecer d-flex flex-column align-items-center justify-content-center ">
       {stats ? (
@@ -22,6 +21,7 @@ export default function Inicio() {
           style={{ minHeight: "100vh", width: "100%" }}
         >
           <StatInit
+            data-testid="custom-element"
             titulo={"Lanzamientos totales de 3 puntos"}
             info={[
               stats.tresTitosEncestadosTotales,
@@ -29,6 +29,7 @@ export default function Inicio() {
             ]}
           />
           <StatInit
+            data-testid="custom-element"
             titulo={"Lanzamientos totales de 2 puntos"}
             info={[
               stats.dosPuntosEncestadosTotales,
@@ -36,6 +37,7 @@ export default function Inicio() {
             ]}
           />
           <StatInit
+            data-testid="custom-element"
             titulo={"Lanzamientos totales de Libres"}
             info={[stats.LibresEncestadosTotales, stats.libresLanzadosTotales]}
           />

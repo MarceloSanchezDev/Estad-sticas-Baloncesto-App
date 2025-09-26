@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import unknown from "../assets/unknown.jpg";
-import { useAuth } from "../context/AuthContext";
+import unknown from "../../assets/unknown.jpg";
+import { useAuth } from "../../context/AuthContext";
 
 export default function Profile() {
   const { token, user, updateUser } = useAuth();
@@ -26,7 +26,7 @@ export default function Profile() {
 
   const handlePosition = (e) => {
     e.preventDefault();
-    fetch("/api/profile/position", {
+    fetch("/api/position/new", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -137,6 +137,16 @@ export default async function handler(req, res) {
         result,
       });
     }
+    if (method === "POST" && pathname === "/position/new") {
+      const { position, username } = body;
+      const result = await UserModel.newPosition({
+        input: { position, username },
+      });
+      return send(res, 200, {
+        mensaje: "position creada correctamente",
+        result,
+      });
+    }
 
     // ===== STATISTICS =====
     if (method === "POST" && pathname === "/statistics") {

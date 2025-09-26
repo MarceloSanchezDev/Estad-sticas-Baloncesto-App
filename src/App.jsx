@@ -1,15 +1,15 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import Nav from "./components/Nav";
+import Nav from "./components/Nav/Nav.jsx";
 import Login from "./components/Login/Login.jsx";
 import Main from "./components/Main/Main.jsx";
 import Register from "./components/Register/Register.jsx";
-import Profile from "./components/Profile";
-import NewStatistic from "./components/NewStatistic";
-import AllStatistic from "./components/AllStatistics";
-import AllStatisticPercentage from "./components/AllStatisticPercentage";
-import InfoStat from "./components/InfoStat";
-import Inicio from "./components/Inicio";
+import Profile from "./components/Profile/Profile.jsx";
+import NewStatistic from "./components/NewStatistic/NewStatistic.jsx";
+import AllStatistic from "./components/AllStatistics/AllStatistics.jsx";
+import AllStatisticPercentage from "./components/AllStatisticPercentage/AllStatisticPercentage.jsx";
+import InfoStat from "./components/InfoStat/InfoStat.jsx";
+import Inicio from "./components/Inicio/Inicio.jsx";
 import { AuthProvider, useAuth } from "./context/AuthContext";
 import { StatisticsProvider } from "./context/StatisticContext";
 

@@ -1,5 +1,5 @@
 import { Pie } from "react-chartjs-2";
-import Loader from "../components/loaders/Loader";
+import Loader from "../loaders/Loader";
 import {
   Chart as ChartJS,
   CategoryScale,
