@@ -59,6 +59,12 @@ test("muestra el formulario de Logeo ", () => {
   expect(form).toBeInTheDocument();
   const inputNode = screen.getByLabelText(/E-mail :/);
   expect(inputNode).toBeInTheDocument();
+  const alerts = screen.getAllByRole("alert");
+  expect(alerts[0], /Tu E-mail debe ser correcto/i);
+  expect(
+    alerts[1],
+    /Tu Contraseña debe tener un minimo de 6 caracteres y un maximo de 20, Solo debe contener numeros y letras, y no debe contener emojis, caracteres especiales o espacios./i
+  );
   const inputs = screen.getAllByRole("textbox");
   expect(inputs[0], /E-mail :/i);
   expect(inputs[1], /Contraseña :/i);

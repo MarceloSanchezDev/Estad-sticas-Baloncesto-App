@@ -69,7 +69,15 @@ test("muestra el formulario de Registro ", () => {
   expect(inputName).toBeInTheDocument();
   expect(inputSurName).toBeInTheDocument();
   expect(inputPass).toBeInTheDocument();
-
+  const alerts = screen.getAllByRole("alert");
+  expect(alerts[0], /Tu E-mail debe ser correcto/i);
+  expect(alerts[1], /Tu nombre de Usuario como te reconoceran/i);
+  expect(alerts[2], /Tu nombre real/i);
+  expect(alerts[3], /Tu apellido real/i);
+  expect(
+    alerts[4],
+    /Tu Contraseña debe tener un minimo de 6 caracteres y un maximo de 20, Solo debe contener numeros y letras, y no debe contener emojis, caracteres especiales o espacios./i
+  );
   const inputs = screen.getAllByRole("textbox");
   expect(inputs[0], /E-mail :/i);
   expect(inputs[1], /Usuario :/i);
