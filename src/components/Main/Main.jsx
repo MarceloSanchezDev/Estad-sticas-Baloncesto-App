@@ -2,6 +2,26 @@ import { useNavigate } from "react-router";
 import grafico from "../../assets/grafico-de-barras.png";
 import { useEffect } from "react";
 import { useAuth } from "../../context/AuthContext";
+import { Doughnut } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  ArcElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  ArcElement,
+  Title,
+  Tooltip,
+  Legend
+);
 export default function Main() {
   const { token } = useAuth();
   const navigate = useNavigate();
@@ -42,11 +62,51 @@ export default function Main() {
           id="idImagen"
           className="col-12 col-md-6 d-flex justify-content-center align-items-center user-select-none"
         >
-          <img
-            alt="App Estadisticas de Baloncesto"
-            src={grafico}
-            className="imgComponent aparecer"
-          />
+          <div className="container text-center text-white aparecer imgComponent">
+            <h1 className="">Informacion de la estadistica</h1>
+            <h2>Hora: 12:00</h2>
+            <h2>Fecha: 23/12/2000</h2>
+            <div className=" d-flex flex-column aparecer ">
+              <div className="card m-3 border border-primary shadow-lg">
+                <div className="row g-0">
+                  <div className="col-md-4">
+                    <Doughnut
+                      data={{
+                        labels: ["Encestados", "Fallados"],
+                        datasets: [
+                          {
+                            label: "Distribución de Lanzamientos",
+                            data: [
+                              20,
+
+                              3,
+                            ],
+                            backgroundColor: ["#36A2EB", "#FF6384"],
+                          },
+                        ],
+                      }}
+                    />
+                  </div>
+                  <div className="col-md-8">
+                    <div className="card-body border-start h-100 d-flex flex-column justify-content-center align-items-center ">
+                      <h5 className="card-title  mb-2">
+                        Lanzamientos de 3 Puntos
+                      </h5>
+                      <p className="card-text text-danger">
+                        Tiros Lanzados : 23
+                      </p>
+                      <p className="card-text text-primary">
+                        Tiros Encestados : 20
+                      </p>
+                      <p className={"card-text text-success"}>
+                        Porcentaje Total : 90%
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
