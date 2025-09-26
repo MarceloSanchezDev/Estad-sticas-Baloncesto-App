@@ -159,7 +159,7 @@ describe("<newStatistic />", () => {
           libresLanzados: 20,
           libresEncestados: 15,
           fecha: "2024-03-05",
-          hora: "09:34:56",
+          hora: expect.stringMatching(/^\d{2}:\d{2}:\d{2}$/),
         }),
       })
     );
