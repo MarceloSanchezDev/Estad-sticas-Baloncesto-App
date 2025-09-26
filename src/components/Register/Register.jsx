@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import swal from "sweetalert2";
 import { useNavigate } from "react-router";
-import { useAuth } from "../context/AuthContext";
-import Loader from "./loaders/Loader";
+import { useAuth } from "../../context/AuthContext";
+import Loader from "../loaders/Loader";
 
 export default function Register() {
   const { token, login } = useAuth();
@@ -69,71 +69,125 @@ export default function Register() {
   };
 
   return (
-    <div className="text-dark vh-100 d-flex flex-column justify-content-center align-items-center aparecer ">
+    <div className="text-dark d-flex flex-column justify-content-center align-items-center aparecer mt-3">
       <form
+        role="form"
         className="bg-light p-4 rounded needs-validation shadow"
         onSubmit={handlerSubmitRegister}
       >
         <h2 className="mb-4 text-center">Registro 🏀⛹️‍♂️</h2>
         <div className="mb-3">
-          <label className="form-label" htmlFor="emailRegister">
+          <label className="form-label px-2" htmlFor="emailRegister">
             E-mail :
           </label>
           <input
+            role="textbox"
             className="form-control"
             type="email"
-            name="emailRegister"
+            name="email"
             id="emailRegister"
             onChange={(e) => setEmail(e.target.value)}
+            placeholder="TuEmali@TuDominio.com"
+            aria-describedby="emailRegisterHelpBlock"
           />
+          <div
+            id="emailRegisterHelpBlock"
+            className="form-text px-2"
+            role="alert"
+          >
+            Tu E-mail debe ser correcto
+          </div>
         </div>
         <div className="mb-3">
-          <label className="form-label" htmlFor="usernameRegister">
+          <label className="form-label px-2" htmlFor="userUsernameRegister">
             Usuario :
           </label>
           <input
+            role="textbox"
             className="form-control"
             type="text"
-            id="usernameRegister"
-            name="usernameRegister"
+            id="userUsernameRegister"
+            name="username"
             onChange={(e) => setUsername(e.target.value)}
+            placeholder="tu Username"
+            aria-describedby="userRegisterHelpBlock"
           />
+          <div
+            id="userRegisterHelpBlock"
+            className="form-text px-2"
+            role="alert"
+          >
+            Tu nombre de Usuario como te reconoceran
+          </div>
         </div>
         <div className="mb-3">
-          <label className="form-label" htmlFor="usernameRegister">
+          <label className="form-label px-2" htmlFor="userNameRegister">
             Nombre :
           </label>
           <input
+            role="textbox"
             className="form-control"
             type="text"
-            id="nameRegister"
-            name="usernameRegister"
+            id="userNameRegister"
+            name="name"
             onChange={(e) => setName(e.target.value)}
+            placeholder="Tu Nombre"
+            aria-describedby="nameRegisterHelpBlock"
           />
+          <div
+            id="nameRegisterHelpBlock"
+            className="form-text px-2"
+            role="alert"
+          >
+            Tu nombre real
+          </div>
         </div>
         <div className="mb-3">
-          <label className="form-label" htmlFor="usernameRegister">
+          <label className="form-label px-2" htmlFor="userLastnameRegister">
             Apellido :
           </label>
           <input
+            role="textbox"
             className="form-control"
             type="text"
-            id="lastNameRegister"
-            name="usernameRegister"
+            id="userLastnameRegister"
+            name="lastname"
             onChange={(e) => setLastName(e.target.value)}
+            placeholder="Tu Apellido"
+            aria-describedby="lasnameRegisterHelpBlock"
           />
+          <div
+            id="lasnameRegisterHelpBlock"
+            className="form-text px-2"
+            role="alert"
+          >
+            Tu apellido real
+          </div>
         </div>
         <div className="mb-3">
-          <label className="form-label" htmlFor="passwordRegister">
-            Contraseña:
+          <label className="form-label px-2" htmlFor="userPasswordRegister">
+            Contraseña :
           </label>
           <input
+            role="textbox"
             className="form-control"
             type="password"
-            id="passwordRegister"
-            name="passwordRegister"
+            id="userPasswordRegister"
+            name="password"
             onChange={(e) => setPassword(e.target.value)}
+            placeholder="********"
+            aria-describedby="passwordRegisterHelpBlock"
           />
+          <div
+            id="passwordRegisterHelpBlock"
+            className="form-text px-2"
+            role="alert"
+          >
+            Tu Contraseña debe tener un minimo de 6 caracteres y un maximo de
+            20,
+            <br /> Solo debe contener numeros y letras, y no debe contener
+            emojis, caracteres especiales o espacios.
+          </div>
         </div>
         <div className="d-grid">
           <button
@@ -145,7 +199,7 @@ export default function Register() {
           </button>
         </div>
       </form>
-      <div className="mt-3 text-center">
+      <div className="mt-3 text-center mb-3">
         <button
           className="btn btn-outline-light"
           onClick={() => {

@@ -68,9 +68,9 @@ export default function Login() {
       >
         <h2 className="mb-4 text-center">Iniciar Sesión 🏀⛹️‍♂️</h2>
 
-        <div className="mb-3">
-          <label htmlFor="emailLogin" className="form-label">
-            E-mail:
+        <div className="mb-3 ">
+          <label htmlFor="emailLogin" className="form-label px-2">
+            E-mail :
           </label>
           <input
             type="email"
@@ -79,12 +79,17 @@ export default function Login() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            aria-describedby="emailHelpBlock"
+            placeholder="TuEmali@TuDominio.com"
           />
+          <div id="emailHelpBlock" className="form-text px-2" role="alert">
+            Tu E-mail debe ser correcto
+          </div>
         </div>
 
         <div className="mb-3">
-          <label htmlFor="passwordLogin" className="form-label">
-            Contraseña:
+          <label htmlFor="passwordLogin" className="form-label px-2">
+            Contraseña :
           </label>
           <input
             type="password"
@@ -93,7 +98,15 @@ export default function Login() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            aria-describedby="passwordHelpBlock"
+            placeholder="*********"
           />
+          <div id="passwordHelpBlock" className="form-text px-2" role="alert">
+            Tu Contraseña debe tener un minimo de 6 caracteres y un maximo de
+            20,
+            <br /> Solo debe contener numeros y letras, y no debe contener
+            emojis, caracteres especiales o espacios.
+          </div>
         </div>
 
         <div className="d-grid">
