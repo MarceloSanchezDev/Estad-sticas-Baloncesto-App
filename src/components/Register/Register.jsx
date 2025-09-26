@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "./Registro.css";
 import swal from "sweetalert2";
 import { useNavigate } from "react-router";
 import { useAuth } from "../../context/AuthContext";
@@ -69,7 +70,7 @@ export default function Register() {
   };
 
   return (
-    <div className="text-dark d-flex flex-column justify-content-center align-items-center aparecer mt-3">
+    <div className="text-dark d-flex flex-column justify-content-center align-items-center aparecer Registro">
       <form
         role="form"
         className="bg-light p-4 rounded needs-validation shadow"
