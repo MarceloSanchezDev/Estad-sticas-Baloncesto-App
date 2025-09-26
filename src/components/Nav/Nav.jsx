@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 
 export default function Nav() {
   const { logout } = useAuth();
@@ -15,10 +15,14 @@ export default function Nav() {
   function handleNavigate(route) {
     navigate(route);
   }
+  const handleLogOut = () => {
+    logout();
+    navigate("/");
+  };
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary rounded">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
+        <a className="navbar-brand" href="/">
           🏀 Estadísticas
         </a>
         <button
@@ -141,7 +145,7 @@ export default function Nav() {
             </li>
           </ul>
           <div className="d-flex">
-            <button className="btn btn-danger w-100" onClick={() => logout()}>
+            <button className="btn btn-danger w-100" onClick={handleLogOut}>
               Cerrar Sesion
             </button>
           </div>

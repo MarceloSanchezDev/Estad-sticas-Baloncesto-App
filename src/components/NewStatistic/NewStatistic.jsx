@@ -12,7 +12,7 @@ import {
 } from "chart.js";
 import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 
 ChartJS.register(
   CategoryScale,
