@@ -52,7 +52,7 @@ vi.mock("react-chartjs-2", () => ({
 }));
 
 /** ---------- IMPORT DEL COMPONENTE (después de los mocks) ---------- */
-import NewStatistic from "./newStatistic.jsx";
+import NewStatistic from "./NewStatistic.jsx";
 
 /** ---------- DATE FIX ---------- */
 const RealDate = Date;
