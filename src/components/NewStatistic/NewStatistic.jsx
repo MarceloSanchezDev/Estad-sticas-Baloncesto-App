@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import { useEffect, useState } from "react";
 import { Bar, Pie, Doughnut } from "react-chartjs-2";
 import {
@@ -11,7 +12,6 @@ import {
   Legend,
 } from "chart.js";
 import { useNavigate } from "react-router";
-import Swal from "sweetalert2";
 import { useAuth } from "../../context/AuthContext";
 
 ChartJS.register(
@@ -220,6 +220,7 @@ export default function newStatistic() {
                   <input
                     type="text"
                     className="form-control"
+                    id="nombreEstadistica"
                     placeholder="Nombre de la Estadistica"
                     onChange={(e) =>
                       setStatistic({
