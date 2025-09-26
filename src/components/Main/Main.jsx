@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router";
-import grafico from "../../assets/grafico-de-barras.png";
 import { useEffect } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { Doughnut } from "react-chartjs-2";
@@ -32,8 +31,8 @@ export default function Main() {
   }, [token, navigate]);
 
   return (
-    <div className="container text-white vh-100 w-100 d-flex flex-column justify-content-around aparecer user-select-none">
-      <nav className="w-100 d-flex align-items-center justify-content-center justify-content-lg-end">
+    <div className="container-fluid text-white vh-100 w-100 d-flex flex-column justify-content-around aparecer user-select-none">
+      <nav className="w-100 px-3 d-flex align-items-center justify-content-center justify-content-lg-end">
         <button
           className="btn btn-primary m-2 shadow"
           onClick={() => navigate("/login")}
@@ -47,7 +46,7 @@ export default function Main() {
           regístrarse
         </button>
       </nav>
-      <div className="d-flex user-select-none align-items-center justify-content-center">
+      <div className="d-flex user-select-none align-items-start justify-content-center">
         <div className="col-12 col-md-6 d-flex flex-column justify-content-center align-items-center text-center">
           <h1 className="mb-4">
             Bienvenido a Estadisticas de Baloncesto🏀⛹️‍♂️ !
